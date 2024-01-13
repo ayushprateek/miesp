@@ -1,19 +1,8 @@
+import 'package:bill/theme/elements_screen.dart';
+import 'package:bill/ui/components/elements_button.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_barcode_scanner/flutter_barcode_scanner.dart';
-
-void main() {
-  runApp(MyApp());
-}
-
-class MyApp extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-      home: CustomScanner(),
-    );
-  }
-}
-
+import 'package:get/get.dart';
 class CustomScanner extends StatefulWidget {
   @override
   _CustomScannerState createState() => _CustomScannerState();
@@ -44,26 +33,14 @@ class _CustomScannerState extends State<CustomScanner> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: Text('QR Code Scanner'),
-      ),
+
+    return screenWithAppBar(
+      title: 'Scan Bar/QR Code',
       body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            Text(
-              scannedData,
-              style: TextStyle(fontSize: 16),
-            ),
-            SizedBox(height: 20),
-            ElevatedButton(
-              onPressed: scanQRCode,
-              child: Text('Scan QR Code or Barcode'),
-            ),
-          ],
-        ),
-      ),
+        child: SizedBox(
+          width: Get.width/4,
+            child: loadingButton(isLoading: false, btnText: 'Scan', onPress: scanQRCode)),
+      )
     );
   }
 }
