@@ -6,6 +6,7 @@ import 'package:bill/theme/custom_text_widgets.dart';
 import 'package:bill/theme/display_dialogbox.dart';
 import 'package:bill/ui/components/back_pressed_warning.dart';
 import 'package:bill/ui/components/elements_snackbar.dart';
+import 'package:bill/ui/dashboard.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -48,6 +49,15 @@ class _SalesQuotationUIState extends State<SalesQuotationUI> {
           appBar: AppBar(
               elevation: 10.0,
               backgroundColor: appPrimary,
+              leading: IconButton(
+                onPressed: (){
+                  showBackPressedWarning(onBackPressed: null);
+                },
+                icon: Icon(
+                  Icons.arrow_back,
+                  color: Colors.white,
+                ),
+              ),
               bottom: PreferredSize(
                 child: Column(
                   children: [
@@ -91,9 +101,7 @@ class _SalesQuotationUIState extends State<SalesQuotationUI> {
                     showBackPressedWarning(
                         text: 'Are you sure you want to cancel this document?',
                         onBackPressed: () async {
-                          Get.back();
-                          Get.back();
-                          Get.to(() => SalesQuotationUI(0));
+                          Get.offAll(() => SalesQuotationUI(0));
                           getErrorSnackBar('Document Cancelled');
                         });
                   },
@@ -122,9 +130,7 @@ class _SalesQuotationUIState extends State<SalesQuotationUI> {
                         text:
                             'Your data is not saved. Are you sure you want to create new form?',
                         onBackPressed: () async {
-                          Get.back();
-                          Get.back();
-                          Get.to(() => SalesQuotationUI(0));
+                          Get.offAll(() => SalesQuotationUI(0));
                           getSuccessSnackBar('New Document created');
                         });
                   },
@@ -173,9 +179,7 @@ class _SalesQuotationUIState extends State<SalesQuotationUI> {
             onPressed: () async {
               showLoaderDialog(context, text: 'Saving your data');
               await Future.delayed(Duration(seconds: 3));
-              Get.back();
-              Get.back();
-              Get.to(() => SalesQuotationUI(0));
+              Get.offAll(()=>SalesQuotationUI(0));
               getSuccessSnackBar('Data saved');
             },
           ),
