@@ -41,7 +41,9 @@ class _CustomDrawerState extends State<CustomDrawer> {
                     fontWeight: FontWeight.bold, color: Colors.white)),
             currentAccountPicture: ClipRRect(
                 borderRadius: BorderRadius.circular(15.0),
-                child: Image.asset(logoPath)),
+                // child: Image.asset(logoPath)
+                child:FlutterLogo()
+            ),
             decoration: const BoxDecoration(
               color: appPrimary,
             ),
@@ -82,7 +84,7 @@ class _CustomDrawerState extends State<CustomDrawer> {
             },
             child: ListTile(
               title: getHeadingText(
-                text: 'SalesQuotationUI',
+                text: 'Product Form',
                 color: Colors.white,
               ),
               leading: const Icon(Icons.calendar_month, color: Colors.white),

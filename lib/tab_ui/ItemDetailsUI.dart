@@ -13,20 +13,7 @@ class _ItemDetailsUIState extends State<ItemDetailsUI> {
     return SingleChildScrollView(
       child: Column(
         children: [
-          Padding(
-            padding: const EdgeInsets.only(top: 10.0),
-            child: Align(
-              alignment: Alignment.centerRight,
-              child: TextButton(
-                child: getPoppinsText(
-                    text: '+ Add Item',
-                    color: appPrimary,
-                    fontSize: 18,
-                    fontWeight: FontWeight.bold),
-                onPressed: () {},
-              ),
-            ),
-          ),
+          const SizedBox(height: 30,),
           Padding(
             padding: const EdgeInsets.only(left: 8.0, right: 8, bottom: 8),
             child: Container(

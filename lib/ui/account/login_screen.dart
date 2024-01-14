@@ -62,15 +62,17 @@ class LoginPageState extends State<LoginPage> {
                   ),
                   child: ClipRRect(
                     borderRadius: BorderRadius.circular(10.0),
-                    child: Container(
-                      // width: MediaQuery.of(context).size.width/3,
-                      // height: MediaQuery.of(context).size.height/15,
-                      color: appPrimary,
-                      child: Image.asset(
-                        logoPath,
-                        fit: BoxFit.cover,
-                      ),
-                    ),
+                    child: SizedBox(
+                      height: 100,
+                      width: 100,
+                        child: FlutterLogo()),
+                    // child: Container(
+                    //   color: appPrimary,
+                    //   child: Image.asset(
+                    //     logoPath,
+                    //     fit: BoxFit.cover,
+                    //   ),
+                    // ),
                   ),
                 ),
               ),
@@ -128,24 +130,24 @@ class LoginPageState extends State<LoginPage> {
                             : Icons.visibility_off)),
                     obscureText: obscurePassword),
               ),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  getHeadingText(text: 'Click here to ', fontSize: 15),
-                  TextButton(
-                    child: getHeadingText(
-                        text: 'Reset password',
-                        fontSize: 15,
-                        decoration: TextDecoration.underline,
-                        color: textFieldBorderColor),
-                    onPressed: () {
-                      Get.to(() => PasswordResetScreen(
-                            isComingFromLogin: true,
-                          ));
-                    },
-                  ),
-                ],
-              ),
+              // Row(
+              //   mainAxisAlignment: MainAxisAlignment.center,
+              //   children: [
+              //     getHeadingText(text: 'Click here to ', fontSize: 15),
+              //     TextButton(
+              //       child: getHeadingText(
+              //           text: 'Reset password',
+              //           fontSize: 15,
+              //           decoration: TextDecoration.underline,
+              //           color: textFieldBorderColor),
+              //       onPressed: () {
+              //         Get.to(() => PasswordResetScreen(
+              //               isComingFromLogin: true,
+              //             ));
+              //       },
+              //     ),
+              //   ],
+              // ),
               if (keyboardIsVisible(
                   context: context, scrollController: _scrollController)) ...[
                 const SizedBox(

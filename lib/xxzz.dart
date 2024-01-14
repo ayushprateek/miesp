@@ -1,3 +1,4 @@
+import 'package:bill/theme/custom_text_widgets.dart';
 import 'package:bill/theme/elements_screen.dart';
 import 'package:bill/ui/components/elements_button.dart';
 import 'package:flutter/material.dart';
@@ -37,9 +38,17 @@ class _CustomScannerState extends State<CustomScanner> {
     return screenWithAppBar(
       title: 'Scan Bar/QR Code',
       body: Center(
-        child: SizedBox(
-          width: Get.width/4,
-            child: loadingButton(isLoading: false, btnText: 'Scan', onPress: scanQRCode)),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            if(scannedData!='Scan a QR Code or Barcode')
+            getHeadingText(text: 'Scanned text--> $scannedData'),
+            const SizedBox(height: 20,),
+            SizedBox(
+              width: Get.width/4,
+                child: loadingButton(isLoading: false, btnText: 'Scan', onPress: scanQRCode)),
+          ],
+        ),
       )
     );
   }

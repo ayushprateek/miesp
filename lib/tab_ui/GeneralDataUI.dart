@@ -34,27 +34,31 @@ class _GeneralDataUIState extends State<GeneralDataUI> {
   @override
   Widget build(BuildContext context) {
     return SingleChildScrollView(
-      child: Padding(
-        padding: const EdgeInsets.only(left: 8.0, right: 8, bottom: 8, top: 20),
-        child: Container(
-          decoration: BoxDecoration(
-              // color: const Color(0XFFC46253),
-              border: Border.all(),
-              borderRadius: BorderRadius.only(
-                  topLeft: Radius.circular(16), topRight: Radius.circular(16))),
-          child: Column(
-            children: [
-              const SizedBox(height: 25,),
-              getDisabledTextField(controller: BarCode,labelText: 'BarCode',),
-              getDisabledTextField(controller: ItemCode,labelText: 'Item Code',),
-              getDisabledTextField(controller: ItemName,labelText: 'Item Name',),
-              getDisabledTextField(controller: ItemGroup,labelText: 'Item Group',),
-              getDisabledTextField(controller: UOMGroup,labelText: 'UOM Group',),
-              getDisabledTextField(controller: ItemCategory,labelText: 'Item Category',),
+      child: Column(
+        children: [
+          Padding(
+            padding: const EdgeInsets.only(left: 8.0, right: 8, bottom: 8, top: 30),
+            child: Container(
+              decoration: BoxDecoration(
+                  // color: const Color(0XFFC46253),
+                  border: Border.all(),
+                  borderRadius: BorderRadius.only(
+                      topLeft: Radius.circular(16), topRight: Radius.circular(16))),
+              child: Column(
+                children: [
+                  const SizedBox(height: 30,),
+                  getDisabledTextField(controller: BarCode,labelText: 'BarCode',),
+                  getDisabledTextField(controller: ItemCode,labelText: 'Item Code',),
+                  getDisabledTextField(controller: ItemName,labelText: 'Item Name',),
+                  getDisabledTextField(controller: ItemGroup,labelText: 'Item Group',),
+                  getDisabledTextField(controller: UOMGroup,labelText: 'UOM Group',),
+                  getDisabledTextField(controller: ItemCategory,labelText: 'Item Category',),
 
-            ],
+                ],
+              ),
+            ),
           ),
-        ),
+        ],
       ),
     );
   }

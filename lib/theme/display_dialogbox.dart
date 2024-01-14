@@ -2,6 +2,7 @@ import 'dart:io';
 
 import 'package:bill/theme/custom_colors.dart';
 import 'package:bill/theme/custom_font.dart';
+import 'package:bill/theme/custom_text_widgets.dart';
 import 'package:bill/theme/custom_theme.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -140,10 +141,8 @@ Text _dialogTitle(BuildContext context, String? title, bool isSuccess) {
     return Text("  " + title, style: titleTextStyle);
   } else {
     return isSuccess
-        ? Text(" Success" ,
-            style: titleTextStyle)
-        : Text("  Failed",
-            style: titleTextStyle);
+        ? Text(" Success", style: titleTextStyle)
+        : Text("  Failed", style: titleTextStyle);
   }
 }
 
@@ -221,10 +220,7 @@ AlertDialog showLoaderDialog(BuildContext context,
             )),
         Container(
             padding: const EdgeInsets.only(left: 30),
-            child: Text(
-              text,
-              style: AppTheme.textTheme.bodyText2,
-            )),
+            child: getHeadingText(text: text)),
       ],
     ),
   );
