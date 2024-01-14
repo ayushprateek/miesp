@@ -1,5 +1,7 @@
+import 'package:bill/models/item_details_model.dart';
 import 'package:bill/theme/custom_colors.dart';
 import 'package:bill/theme/custom_text_widgets.dart';
+import 'package:bill/ui/product/SalesQuotationUI.dart';
 import 'package:flutter/material.dart';
 
 class Stock extends StatefulWidget {
@@ -30,10 +32,11 @@ class _StockState extends State<Stock> {
                       height: 30,
                     ),
                     ListView.builder(
-                      itemCount: 3,
+                      itemCount: SalesQuotationUI.itemDetailModel?.whStockItemMaster?.length??0,
                       shrinkWrap: true,
                       physics: ScrollPhysics(),
                       itemBuilder: (BuildContext context, int index) {
+                        WhStockItemMaster stock=SalesQuotationUI.itemDetailModel!.whStockItemMaster![index]!;
                         return InkWell(
                           onDoubleTap: () {},
                           child: Container(
@@ -71,7 +74,7 @@ class _StockState extends State<Stock> {
                                               getPoppinsTextSpanHeading(
                                                   text: 'Warehouse Code'),
                                               getPoppinsTextSpanDetails(
-                                                  text: 'LWP'),
+                                                  text: stock.varWarehouseCode??''),
                                             ],
                                           ),
                                         ),
@@ -91,7 +94,7 @@ class _StockState extends State<Stock> {
                                             getPoppinsTextSpanHeading(
                                                 text: 'Stock'),
                                             getPoppinsTextSpanDetails(
-                                                text: '10'),
+                                                text: double.tryParse(stock.decInStock?.toString()??'')?.toStringAsFixed(2)??'0'),
                                           ],
                                         ),
                                       ),

@@ -1,12 +1,12 @@
 import 'dart:io';
 
-import 'package:bill/tab_ui/SalesQuotationUI.dart';
+import 'package:bill/custom_scanner.dart';
 import 'package:bill/theme/custom_colors.dart';
 import 'package:bill/theme/custom_text_widgets.dart';
 import 'package:bill/ui/account/login_screen.dart';
 import 'package:bill/ui/components/elements_button.dart';
+import 'package:bill/ui/product/SalesQuotationUI.dart';
 import 'package:bill/ui/select_warehouse.dart';
-import 'package:bill/xxzz.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';

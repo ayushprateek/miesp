@@ -1,5 +1,5 @@
-import 'package:bill/tab_ui/SalesQuotationUI.dart';
 import 'package:bill/theme/get_text_field.dart';
+import 'package:bill/ui/product/SalesQuotationUI.dart';
 import 'package:flutter/material.dart';
 
 class GeneralDataUI extends StatefulWidget {

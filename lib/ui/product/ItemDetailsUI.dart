@@ -1,6 +1,6 @@
 import 'package:bill/models/item_details_model.dart';
-import 'package:bill/tab_ui/SalesQuotationUI.dart';
 import 'package:bill/theme/custom_text_widgets.dart';
+import 'package:bill/ui/product/SalesQuotationUI.dart';
 import 'package:flutter/material.dart';
 
 class ItemDetailsUI extends StatefulWidget {
