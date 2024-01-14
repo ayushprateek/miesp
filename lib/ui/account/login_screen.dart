@@ -1,5 +1,6 @@
 import 'dart:io';
 
+import 'package:bill/common/app_constants.dart';
 import 'package:bill/models/customer_model.dart';
 import 'package:bill/services/service_manager.dart';
 import 'package:bill/theme/custom_font.dart';
@@ -117,7 +118,7 @@ class LoginPageState extends State<LoginPage> {
                   padding: const EdgeInsets.only(top: 8.0, right: 8),
                   child: getTextFieldWithoutLookup(
                     controller: userEmail,
-                    labelText: 'Username',
+                    labelText: 'Email',
                   ),
                 ),
                 Padding(
@@ -174,6 +175,21 @@ class LoginPageState extends State<LoginPage> {
     );
   }
 
+  bool isValidated() {
+    bool success = true;
+    if (userEmail.text.isEmpty) {
+      success = false;
+      getErrorSnackBar('Email can not be empty');
+    } else if (!RegExp(patternEmail).hasMatch(userEmail.text)) {
+      success = false;
+      getErrorSnackBar('Please enter a valid email');
+    } else if (password.text.isEmpty) {
+      success = false;
+      getErrorSnackBar('Password can not be empty');
+    }
+    return success;
+  }
+
   Widget _buttonContainer() {
     return Padding(
       padding: const EdgeInsets.all(8.0),
@@ -181,7 +197,9 @@ class LoginPageState extends State<LoginPage> {
         isLoading: isLoading,
         btnText: 'Log In',
         onPress: () {
-          _onLogin();
+          if (isValidated()) {
+            _onLogin();
+          }
         },
       ),
     );
