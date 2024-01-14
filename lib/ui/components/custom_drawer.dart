@@ -1,20 +1,15 @@
 import 'dart:io';
 
-import 'package:bill/common/app_assets.dart';
 import 'package:bill/tab_ui/SalesQuotationUI.dart';
 import 'package:bill/theme/custom_colors.dart';
 import 'package:bill/theme/custom_text_widgets.dart';
 import 'package:bill/ui/account/login_screen.dart';
-import 'package:bill/ui/account/password_reset.dart';
 import 'package:bill/ui/components/elements_button.dart';
-
 import 'package:bill/ui/select_warehouse.dart';
 import 'package:bill/xxzz.dart';
-
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
 
 class CustomDrawer extends StatefulWidget {
   const CustomDrawer({super.key});
@@ -42,8 +37,7 @@ class _CustomDrawerState extends State<CustomDrawer> {
             currentAccountPicture: ClipRRect(
                 borderRadius: BorderRadius.circular(15.0),
                 // child: Image.asset(logoPath)
-                child:FlutterLogo()
-            ),
+                child: FlutterLogo()),
             decoration: const BoxDecoration(
               color: appPrimary,
             ),
@@ -80,7 +74,9 @@ class _CustomDrawerState extends State<CustomDrawer> {
           ),
           InkWell(
             onTap: () {
-              Get.to(() => SalesQuotationUI(0));
+              Get.to(() => SalesQuotationUI(
+                    index: 0,
+                  ));
             },
             child: ListTile(
               title: getHeadingText(
@@ -257,7 +253,6 @@ class _CustomDrawerState extends State<CustomDrawer> {
           //     ),
           //   ],
           // ),
-
 
           InkWell(
             onTap: () async {

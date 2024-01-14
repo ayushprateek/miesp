@@ -1,3 +1,4 @@
+import 'package:bill/models/item_details_model.dart';
 import 'package:bill/tab_ui/GeneralDataUI.dart';
 import 'package:bill/tab_ui/ItemDetailsUI.dart';
 import 'package:bill/tab_ui/stock.dart';
@@ -6,17 +7,17 @@ import 'package:bill/theme/custom_text_widgets.dart';
 import 'package:bill/theme/display_dialogbox.dart';
 import 'package:bill/ui/components/back_pressed_warning.dart';
 import 'package:bill/ui/components/elements_snackbar.dart';
-import 'package:bill/ui/dashboard.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class SalesQuotationUI extends StatefulWidget {
   int index = 0;
+  static ItemDetailModel? itemDetailModel;
 
-  SalesQuotationUI(int index) {
-    this.index = index;
-  }
+  SalesQuotationUI({
+    required this.index,
+  });
 
   @override
   _SalesQuotationUIState createState() => _SalesQuotationUIState();
@@ -50,7 +51,7 @@ class _SalesQuotationUIState extends State<SalesQuotationUI> {
               elevation: 10.0,
               backgroundColor: appPrimary,
               leading: IconButton(
-                onPressed: (){
+                onPressed: () {
                   showBackPressedWarning(onBackPressed: null);
                 },
                 icon: Icon(
@@ -101,7 +102,9 @@ class _SalesQuotationUIState extends State<SalesQuotationUI> {
                     showBackPressedWarning(
                         text: 'Are you sure you want to cancel this document?',
                         onBackPressed: () async {
-                          Get.offAll(() => SalesQuotationUI(0));
+                          Get.offAll(() => SalesQuotationUI(
+                                index: 0,
+                              ));
                           getErrorSnackBar('Document Cancelled');
                         });
                   },
@@ -130,7 +133,9 @@ class _SalesQuotationUIState extends State<SalesQuotationUI> {
                         text:
                             'Your data is not saved. Are you sure you want to create new form?',
                         onBackPressed: () async {
-                          Get.offAll(() => SalesQuotationUI(0));
+                          Get.offAll(() => SalesQuotationUI(
+                                index: 0,
+                              ));
                           getSuccessSnackBar('New Document created');
                         });
                   },
@@ -179,7 +184,9 @@ class _SalesQuotationUIState extends State<SalesQuotationUI> {
             onPressed: () async {
               showLoaderDialog(context, text: 'Saving your data');
               await Future.delayed(Duration(seconds: 3));
-              Get.offAll(()=>SalesQuotationUI(0));
+              Get.offAll(() => SalesQuotationUI(
+                    index: 0,
+                  ));
               getSuccessSnackBar('Data saved');
             },
           ),

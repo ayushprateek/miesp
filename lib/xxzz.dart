@@ -1,5 +1,6 @@
 import 'package:bill/models/item_details_model.dart';
 import 'package:bill/services/service_manager.dart';
+import 'package:bill/tab_ui/SalesQuotationUI.dart';
 import 'package:bill/theme/custom_text_widgets.dart';
 import 'package:bill/theme/elements_screen.dart';
 import 'package:bill/ui/components/elements_button.dart';
@@ -12,7 +13,7 @@ class CustomScanner extends StatefulWidget {
 }
 
 class _CustomScannerState extends State<CustomScanner> {
-  String scannedData = 'Scan a QR Code or Barcode';
+  String barCode = 'Scan a QR Code or Barcode';
 
   // Future<void> scanQRCode() async {
   //   String scanResult='';
@@ -28,22 +29,27 @@ class _CustomScannerState extends State<CustomScanner> {
   //   }
   //
   //   if (!mounted) return;
+  //   barCode = scanResult ;
+  //   if(await ServiceManager.isInternetAvailable())
+  //   {
+  //     ServiceManager.getItemDetails(barCode: barCode, onSuccess: onSuccess, onError: onError);
+  //   }
   //
-  //   setState(() {
-  //     scannedData = scanResult ?? 'Scan failed!';
-  //   });
   // }
+  scanQRCode()async{
+    if(await ServiceManager.isInternetAvailable())
+    {
+      barCode='43001';//todo: remove
+      ServiceManager.getItemDetails(barCode: barCode, onSuccess: onSuccess, onError: onError);
+    }
+  }
   onSuccess(ItemDetailModel itemDetailModel){
     print(itemDetailModel.toJson());
+    SalesQuotationUI.itemDetailModel=itemDetailModel;
+    Get.to(()=>SalesQuotationUI(index: 0));
 
   }
   onError(){}
-  Future<void> scanQRCode() async {
-    if(await ServiceManager.isInternetAvailable())
-      {
-       ServiceManager.getItemDetails(barCode: '43001', onSuccess: onSuccess, onError: onError);
-      }
-  }
 
   @override
   Widget build(BuildContext context) {
@@ -54,8 +60,8 @@ class _CustomScannerState extends State<CustomScanner> {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            if(scannedData!='Scan a QR Code or Barcode')
-            getHeadingText(text: 'Scanned text--> $scannedData'),
+            if(barCode!='Scan a QR Code or Barcode')
+            getHeadingText(text: 'Scanned text--> $barCode'),
             const SizedBox(height: 20,),
             SizedBox(
               width: Get.width/4,
