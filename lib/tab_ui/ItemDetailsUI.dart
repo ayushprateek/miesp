@@ -1,4 +1,5 @@
-import 'package:bill/theme/custom_colors.dart';
+import 'package:bill/models/item_details_model.dart';
+import 'package:bill/tab_ui/SalesQuotationUI.dart';
 import 'package:bill/theme/custom_text_widgets.dart';
 import 'package:flutter/material.dart';
 
@@ -13,7 +14,9 @@ class _ItemDetailsUIState extends State<ItemDetailsUI> {
     return SingleChildScrollView(
       child: Column(
         children: [
-          const SizedBox(height: 30,),
+          const SizedBox(
+            height: 30,
+          ),
           Padding(
             padding: const EdgeInsets.only(left: 8.0, right: 8, bottom: 8),
             child: Container(
@@ -30,10 +33,14 @@ class _ItemDetailsUIState extends State<ItemDetailsUI> {
                       height: 30,
                     ),
                     ListView.builder(
-                      itemCount: 5,
+                      itemCount:
+                          SalesQuotationUI.itemDetailModel?.priceList?.length ??
+                              0,
                       shrinkWrap: true,
                       physics: ScrollPhysics(),
                       itemBuilder: (BuildContext context, int index) {
+                        PriceList priceList = SalesQuotationUI
+                            .itemDetailModel!.priceList![index]!;
                         return InkWell(
                           onDoubleTap: () {},
                           child: Container(
@@ -76,7 +83,9 @@ class _ItemDetailsUIState extends State<ItemDetailsUI> {
                                                         getPoppinsTextSpanHeading(
                                                             text: 'Price List'),
                                                         getPoppinsTextSpanDetails(
-                                                            text: 'LWP'),
+                                                            text: priceList
+                                                                    .varPriceListName ??
+                                                                ''),
                                                       ],
                                                     ),
                                                   ),
@@ -96,13 +105,14 @@ class _ItemDetailsUIState extends State<ItemDetailsUI> {
                                                       getPoppinsTextSpanHeading(
                                                           text: 'UOM'),
                                                       getPoppinsTextSpanDetails(
-                                                          text: 'DRUM'),
+                                                          text: priceList
+                                                                  .varUomName ??
+                                                              ''),
                                                     ],
                                                   ),
                                                 ),
                                               ),
                                             ),
-
                                           ],
                                         ),
                                         flex: 8,
@@ -127,7 +137,9 @@ class _ItemDetailsUIState extends State<ItemDetailsUI> {
                                                         getPoppinsTextSpanHeading(
                                                             text: 'Currency'),
                                                         getPoppinsTextSpanDetails(
-                                                            text: 'QR'),
+                                                            text: priceList
+                                                                    .varCurrency ??
+                                                                ''),
                                                       ],
                                                     ),
                                                   ),
@@ -149,229 +161,23 @@ class _ItemDetailsUIState extends State<ItemDetailsUI> {
                                                         getPoppinsTextSpanHeading(
                                                             text: 'Price'),
                                                         getPoppinsTextSpanDetails(
-                                                            text: '15'),
+                                                            text: priceList
+                                                                    .decPrice
+                                                                    ?.toStringAsFixed(
+                                                                        2) ??
+                                                                ''),
                                                       ],
                                                     ),
                                                   ),
                                                 ),
                                               ),
                                             ),
-
                                           ],
                                         ),
                                         flex: 8,
                                       ),
                                     ],
                                   ),
-                                  // Divider(
-                                  //   thickness: 1,
-                                  //   color: Colors.black,
-                                  // ),
-                                  // Padding(
-                                  //   padding: const EdgeInsets.only(
-                                  //       left: 8.0, right: 16.0),
-                                  //   child: Align(
-                                  //     alignment: Alignment.centerRight,
-                                  //     child: FittedBox(
-                                  //       fit: BoxFit.contain,
-                                  //       child: Text.rich(
-                                  //         TextSpan(
-                                  //           children: [
-                                  //             getPoppinsTextSpanHeading(
-                                  //                 text: 'Total ',
-                                  //                 fontSize: 15),
-                                  //             getPoppinsTextSpanDetails(
-                                  //                 text: '168.0', fontSize: 14),
-                                  //           ],
-                                  //         ),
-                                  //       ),
-                                  //     ),
-                                  //   ),
-                                  // ),
-                                ],
-                              ),
-                            ),
-                          ),
-                        );
-                      },
-                    ),
-                    Divider(
-                      thickness: 2,
-                    ),
-                    SizedBox(
-                      height: 10,
-                    ),
-                    ListView.builder(
-                      itemCount: 1,
-                      shrinkWrap: true,
-                      physics: ScrollPhysics(),
-                      itemBuilder: (BuildContext context, int index) {
-                        //getPoppinsTextSpanHeading(text: 'Item Code'),
-                        //getPoppinsTextSpanDetails(text: 'A0001'),
-
-                        return InkWell(
-                          onDoubleTap: () {},
-                          child: Container(
-                            decoration: new BoxDecoration(
-                              color: Colors.white,
-                              shape: BoxShape.rectangle,
-                              borderRadius: BorderRadius.circular(16.0),
-                              boxShadow: [
-                                BoxShadow(
-                                  color: Colors.black26,
-                                  blurRadius: 4.0,
-                                  offset: const Offset(2.0, 2.0),
-                                ),
-                              ],
-                            ),
-                            margin: EdgeInsets.only(
-                                left: 15.0, right: 15.0, bottom: 10),
-                            width: MediaQuery.of(context).size.width,
-                            child: Padding(
-                              padding: const EdgeInsets.all(8.0),
-                              child: Column(
-                                crossAxisAlignment: CrossAxisAlignment.end,
-                                children: [
-                                  Padding(
-                                    padding: const EdgeInsets.only(
-                                        left: 8.0, right: 20.0, top: 4.0),
-                                    child: Row(
-                                      children: [
-                                        Align(
-                                          alignment: Alignment.topLeft,
-                                          child: FittedBox(
-                                            fit: BoxFit.contain,
-                                            child: getHeadingText(
-                                                text: 'Num Of Items',
-                                                fontSize: 14),
-                                          ),
-                                        ),
-                                        Expanded(
-                                          child: Container(),
-                                        ),
-                                        Align(
-                                          alignment: Alignment.topRight,
-                                          child: FittedBox(
-                                            fit: BoxFit.contain,
-                                            child: getSubHeadingText(
-                                                text: '10', fontSize: 14),
-                                          ),
-                                        ),
-                                      ],
-                                    ),
-                                  ),
-                                  Padding(
-                                    padding: const EdgeInsets.only(
-                                        left: 8.0, right: 20.0, top: 0.0),
-                                    child: Row(
-                                      children: [
-                                        Align(
-                                          alignment: Alignment.topLeft,
-                                          child: FittedBox(
-                                            fit: BoxFit.contain,
-                                            child: getHeadingText(
-                                                text: 'Total Sum :  ',
-                                                fontSize: 14),
-                                          ),
-                                        ),
-                                        Expanded(
-                                          child: Container(),
-                                        ),
-                                        Align(
-                                          alignment: Alignment.topRight,
-                                          child: FittedBox(
-                                            fit: BoxFit.contain,
-                                            child: getSubHeadingText(
-                                                text: '+500.0', fontSize: 14),
-                                          ),
-                                        ),
-                                      ],
-                                    ),
-                                  ),
-                                  Padding(
-                                    padding: const EdgeInsets.only(
-                                        left: 8.0, right: 20.0, top: 0.0),
-                                    child: Row(
-                                      children: [
-                                        Align(
-                                          alignment: Alignment.topLeft,
-                                          child: FittedBox(
-                                            fit: BoxFit.contain,
-                                            child: getHeadingText(
-                                                text: 'Total Discount : ',
-                                                fontSize: 14),
-                                          ),
-                                        ),
-                                        Expanded(
-                                          child: Container(),
-                                        ),
-                                        Align(
-                                          alignment: Alignment.topRight,
-                                          child: FittedBox(
-                                            fit: BoxFit.contain,
-                                            child: getSubHeadingText(
-                                                text: '-0.0', fontSize: 14),
-                                          ),
-                                        ),
-                                      ],
-                                    ),
-                                  ),
-                                  Padding(
-                                    padding: const EdgeInsets.only(
-                                        left: 8.0, right: 20.0, top: 0.0),
-                                    child: Row(
-                                      children: [
-                                        Align(
-                                          alignment: Alignment.topLeft,
-                                          child: FittedBox(
-                                            fit: BoxFit.contain,
-                                            child: getHeadingText(
-                                                text: 'Total Tax : ',
-                                                fontSize: 14),
-                                          ),
-                                        ),
-                                        Expanded(
-                                          child: Container(),
-                                        ),
-                                        Align(
-                                          alignment: Alignment.topRight,
-                                          child: FittedBox(
-                                            fit: BoxFit.contain,
-                                            child: getSubHeadingText(
-                                                text: '+0.0', fontSize: 14),
-                                          ),
-                                        ),
-                                      ],
-                                    ),
-                                  ),
-                                  Padding(
-                                    padding: const EdgeInsets.only(
-                                        left: 8.0, right: 20.0, top: 0.0),
-                                    child: Row(
-                                      children: [
-                                        Align(
-                                          alignment: Alignment.topLeft,
-                                          child: FittedBox(
-                                            fit: BoxFit.contain,
-                                            child: getHeadingText(
-                                                text: 'Total Price : ',
-                                                fontSize: 14),
-                                          ),
-                                        ),
-                                        Expanded(
-                                          child: Container(),
-                                        ),
-                                        Align(
-                                          alignment: Alignment.topRight,
-                                          child: FittedBox(
-                                            fit: BoxFit.contain,
-                                            child: getSubHeadingText(
-                                                text: '500.0', fontSize: 14),
-                                          ),
-                                        ),
-                                      ],
-                                    ),
-                                  ),
                                 ],
                               ),
                             ),
@@ -380,7 +186,7 @@ class _ItemDetailsUIState extends State<ItemDetailsUI> {
                       },
                     ),
                     SizedBox(
-                      height: MediaQuery.of(context).size.height / 10,
+                      height: MediaQuery.of(context).size.height / 12,
                     )
                   ],
                 ),
