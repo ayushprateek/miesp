@@ -19,7 +19,7 @@ String? text}) {
             height: MediaQuery.of(context).size.height / 20,
             width: MediaQuery.of(context).size.width / 1.5,
             child: Text(
-              text??"Your data is not saved. Are you sure you want to go back?",
+              text??"Are you sure you want to go back?",
               style: TextStyle(color: Colors.black, fontWeight: FontWeight.bold),
             ),
           ),

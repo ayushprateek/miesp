@@ -41,6 +41,7 @@ Widget getTextField(
       IconButton? iconButton,
       List<TextInputFormatter>? inputFormatters,
       double? height = 43,
+      EdgeInsetsGeometry contentPadding=const EdgeInsets.only(bottom: 2.0, top: 2, left: 12),
       TextInputType? keyboardType = TextInputType.text}) {
   return Padding(
     padding: const EdgeInsets.only(
@@ -68,8 +69,7 @@ Widget getTextField(
                 suffixIcon: suffixIcon,
                 prefixIcon: prefixIcon,
                 labelText: labelText,
-                contentPadding:
-                const EdgeInsets.only(bottom: 2.0, top: 2, left: 12),
+                contentPadding: contentPadding,
 
                 //prefixIconConstraints: BoxConstraints(minWidth: 0,minHeight: 0),
                 fillColor: Colors.white,
@@ -154,6 +154,7 @@ Widget getTextFieldWithoutLookup(
       Function? onTap,
       IconButton? iconButton,
       List<TextInputFormatter>? inputFormatters,
+      EdgeInsetsGeometry contentPadding=const EdgeInsets.only(bottom: 2.0, top: 2, left: 12),
       double? height = 43,
       double? fontSize = 14,
       TextInputType? keyboardType = TextInputType.text}) {
@@ -197,8 +198,7 @@ Widget getTextFieldWithoutLookup(
                 suffixIcon: suffixIcon,
                 prefixIcon: prefixIcon,
 
-                contentPadding:
-                const EdgeInsets.only(bottom: 2.0, top: 2, left: 12),
+                contentPadding: contentPadding,
 
                 //prefixIconConstraints: BoxConstraints(minWidth: 0,minHeight: 0),
                 fillColor: Colors.white,
@@ -261,6 +261,7 @@ Widget getDateTextField(
       int? maxLength,
       IconButton? iconButton,
       List<TextInputFormatter>? inputFormatters,
+      EdgeInsetsGeometry contentPadding=const EdgeInsets.only(bottom: 2.0, top: 2, left: 12),
       double? height = 43,
       double? fontSize = 14,
       TextInputType? keyboardType = TextInputType.text}) {
@@ -292,8 +293,7 @@ Widget getDateTextField(
                   labelText: labelText,
                   suffixIcon: suffixIcon,
                   prefixIcon: prefixIcon,
-                  contentPadding:
-                  const EdgeInsets.only(bottom: 2.0, top: 2, left: 12),
+                  contentPadding: contentPadding,
 
                   //prefixIconConstraints: BoxConstraints(minWidth: 0,minHeight: 0),
                   fillColor: Color(0XFFF3ECE7),
@@ -396,6 +396,7 @@ Widget getDisabledTextField(
       IconButton? iconButton,
       List<TextInputFormatter>? inputFormatters,
       double? height = 43,
+      EdgeInsetsGeometry contentPadding=const EdgeInsets.only(bottom: 2.0, top: 2, left: 12),
       TextInputType? keyboardType = TextInputType.text}) {
   return Padding(
     padding: const EdgeInsets.only(
@@ -423,8 +424,7 @@ Widget getDisabledTextField(
                 labelText: labelText,
                 suffixIcon: suffixIcon,
                 prefixIcon: prefixIcon,
-                contentPadding:
-                const EdgeInsets.only(bottom: 2.0, top: 2, left: 12),
+                contentPadding: contentPadding,
 
                 //prefixIconConstraints: BoxConstraints(minWidth: 0,minHeight: 0),
                 fillColor: Color(0XFFF3ECE7),
@@ -513,6 +513,7 @@ Widget getDisabledTextFieldWithoutLookup(
       List<TextInputFormatter>? inputFormatters,
       double? height = 43,
       double? fontSize = 14,
+      EdgeInsetsGeometry contentPadding=const EdgeInsets.only(bottom: 2.0, top: 2, left: 12),
       TextInputType? keyboardType = TextInputType.text}) {
   return Padding(
     padding: const EdgeInsets.only(
@@ -540,8 +541,7 @@ Widget getDisabledTextFieldWithoutLookup(
                 labelText: labelText,
                 suffixIcon: suffixIcon,
                 prefixIcon: prefixIcon,
-                contentPadding:
-                const EdgeInsets.only(bottom: 2.0, top: 2, left: 12),
+                contentPadding: contentPadding,
 
                 //prefixIconConstraints: BoxConstraints(minWidth: 0,minHeight: 0),
                 fillColor: Color(0XFFF3ECE7),

@@ -1,13 +1,13 @@
 import 'package:bill/theme/get_text_field.dart';
-import 'package:bill/ui/product/SalesQuotationUI.dart';
+import 'package:bill/ui/product/product_details.dart';
 import 'package:flutter/material.dart';
 
-class GeneralDataUI extends StatefulWidget {
+class GeneralData extends StatefulWidget {
   @override
-  _GeneralDataUIState createState() => _GeneralDataUIState();
+  _GeneralDataState createState() => _GeneralDataState();
 }
 
-class _GeneralDataUIState extends State<GeneralDataUI> {
+class _GeneralDataState extends State<GeneralData> {
   TextEditingController ItemId = TextEditingController(
       text: SalesQuotationUI.itemDetailModel?.bigintItemId?.toString());
   TextEditingController BarCode =
@@ -96,6 +96,10 @@ class _GeneralDataUIState extends State<GeneralDataUI> {
                   getDisabledTextField(
                       controller: ItemDescription,
                       labelText: 'Item Description',
+                      height: null,
+                      maxLines: 7,
+                      contentPadding:
+                          const EdgeInsets.only(bottom: 2.0, top: 16, left: 12),
                       onChanged: (val) {
                         SalesQuotationUI.itemDetailModel?.varItemDescription =
                             val;

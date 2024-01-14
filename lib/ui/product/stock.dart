@@ -1,7 +1,7 @@
 import 'package:bill/models/item_details_model.dart';
 import 'package:bill/theme/custom_colors.dart';
 import 'package:bill/theme/custom_text_widgets.dart';
-import 'package:bill/ui/product/SalesQuotationUI.dart';
+import 'package:bill/ui/product/product_details.dart';
 import 'package:flutter/material.dart';
 
 class Stock extends StatefulWidget {
@@ -36,7 +36,7 @@ class _StockState extends State<Stock> {
                       shrinkWrap: true,
                       physics: ScrollPhysics(),
                       itemBuilder: (BuildContext context, int index) {
-                        WhStockItemMaster stock=SalesQuotationUI.itemDetailModel!.whStockItemMaster![index]!;
+                        WhStockItemMasterModel stock=SalesQuotationUI.itemDetailModel!.whStockItemMaster![index]!;
                         return InkWell(
                           onDoubleTap: () {},
                           child: Container(

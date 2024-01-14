@@ -2,8 +2,8 @@ import 'package:bill/models/item_details_model.dart';
 import 'package:bill/theme/custom_colors.dart';
 import 'package:bill/theme/custom_text_widgets.dart';
 import 'package:bill/ui/components/back_pressed_warning.dart';
-import 'package:bill/ui/product/GeneralDataUI.dart';
-import 'package:bill/ui/product/ItemDetailsUI.dart';
+import 'package:bill/ui/product/general_data.dart';
+import 'package:bill/ui/product/price_list.dart';
 import 'package:bill/ui/product/stock.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -139,11 +139,11 @@ class _SalesQuotationUIState extends State<SalesQuotationUI> {
               //   ),
               // ],
               title: getHeadingText(
-                  text: "Product Form", color: headColor, fontSize: 20)),
+                  text: "Product Details", color: headColor, fontSize: 20)),
           body: TabBarView(
             children: [
-              GeneralDataUI(),
-              ItemDetailsUI(),
+              GeneralData(),
+              PriceList(),
               Stock(),
             ],
           ),

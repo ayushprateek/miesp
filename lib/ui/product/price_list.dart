@@ -1,14 +1,14 @@
 import 'package:bill/models/item_details_model.dart';
 import 'package:bill/theme/custom_text_widgets.dart';
-import 'package:bill/ui/product/SalesQuotationUI.dart';
+import 'package:bill/ui/product/product_details.dart';
 import 'package:flutter/material.dart';
 
-class ItemDetailsUI extends StatefulWidget {
+class PriceList extends StatefulWidget {
   @override
-  _ItemDetailsUIState createState() => _ItemDetailsUIState();
+  _PriceListState createState() => _PriceListState();
 }
 
-class _ItemDetailsUIState extends State<ItemDetailsUI> {
+class _PriceListState extends State<PriceList> {
   @override
   Widget build(BuildContext context) {
     return SingleChildScrollView(
@@ -39,7 +39,7 @@ class _ItemDetailsUIState extends State<ItemDetailsUI> {
                       shrinkWrap: true,
                       physics: ScrollPhysics(),
                       itemBuilder: (BuildContext context, int index) {
-                        PriceList priceList = SalesQuotationUI
+                        PriceListModel priceList = SalesQuotationUI
                             .itemDetailModel!.priceList![index]!;
                         return InkWell(
                           onDoubleTap: () {},

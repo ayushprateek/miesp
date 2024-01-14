@@ -28,8 +28,8 @@ class ItemDetailModel {
   int? intOrdered;
   int? intCommitted;
   double? decItemCost;
-  List<PriceList?>? priceList;
-  List<WhStockItemMaster>? whStockItemMaster;
+  List<PriceListModel?>? priceList;
+  List<WhStockItemMasterModel>? whStockItemMaster;
 
   ItemDetailModel({
     this.bigintItemId,
@@ -90,18 +90,18 @@ class ItemDetailModel {
             : null,
       );
 
-  static List<PriceList> getPriceList(List dynamicPriceList) {
-    List<PriceList> priceList = [];
+  static List<PriceListModel> getPriceList(List dynamicPriceList) {
+    List<PriceListModel> priceList = [];
     for (var price in dynamicPriceList) {
-      priceList.add(PriceList.fromJson(price));
+      priceList.add(PriceListModel.fromJson(price));
     }
     return priceList;
   }
 
-  static List<WhStockItemMaster> getWhStockItemMaster(List dynamicWhsStock) {
-    List<WhStockItemMaster> whsStockList = [];
+  static List<WhStockItemMasterModel> getWhStockItemMaster(List dynamicWhsStock) {
+    List<WhStockItemMasterModel> whsStockList = [];
     for (var whsStock in dynamicWhsStock) {
-      whsStockList.add(WhStockItemMaster.fromJson(whsStock));
+      whsStockList.add(WhStockItemMasterModel.fromJson(whsStock));
     }
     return whsStockList;
   }
@@ -133,24 +133,24 @@ class ItemDetailModel {
       };
 }
 
-List<WhStockItemMaster> whStockItemMasterFromJson(String str) =>
-    List<WhStockItemMaster>.from(
-        json.decode(str).map((x) => WhStockItemMaster.fromJson(x)));
+List<WhStockItemMasterModel> whStockItemMasterFromJson(String str) =>
+    List<WhStockItemMasterModel>.from(
+        json.decode(str).map((x) => WhStockItemMasterModel.fromJson(x)));
 
 // String warehouseModelToJson(List<WarehouseModel> data) =>
 //     json.encode(List<dynamic>.from(data.map((x) => x.toJson())));
 
-class WhStockItemMaster {
+class WhStockItemMasterModel {
   String? varWarehouseCode;
   double? decInStock;
 
-  WhStockItemMaster({
+  WhStockItemMasterModel({
     this.varWarehouseCode,
     this.decInStock,
   });
 
-  factory WhStockItemMaster.fromJson(Map<String, dynamic> json) =>
-      WhStockItemMaster(
+  factory WhStockItemMasterModel.fromJson(Map<String, dynamic> json) =>
+      WhStockItemMasterModel(
         varWarehouseCode: json["varWarehouseCode"],
         decInStock: double.tryParse(json["decInStock"].toString()),
       );
@@ -161,23 +161,23 @@ class WhStockItemMaster {
       };
 }
 
-List<PriceList> priceListFromJson(String str) =>
-    List<PriceList>.from(json.decode(str).map((x) => PriceList.fromJson(x)));
+List<PriceListModel> priceListFromJson(String str) =>
+    List<PriceListModel>.from(json.decode(str).map((x) => PriceListModel.fromJson(x)));
 
-class PriceList {
+class PriceListModel {
   String? varPriceListName;
   String? varUomName;
   String? varCurrency;
   double? decPrice;
 
-  PriceList({
+  PriceListModel({
     this.varPriceListName,
     this.varUomName,
     this.varCurrency,
     this.decPrice,
   });
 
-  factory PriceList.fromJson(Map<String, dynamic> json) => PriceList(
+  factory PriceListModel.fromJson(Map<String, dynamic> json) => PriceListModel(
         varPriceListName: json["varPriceListName"],
         varUomName: json["varUOMName"],
         varCurrency: json["varCurrency"],
