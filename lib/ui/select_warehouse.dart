@@ -1,5 +1,5 @@
-import 'package:bill/common/keys.dart';
-import 'package:bill/local_storage/local_storage.dart';
+import 'package:bill/models/warehouse_model.dart';
+import 'package:bill/services/service_manager.dart';
 import 'package:bill/theme/custom_text_widgets.dart';
 import 'package:bill/theme/elements_screen.dart';
 import 'package:bill/ui/components/elements_button.dart';
@@ -17,14 +17,15 @@ class SelectWarehouse extends StatefulWidget {
 }
 
 class _SelectWarehouseState extends State<SelectWarehouse> {
-  String selectedWarehouse = 'Warehouse1';
-  List<String> warehouseList = [
-    'Warehouse1',
-    'Warehouse2',
-    'Warehouse3',
-    'Warehouse4',
-    'Warehouse5'
-  ];
+  String selectedWarehouse = '';
+  Set<String> warehouseList = {};
+  String loadingText = 'Loading warehouses...';
+
+  @override
+  void initState() {
+    super.initState();
+    loadWarehouseData();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -38,7 +39,12 @@ class _SelectWarehouseState extends State<SelectWarehouse> {
             const SizedBox(
               height: 20,
             ),
-            Align(alignment: Alignment.center, child: _dropdownButton()),
+            if (warehouseList.isEmpty)
+              Align(
+                  alignment: Alignment.center,
+                  child: getSubHeadingText(text: loadingText))
+            else
+              Align(alignment: Alignment.center, child: _dropdownButton()),
           ],
         ),
         bottomNavigationBar: _buttonContainer());
@@ -46,25 +52,24 @@ class _SelectWarehouseState extends State<SelectWarehouse> {
 
   Widget _dropdownButton() {
     return Padding(
-      padding: const EdgeInsets.only(top: 8.0, left: 15),
+      padding: const EdgeInsets.only(top: 8.0, left: 15, right: 20),
       child: SizedBox(
-        width: Get.width / 3,
-        child: DropdownButton<String>(
-          isExpanded: true,
-          items: warehouseList.map((String value) {
-            return DropdownMenuItem<String>(
-              value: value,
-              child: Text(value),
-            );
-          }).toList(),
-          onChanged: (val) {
-            setState(() {
-              // EmployeeData.ApprovalStatus = val!;
-              selectedWarehouse = val!;
-            });
-          },
-          borderRadius: BorderRadius.circular(10),
-          value: selectedWarehouse,
+        width: Get.width / 1.2,
+        child: FittedBox(
+          child: DropdownButton<String>(
+            value: selectedWarehouse,
+            onChanged: (String? newValue) {
+              setState(() {
+                selectedWarehouse = newValue!;
+              });
+            },
+            items: warehouseList.map<DropdownMenuItem<String>>((String value) {
+              return DropdownMenuItem<String>(
+                value: value,
+                child: FittedBox(child: Text(value)),
+              );
+            }).toList(),
+          ),
         ),
       ),
     );
@@ -85,8 +90,44 @@ class _SelectWarehouseState extends State<SelectWarehouse> {
     );
   }
 
-  _onSave() {
-    LocalStorage.setString(key: keyFinancialYear, value: selectedWarehouse);
+  loadWarehouseData() async {
+    if (await ServiceManager.isInternetAvailable()) {
+      ServiceManager.getWarehouseList(onSuccess: onSuccess, onError: onError);
+    }
+  }
+
+  onSuccess(List<WarehouseModel> warehouseList) {
+    if (warehouseList.isNotEmpty) {
+      if (widget.isComingFromLogin) {
+        WarehouseModel warehouse = warehouseList[0];
+        selectedWarehouse =
+            '${warehouse.warehouseCode}-->${warehouse.warehouseName}';
+      } else {
+        WarehouseModel warehouse = WarehouseModel.getSelectedWarehouse();
+        selectedWarehouse =
+            '${warehouse.warehouseCode}-->${warehouse.warehouseName}';
+      }
+    }
+    for (WarehouseModel warehouse in warehouseList) {
+      this
+          .warehouseList
+          .add('${warehouse.warehouseCode}-->${warehouse.warehouseName}');
+    }
+    setState(() {});
+  }
+
+  onError() {
+    loadingText = 'Error loading warehouses';
+  }
+
+  _onSave() async {
+    List l = selectedWarehouse.split('-->');
+    WarehouseModel warehouseModel = WarehouseModel(
+      warehouseCode: l[0],
+      warehouseName: l[1],
+    );
+    WarehouseModel.setSelectedWarehouse(warehouseModel: warehouseModel);
+
     if (widget.isComingFromLogin) {
       Get.to(() => const Dashboard());
     } else {

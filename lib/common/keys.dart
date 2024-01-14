@@ -17,7 +17,7 @@ const String keyUniversity = "objUniversity";
 const String keyInstitute = "objInstitute";
 const String keyStreams = "objStreams";
 const String keySeenGetStartedPage = "keyObjSeenGetStartedPage";
-const String keyFinancialYear = "financialYear";
+const String keySelectedWarehouse = "selectedWarehouse";
 
 // For firebase token
 const String keyFirebaseToken = "firebaseToken";

@@ -9,10 +9,10 @@ import 'package:bill/ui/dashboard.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-class OmSoftBill extends StatefulWidget {
-  static _OmSoftBillState? _state;
+class MIESP extends StatefulWidget {
+  static _MIESPState? _state;
 
-  const OmSoftBill({Key? key}) : super(key: key);
+  const MIESP({Key? key}) : super(key: key);
 
   static void buildTheme(BuildContext context, bool? flagDarkTheme) async {
     _state?.buildTheme(flagDarkTheme);
@@ -23,10 +23,10 @@ class OmSoftBill extends StatefulWidget {
   }
 
   @override
-  State<OmSoftBill> createState() => _OmSoftBillState();
+  State<MIESP> createState() => _MIESPState();
 }
 
-class _OmSoftBillState extends State<OmSoftBill> {
+class _MIESPState extends State<MIESP> {
   @override
   void initState() {
     super.initState();

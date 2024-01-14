@@ -1,6 +1,6 @@
 import 'dart:convert';
 
-import 'package:bill/models/CustomerModel.dart';
+import 'package:bill/models/customer_model.dart';
 import 'package:bill/services/service_manager.dart';
 import 'package:bill/theme/custom_font.dart';
 import 'package:bill/theme/get_text_field.dart';

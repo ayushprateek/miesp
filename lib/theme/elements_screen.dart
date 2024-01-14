@@ -46,7 +46,7 @@ Widget screenWithAppBar(
       },
     );
   }
-  String? financialYear = LocalStorage.getString(key: keyFinancialYear);
+  String? financialYear = LocalStorage.getString(key: keySelectedWarehouse);
   return Scaffold(
     resizeToAvoidBottomInset: false,
     backgroundColor: backgroundColor,

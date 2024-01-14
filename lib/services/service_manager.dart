@@ -1,6 +1,7 @@
 import 'dart:convert';
 
-import 'package:bill/models/CustomerModel.dart';
+import 'package:bill/models/customer_model.dart';
+import 'package:bill/models/warehouse_model.dart';
 import 'package:bill/theme/custom_snack_bar.dart';
 import 'package:bill/ui/components/elements_snackbar.dart';
 import 'package:connectivity_plus/connectivity_plus.dart';
@@ -50,6 +51,25 @@ class ServiceManager {
     if (res.statusCode == 200) {
       customerModel = CustomerModel.fromJson(jsonDecode(res.body));
       onSuccess(customerModel);
+    } else {
+      onError();
+    }
+  }
+
+  static Future<void> getWarehouseList({
+    required Function(List<WarehouseModel>) onSuccess,
+    required Function onError,
+  }) async {
+    List<WarehouseModel>? warehouseList = [];
+    ;
+    var res = await http.get(
+      Uri.parse('${baseURL}Items/GetWarehouseList'),
+      headers: header,
+    );
+    print(res.body);
+    if (res.statusCode == 200) {
+      warehouseList = warehouseModelFromJson(res.body);
+      onSuccess(warehouseList);
     } else {
       onError();
     }

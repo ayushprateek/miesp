@@ -1,5 +1,5 @@
 import 'package:bill/local_storage/local_storage.dart';
-import 'package:bill/om_soft_bill.dart';
+import 'package:bill/miesp.dart';
 import 'package:bill/theme/custom_theme.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -10,7 +10,7 @@ Future<void> main() async {
   init();
 
   runApp(GetMaterialApp(
-    home: const OmSoftBill(),
+    home: const MIESP(),
     debugShowCheckedModeBanner: false,
     theme: AppTheme.createLightTheme(),
     darkTheme: AppTheme.createLightTheme(),
