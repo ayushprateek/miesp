@@ -37,13 +37,6 @@ class LocalStorage {
     return _ls?.localStorage?.getBool(key);
   }
 
-  static setLoginData() {
-    //todo:SET CUSTOMER_MODEL.TO_JSON
-    _ls?.localStorage?.setString(keyObjUser, '');
-    _ls?.localStorage
-        ?.setString(keyLoginTime, DateTime.now().toIso8601String());
-  }
-
   static logout() {
     _ls?.localStorage?.setString(keyObjUser, '');
     _ls?.localStorage?.setString(keyLoginTime, '');

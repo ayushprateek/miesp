@@ -1,14 +1,12 @@
 import 'dart:convert';
 
-import 'package:bill/common/app_assets.dart';
-import 'package:bill/local_storage/local_storage.dart';
-import 'package:bill/theme/custom_colors.dart';
+import 'package:bill/models/CustomerModel.dart';
+import 'package:bill/services/service_manager.dart';
 import 'package:bill/theme/custom_font.dart';
-import 'package:bill/theme/custom_text_widgets.dart';
 import 'package:bill/theme/get_text_field.dart';
-import 'package:bill/ui/account/password_reset.dart';
 import 'package:bill/ui/components/check_keyboard_visibility.dart';
 import 'package:bill/ui/components/elements_button.dart';
+import 'package:bill/ui/components/elements_snackbar.dart';
 import 'package:bill/ui/select_warehouse.dart';
 import 'package:crypto/crypto.dart';
 import 'package:flutter/material.dart';
@@ -28,8 +26,9 @@ class LoginPageState extends State<LoginPage> {
   final ScrollController _scrollController = ScrollController();
   bool obscurePassword = true;
   bool isLoading = false;
-  TextEditingController username = TextEditingController();
-  TextEditingController password = TextEditingController();
+  TextEditingController userEmail =
+      TextEditingController(text: 'rahul@punditz.in');
+  TextEditingController password = TextEditingController(text: 'punditz@123');
 
   @override
   void initState() {
@@ -62,10 +61,8 @@ class LoginPageState extends State<LoginPage> {
                   ),
                   child: ClipRRect(
                     borderRadius: BorderRadius.circular(10.0),
-                    child: SizedBox(
-                      height: 100,
-                      width: 100,
-                        child: FlutterLogo()),
+                    child:
+                        SizedBox(height: 100, width: 100, child: FlutterLogo()),
                     // child: Container(
                     //   color: appPrimary,
                     //   child: Image.asset(
@@ -109,7 +106,7 @@ class LoginPageState extends State<LoginPage> {
               Padding(
                 padding: const EdgeInsets.only(top: 8.0, right: 8),
                 child: getTextFieldWithoutLookup(
-                  controller: username,
+                  controller: userEmail,
                   labelText: 'Username',
                 ),
               ),
@@ -179,10 +176,25 @@ class LoginPageState extends State<LoginPage> {
     );
   }
 
-  _onLogin() {
-    LocalStorage.setLoginData();
+  void onSuccess(CustomerModel customerModel) {
+    getSuccessSnackBar('Login successful');
+    CustomerModel.setLoginCustomer(customerModel: customerModel);
     Get.to(() => SelectWarehouse(
           isComingFromLogin: true,
         ));
+  }
+
+  void onError() {
+    getErrorSnackBar('Invalid credentials');
+  }
+
+  _onLogin() async {
+    if (await ServiceManager.isInternetAvailable()) {
+      ServiceManager.login(
+          UserEmail: userEmail.text,
+          Password: password.text,
+          onSuccess: onSuccess,
+          onError: onError);
+    }
   }
 }
