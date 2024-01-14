@@ -82,6 +82,12 @@ class _GeneralDataState extends State<GeneralData> {
                     height: 30,
                   ),
                   getDisabledTextField(
+                      controller: ItemId,
+                      labelText: 'Item Id',
+                      onChanged: (val) {
+                        SalesQuotationUI.itemDetailModel?.bigintItemId = int.tryParse(val)??SalesQuotationUI.itemDetailModel?.bigintItemId;
+                      }),
+                  getDisabledTextField(
                       controller: BarCode,
                       labelText: 'BarCode',
                       onChanged: (val) {
@@ -140,12 +146,7 @@ class _GeneralDataState extends State<GeneralData> {
                       onChanged: (val) {
                         SalesQuotationUI.itemDetailModel?.varItemCategory = val;
                       }),
-                  getDisabledTextField(
-                      controller: ItemCategory,
-                      labelText: 'Item Category',
-                      onChanged: (val) {
-                        SalesQuotationUI.itemDetailModel?.varItemCategory = val;
-                      }),
+
                   getDisabledTextField(
                       controller: BrandName,
                       labelText: 'Brand Name',
