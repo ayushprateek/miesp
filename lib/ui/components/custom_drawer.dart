@@ -1,15 +1,15 @@
 import 'dart:io';
 
-import 'package:bill/common/app_assets.dart';
-import 'package:bill/common/keys.dart';
-import 'package:bill/custom_scanner.dart';
-import 'package:bill/local_storage/local_storage.dart';
-import 'package:bill/models/customer_model.dart';
-import 'package:bill/theme/custom_colors.dart';
-import 'package:bill/theme/custom_text_widgets.dart';
-import 'package:bill/ui/account/login_screen.dart';
-import 'package:bill/ui/components/elements_button.dart';
-import 'package:bill/ui/stock_counting/stock_counting.dart';
+import 'package:miesp/common/app_assets.dart';
+import 'package:miesp/common/keys.dart';
+import 'package:miesp/custom_scanner.dart';
+import 'package:miesp/local_storage/local_storage.dart';
+import 'package:miesp/models/customer_model.dart';
+import 'package:miesp/theme/custom_colors.dart';
+import 'package:miesp/theme/custom_text_widgets.dart';
+import 'package:miesp/ui/account/login_screen.dart';
+import 'package:miesp/ui/components/elements_button.dart';
+import 'package:miesp/ui/stock_counting/stock_counting.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';

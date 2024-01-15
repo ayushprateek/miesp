@@ -1,7 +1,7 @@
-import 'package:bill/common/get_formatted_date.dart';
-import 'package:bill/theme/custom_colors.dart';
-import 'package:bill/ui/components/date_popup.dart';
-import 'package:bill/ui/components/elements_snackbar.dart';
+import 'package:miesp/common/get_formatted_date.dart';
+import 'package:miesp/theme/custom_colors.dart';
+import 'package:miesp/ui/components/date_popup.dart';
+import 'package:miesp/ui/components/elements_snackbar.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:google_fonts/google_fonts.dart';

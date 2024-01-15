@@ -1,19 +1,18 @@
 import 'dart:convert';
 
-import 'package:bill/models/customer_model.dart';
-import 'package:bill/models/item_details_model.dart';
-import 'package:bill/models/stock_count_request_model.dart';
-import 'package:bill/models/stock_counting_detail_model.dart';
-import 'package:bill/models/uom_model.dart';
-import 'package:bill/models/warehouse_model.dart';
-import 'package:bill/theme/custom_snack_bar.dart';
-import 'package:bill/ui/components/elements_snackbar.dart';
 import 'package:connectivity_plus/connectivity_plus.dart';
 import 'package:http/http.dart' as http;
+import 'package:miesp/models/customer_model.dart';
+import 'package:miesp/models/item_details_model.dart';
+import 'package:miesp/models/stock_count_request_model.dart';
+import 'package:miesp/models/stock_counting_detail_model.dart';
+import 'package:miesp/models/uom_model.dart';
+import 'package:miesp/models/warehouse_model.dart';
+import 'package:miesp/ui/components/elements_snackbar.dart';
 
 // import 'package:mailer/mailer.dart';
 // import 'package:mailer/smtp_server.dart';
-import 'package:url_launcher/url_launcher.dart';
+// import 'package:url_launcher/url_launcher.dart';
 
 class ServiceManager {
   static String baseURL = 'http://51.79.229.83:8080/API/';
@@ -31,15 +30,15 @@ class ServiceManager {
     return true;
   }
 
-  static launchInBrowser(Uri? uri) async {
-    try {
-      if (await canLaunchUrl(uri ?? Uri.parse(''))) {
-        await launchUrl(uri ?? Uri.parse(''));
-      } else {}
-    } catch (e) {
-      CustomSnackBar.errorSnackBar(e.toString());
-    }
-  }
+  // static launchInBrowser(Uri? uri) async {
+  //   try {
+  //     if (await canLaunchUrl(uri ?? Uri.parse(''))) {
+  //       await launchUrl(uri ?? Uri.parse(''));
+  //     } else {}
+  //   } catch (e) {
+  //     CustomSnackBar.errorSnackBar(e.toString());
+  //   }
+  // }
 
   static Future<void> login({
     required String UserEmail,

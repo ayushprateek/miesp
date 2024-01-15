@@ -1,7 +1,7 @@
-import 'package:bill/theme/custom_colors.dart';
-import 'package:bill/theme/custom_text_widgets.dart';
-import 'package:bill/ui/components/elements_snackbar.dart';
-import 'package:bill/ui/dashboard.dart';
+import 'package:miesp/theme/custom_colors.dart';
+import 'package:miesp/theme/custom_text_widgets.dart';
+import 'package:miesp/ui/components/elements_snackbar.dart';
+import 'package:miesp/ui/dashboard.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 

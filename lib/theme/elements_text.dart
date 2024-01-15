@@ -1,6 +1,6 @@
-import 'package:bill/theme/custom_colors.dart';
-import 'package:bill/theme/custom_theme.dart';
-import 'package:bill/theme/element_style.dart';
+import 'package:miesp/theme/custom_colors.dart';
+import 'package:miesp/theme/custom_theme.dart';
+import 'package:miesp/theme/element_style.dart';
 import 'package:flutter/material.dart';
 
 Text textTitle({

@@ -1,4 +1,4 @@
-name: bill
+name: miesp
 description: A new Flutter project.
 publish_to: "none" # Remove this line if you wish to publish to pub.dev
 
@@ -10,40 +10,50 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
-  url_launcher: ^6.1.10
-  image_picker: ^0.8.7+1
-  file_picker: ^5.2.0+1
-
   get: ^4.6.5
-
   path_provider: ^2.0.14
+  material_design_icons_flutter: ^6.0.7096
+  cupertino_icons: ^1.0.5
+  shared_preferences: ^2.1.0
+  permission_handler: ^10.2.0
+  connectivity_plus: ^3.0.2
+  path: ^1.8.2
+  intl: ^0.18.0
+  google_fonts: ^4.0.3
+  flutter_barcode_scanner: ^2.0.0
+  device_info_plus: ^9.1.1
+
+  #--------------------------------
+#  url_launcher: ^6.1.10
+#  image_picker: ^0.8.7+1
+#  file_picker: ^5.2.0+1
 #  maps_launcher: ^2.2.0
 #  open_filex: ^4.3.2
 #  pdf: ^3.10.1
-  material_design_icons_flutter: ^6.0.7096
+
 #  fluttericon: ^2.0.0
-  cupertino_icons: ^1.0.5
+
 #  printing: ^5.10.3
-  flutter_spinkit: ^5.1.0
-  hexcolor: ^3.0.1
-  shared_preferences: ^2.1.0
+#  flutter_spinkit: ^5.1.0
+#  hexcolor: ^3.0.1
+
 #  flutter_polyline_points: ^1.0.0
-  permission_handler: ^10.2.0
+
 #  google_maps_flutter: ^2.2.5
 #  geolocator: ^9.0.2
-  connectivity_plus: ^3.0.2
+
 #  sqflite: ^2.2.6
-  path: ^1.8.2
-  table_calendar: ^3.0.6
+
+#  table_calendar: ^3.0.6
 #  geocoding: ^2.1.0
 #  mapsforge_flutter: ^2.0.2
 #  pie_chart: ^5.3.2
 #  fl_chart: ^0.61.0
-#  intl: ^0.18.0
+
 #  workmanager: ^0.5.1
 #  synchronized: ^3.0.0+3
-  google_fonts: ^4.0.3
-  gallery_saver: ^2.3.2
+
+#  gallery_saver: ^2.3.2
 #  floating_overlay: ^1.2.1
 #  flutter_local_notifications: ^15.1.0+1
 #  step_progress_indicator: ^1.0.2
@@ -51,8 +61,7 @@ dependencies:
 #  flutter_share: ^2.0.0
 #  package_info_plus: ^4.0.2
 
-  flutter_barcode_scanner: ^2.0.0
-  device_info_plus: ^9.1.1
+
 
   #--------------------------------
 

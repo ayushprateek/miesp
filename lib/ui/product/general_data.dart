@@ -1,5 +1,5 @@
-import 'package:bill/theme/custom_text_widgets.dart';
-import 'package:bill/ui/product/product_details.dart';
+import 'package:miesp/theme/custom_text_widgets.dart';
+import 'package:miesp/ui/product/product_details.dart';
 import 'package:flutter/material.dart';
 
 class GeneralData extends StatefulWidget {

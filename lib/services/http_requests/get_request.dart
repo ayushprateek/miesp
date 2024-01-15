@@ -1,7 +1,7 @@
 import 'dart:convert';
 
-import 'package:bill/services/status_helper.dart';
-import 'package:bill/theme/custom_snack_bar.dart';
+import 'package:miesp/services/status_helper.dart';
+import 'package:miesp/theme/custom_snack_bar.dart';
 import 'package:http/http.dart' as http;
 
 getRequest(Uri uri,

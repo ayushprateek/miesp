@@ -1,5 +1,5 @@
-import 'package:bill/theme/custom_colors.dart';
-import 'package:bill/theme/custom_text_widgets.dart';
+import 'package:miesp/theme/custom_colors.dart';
+import 'package:miesp/theme/custom_text_widgets.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 

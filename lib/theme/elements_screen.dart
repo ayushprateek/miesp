@@ -1,13 +1,13 @@
-import 'package:bill/common/keys.dart';
-import 'package:bill/local_storage/local_storage.dart';
-import 'package:bill/theme/custom_colors.dart';
-import 'package:bill/theme/custom_text_widgets.dart';
-import 'package:bill/theme/custom_theme.dart';
-import 'package:bill/theme/element_style.dart';
-import 'package:bill/theme/elements_text.dart';
+import 'package:miesp/common/keys.dart';
+import 'package:miesp/local_storage/local_storage.dart';
+import 'package:miesp/theme/custom_colors.dart';
+import 'package:miesp/theme/custom_text_widgets.dart';
+import 'package:miesp/theme/custom_theme.dart';
+import 'package:miesp/theme/element_style.dart';
+import 'package:miesp/theme/elements_text.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_spinkit/flutter_spinkit.dart' show SpinKitFadingCube;
-import 'package:intl/intl.dart';
+// import 'package:flutter_spinkit/flutter_spinkit.dart' show SpinKitFadingCube;
+// import 'package:intl/intl.dart';
 
 Widget screenWithAppBar(
     {var title,
@@ -247,13 +247,13 @@ OutlineInputBorder outlineInputBorderBorder() {
     borderSide: BorderSide(color: Colors.grey),
   );
 }
-
-Widget loadingIndicatorWidget() {
-  return const SpinKitFadingCube(
-    color: appAccent,
-    size: 50.0,
-  );
-}
+//
+// Widget loadingIndicatorWidget() {
+//   return const SpinKitFadingCube(
+//     color: appAccent,
+//     size: 50.0,
+//   );
+// }
 
 String getSelectedDate(DateTime selectedDate) {
   String _month = selectedDate.month.toString().length == 1
@@ -286,9 +286,9 @@ DropdownMenuItem<String> dropdownMenuItem(String status) {
 }
 
 // changed to "dd-MM-yyyy" example 20 Mar 2021
-String changeDateFormat2(String dateString) {
-  DateTime selectedDate = DateTime.parse(dateString);
-  var formatter = DateFormat('d LLL y');
-  String formattedDate = formatter.format(selectedDate);
-  return formattedDate;
-}
+// String changeDateFormat2(String dateString) {
+//   DateTime selectedDate = DateTime.parse(dateString);
+//   var formatter = DateFormat('d LLL y');
+//   String formattedDate = formatter.format(selectedDate);
+//   return formattedDate;
+// }

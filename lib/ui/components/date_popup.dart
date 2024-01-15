@@ -1,5 +1,5 @@
-import 'package:bill/common/get_formatted_date.dart';
-import 'package:bill/theme/custom_colors.dart';
+import 'package:miesp/common/get_formatted_date.dart';
+import 'package:miesp/theme/custom_colors.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 

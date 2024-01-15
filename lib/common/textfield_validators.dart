@@ -1,4 +1,4 @@
-import 'package:bill/common/app_constants.dart';
+import 'package:miesp/common/app_constants.dart';
 
 String? validateEmail(String? text) {
   if (text?.trim().toString() == null ||

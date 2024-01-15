@@ -1,7 +1,7 @@
 import 'dart:convert';
 
-import 'package:bill/common/keys.dart';
-import 'package:bill/local_storage/local_storage.dart';
+import 'package:miesp/common/keys.dart';
+import 'package:miesp/local_storage/local_storage.dart';
 
 CustomerModel customerModelFromJson(String str) =>
     CustomerModel.fromJson(json.decode(str));

@@ -1,10 +1,10 @@
-import 'package:bill/models/item_details_model.dart';
-import 'package:bill/theme/custom_colors.dart';
-import 'package:bill/theme/custom_text_widgets.dart';
-import 'package:bill/ui/components/back_pressed_warning.dart';
-import 'package:bill/ui/product/general_data.dart';
-import 'package:bill/ui/product/price_list.dart';
-import 'package:bill/ui/product/stock.dart';
+import 'package:miesp/models/item_details_model.dart';
+import 'package:miesp/theme/custom_colors.dart';
+import 'package:miesp/theme/custom_text_widgets.dart';
+import 'package:miesp/ui/components/back_pressed_warning.dart';
+import 'package:miesp/ui/product/general_data.dart';
+import 'package:miesp/ui/product/price_list.dart';
+import 'package:miesp/ui/product/stock.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 

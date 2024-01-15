@@ -1,7 +1,7 @@
 import 'dart:convert';
 import 'dart:io';
 
-import 'package:bill/services/status_helper.dart';
+import 'package:miesp/services/status_helper.dart';
 
 postRequest(
     {required var requestObj,

@@ -1,4 +1,4 @@
-import 'package:bill/theme/custom_colors.dart';
+import 'package:miesp/theme/custom_colors.dart';
 import 'package:flutter/material.dart';
 
 class AppTheme {
