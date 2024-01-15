@@ -2,6 +2,7 @@ import 'dart:convert';
 
 import 'package:bill/models/customer_model.dart';
 import 'package:bill/models/item_details_model.dart';
+import 'package:bill/models/stock_count_request_model.dart';
 import 'package:bill/models/stock_counting_detail_model.dart';
 import 'package:bill/models/uom_model.dart';
 import 'package:bill/models/warehouse_model.dart';
@@ -94,6 +95,24 @@ class ServiceManager {
       onSuccess(uomList);
     } else {
       onError();
+    }
+  }
+
+  static Future<void> saveStockCounting({
+    required List<StockCountRequestModel> requestList,
+    required Function onSuccess,
+    required Function(String error) onError,
+  }) async {
+    var res = await http.post(
+      Uri.parse('${baseURL}Items/SaveStockCounting'),
+      headers: header,
+      body: jsonEncode(requestList),
+    );
+    print(res.body);
+    if (res.statusCode == 200) {
+      onSuccess();
+    } else {
+      onError(res.body);
     }
   }
 

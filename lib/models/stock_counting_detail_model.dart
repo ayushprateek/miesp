@@ -1,5 +1,7 @@
 import 'dart:convert';
 
+import 'package:flutter/cupertino.dart';
+
 StockCountingDetailModel stockCountingDetailModelFromJson(String str) =>
     StockCountingDetailModel.fromJson(json.decode(str));
 
@@ -15,6 +17,7 @@ class StockCountingDetailModel {
   double? decInStock;
   String? varWarehouseCode;
   double? decQuantity;
+  TextEditingController quantity=TextEditingController();
   int? bigintUserId;
   DateTime? dtModifiedOn;
   String? varRackNo;
@@ -35,21 +38,23 @@ class StockCountingDetailModel {
     this.varItemDescription,
   });
 
-  factory StockCountingDetailModel.fromJson(Map<String, dynamic> json) =>
-      StockCountingDetailModel(
-        bigintItemId: int.tryParse(json["bigintItemId"].toString()),
-        varItemNo: json["varItemNo"],
-        varBarcode: json["varBarcode"],
-        varUomCode: json["varUOMCode"],
-        varUomName: json["varUOMName"],
-        decInStock: double.tryParse(json["decInStock"].toString()),
-        varWarehouseCode: json["varWarehouseCode"],
-        decQuantity: double.tryParse(json["decQuantity"].toString()),
-        bigintUserId: int.tryParse(json["bigintUserId"].toString()),
-        dtModifiedOn: DateTime.tryParse(json["dtModifiedOn"].toString()),
-        varRackNo: json["varRackNo"],
-        varItemDescription: json["varItemDescription"],
-      );
+  factory StockCountingDetailModel.fromJson(Map<String, dynamic> json){
+
+    return StockCountingDetailModel(
+      bigintItemId: int.tryParse(json["bigintItemId"].toString()),
+      varItemNo: json["varItemNo"],
+      varBarcode: json["varBarcode"],
+      varUomCode: json["varUOMCode"],
+      varUomName: json["varUOMName"],
+      decInStock: double.tryParse(json["decInStock"].toString()),
+      varWarehouseCode: json["varWarehouseCode"],
+      decQuantity: double.tryParse(json["decQuantity"].toString()),
+      bigintUserId: int.tryParse(json["bigintUserId"].toString()),
+      dtModifiedOn: DateTime.tryParse(json["dtModifiedOn"].toString()),
+      varRackNo: json["varRackNo"],
+      varItemDescription: json["varItemDescription"],
+    );
+  }
 
   Map<String, dynamic> toJson() => {
         "bigintItemId": bigintItemId,
