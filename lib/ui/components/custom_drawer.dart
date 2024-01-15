@@ -1,12 +1,13 @@
 import 'dart:io';
 
+import 'package:bill/common/keys.dart';
 import 'package:bill/custom_scanner.dart';
+import 'package:bill/local_storage/local_storage.dart';
 import 'package:bill/models/customer_model.dart';
 import 'package:bill/theme/custom_colors.dart';
 import 'package:bill/theme/custom_text_widgets.dart';
 import 'package:bill/ui/account/login_screen.dart';
 import 'package:bill/ui/components/elements_button.dart';
-import 'package:bill/ui/product/product_details.dart';
 import 'package:bill/ui/select_warehouse.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -27,12 +28,12 @@ class _CustomDrawerState extends State<CustomDrawer> {
       child: ListView(
         children: [
           UserAccountsDrawerHeader(
-            accountName:  Text(
-              CustomerModel.getLoginCustomer().userCode??'',
+            accountName: Text(
+              CustomerModel.getLoginCustomer().userCode ?? '',
               style:
                   TextStyle(fontWeight: FontWeight.bold, color: Colors.white),
             ),
-            accountEmail:  Text(CustomerModel.getLoginCustomer().email??'',
+            accountEmail: Text(CustomerModel.getLoginCustomer().email ?? '',
                 style: TextStyle(
                     fontWeight: FontWeight.bold, color: Colors.white)),
             currentAccountPicture: ClipRRect(
@@ -359,6 +360,8 @@ class _CustomDrawerState extends State<CustomDrawer> {
   }
 
   _logout() {
+    LocalStorage.setString(key: keySelectedWarehouse, value: '');
+    LocalStorage.setString(key: keyObjUser, value: '');
     Get.offAll(() => LoginPage());
   }
 }

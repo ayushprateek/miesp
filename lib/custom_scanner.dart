@@ -34,9 +34,12 @@ class _CustomScannerState extends State<CustomScanner> {
 
     if (!mounted) return;
     barCode = scanResult;
-    if (await ServiceManager.isInternetAvailable()) {
-      ServiceManager.getItemDetails(
-          barCode: barCode, onSuccess: onSuccess, onError: onError);
+    if(barCode!='-1')
+    {
+      if (await ServiceManager.isInternetAvailable()) {
+        ServiceManager.getItemDetails(
+            barCode: barCode, onSuccess: onSuccess, onError: onError);
+      }
     }
   }
 
