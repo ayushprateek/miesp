@@ -88,28 +88,31 @@ class _StockCountingState extends State<StockCounting> {
                           padding: const EdgeInsets.all(8.0),
                           child: SizedBox(
                             width: Get.width / 3,
+                            height: Get.height / 18,
                             child: loadingButton(
                                 isLoading: false,
                                 btnText: '+ Add Item(Scan)',
+                                fontSize: 16,
+                                elevation: 4,
                                 onPress: () async {
-                                  if (await ServiceManager
-                                      .isInternetAvailable()) {
-                                    String barCode = '4301';
-                                    ServiceManager.getStockCountingDetail(
-                                        barCode: barCode,
-                                        onSuccess: onSuccess,
-                                        onError: onError);
-                                  }
-                                  // scanQRCode(onSuccess: (String barCode) async {
-                                  //   if (!mounted) return;
-                                  //   if (await ServiceManager
-                                  //       .isInternetAvailable()) {
-                                  //     ServiceManager.getStockCountingDetail(
-                                  //         barCode: barCode,
-                                  //         onSuccess: onSuccess,
-                                  //         onError: onError);
-                                  //   }
-                                  // });
+                                  // if (await ServiceManager
+                                  //     .isInternetAvailable()) {
+                                  //   String barCode = '4301';
+                                  //   ServiceManager.getStockCountingDetail(
+                                  //       barCode: barCode,
+                                  //       onSuccess: onSuccess,
+                                  //       onError: onError);
+                                  // }
+                                  scanQRCode(onSuccess: (String barCode) async {
+                                    if (!mounted) return;
+                                    if (await ServiceManager
+                                        .isInternetAvailable()) {
+                                      ServiceManager.getStockCountingDetail(
+                                          barCode: barCode,
+                                          onSuccess: onSuccess,
+                                          onError: onError);
+                                    }
+                                  });
                                 }),
                           ),
                         ),

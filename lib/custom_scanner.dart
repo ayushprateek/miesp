@@ -90,9 +90,11 @@ class _CustomScannerState extends State<CustomScanner> {
                 ),
                 SizedBox(
                     width: Get.width / 4,
+                    height: Get.height / 18,
                     child: loadingButton(
                         isLoading: false,
                         btnText: 'Scan',
+                        elevation: 4,
                         onPress: () {
                           scanQRCode(onSuccess: (String scanResult) async {
                             if (!mounted) return;

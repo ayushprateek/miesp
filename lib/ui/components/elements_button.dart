@@ -8,13 +8,14 @@ Widget loadingButton({
   required String? btnText,
   required Function onPress,
   double fontSize = 20.0,
+  double elevation = 4.0,
   Color? backColor = appPrimary,
   double rounded = 10,
   Color textColor = Colors.white,
 }) {
   return Material(
     shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(rounded)),
-    elevation: 0.0,
+    elevation: elevation,
     color: backColor,
     clipBehavior: Clip.antiAlias,
     child: isLoading

@@ -5,6 +5,7 @@ import 'package:bill/common/app_constants.dart';
 import 'package:bill/models/customer_model.dart';
 import 'package:bill/services/service_manager.dart';
 import 'package:bill/theme/custom_font.dart';
+import 'package:bill/theme/elements_screen.dart';
 import 'package:bill/theme/get_text_field.dart';
 import 'package:bill/ui/components/back_pressed_warning.dart';
 import 'package:bill/ui/components/check_keyboard_visibility.dart';
@@ -29,13 +30,13 @@ class LoginPageState extends State<LoginPage> {
   bool obscurePassword = true;
   bool isLoading = false;
 
-  TextEditingController userEmail =
-      TextEditingController(text: 'rahul@punditz.in');
-  TextEditingController password = TextEditingController(text: 'punditz@123');
-
+  // TextEditingController userEmail =
+  //     TextEditingController(text: 'rahul@punditz.in');
+  // TextEditingController password = TextEditingController(text: 'punditz@123');
   //
-  // TextEditingController userEmail = TextEditingController();
-  // TextEditingController password = TextEditingController();
+
+  TextEditingController userEmail = TextEditingController();
+  TextEditingController password = TextEditingController();
   //
   _onBackButtonPressed() {
     showBackPressedWarning(
@@ -57,10 +58,9 @@ class LoginPageState extends State<LoginPage> {
         await _onBackButtonPressed();
       },
       canPop: false,
-      child: Scaffold(
-        key: key,
-        backgroundColor: Colors.white,
-        resizeToAvoidBottomInset: false,
+      child:screenWithAppBar(
+        title: 'Login',
+        isBackVisible: false,
         body: SingleChildScrollView(
           controller: _scrollController,
           child: Padding(
@@ -76,10 +76,10 @@ class LoginPageState extends State<LoginPage> {
                     child: ClipRRect(
                       borderRadius: BorderRadius.circular(100.0),
                       child: Container(
-                        decoration: BoxDecoration(
-                          border: Border.all(),
-                          color: Colors.black
-                        ),
+                          decoration: BoxDecoration(
+                              border: Border.all(),
+                              color: Colors.black
+                          ),
                           height: 100, width: 100, child: Image.asset(logoPath)),
                       // child: Container(
                       //   color: appPrimary,
@@ -91,9 +91,9 @@ class LoginPageState extends State<LoginPage> {
                     ),
                   ),
                 ),
-                const Divider(
-                  color: Colors.grey,
-                ),
+                // const Divider(
+                //   color: Colors.grey,
+                // ),
                 Padding(
                   padding: const EdgeInsets.only(top: 20.0),
                   child: Center(
@@ -175,7 +175,7 @@ class LoginPageState extends State<LoginPage> {
           ),
         ),
         bottomNavigationBar: !keyboardIsVisible(
-                context: context, scrollController: _scrollController)
+            context: context, scrollController: _scrollController)
             ? _buttonContainer()
             : null,
       ),
@@ -198,16 +198,20 @@ class LoginPageState extends State<LoginPage> {
   }
 
   Widget _buttonContainer() {
-    return Padding(
-      padding: const EdgeInsets.all(8.0),
-      child: loadingButton(
-        isLoading: isLoading,
-        btnText: 'Log In',
-        onPress: () {
-          if (isValidated()) {
-            _onLogin();
-          }
-        },
+    return SizedBox(
+      width: MediaQuery.of(context).size.width,
+      height: MediaQuery.of(context).size.height / 13,
+      child: Padding(
+        padding: const EdgeInsets.all(8.0),
+        child: loadingButton(
+          isLoading: isLoading,
+          btnText: 'Log In',
+          onPress: () {
+            if (isValidated()) {
+              _onLogin();
+            }
+          },
+        ),
       ),
     );
   }
