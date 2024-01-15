@@ -17,39 +17,39 @@ class CustomScanner extends StatefulWidget {
 class _CustomScannerState extends State<CustomScanner> {
   String barCode = 'Scan a QR Code or Barcode';
 
-  Future<void> scanQRCode() async {
-    String scanResult = '';
-    try {
-      scanResult = await FlutterBarcodeScanner.scanBarcode(
-        '#ff6666', // Color for the background of the scan page
-        'Cancel', // Text for the button that cancels the scan
-        true, // Whether to show the flash icon
-        ScanMode.QR, // The type of code to scan (QR Code or Barcode)
-      );
-    } catch (e) {
-      print('Error during scan: $e');
-      getErrorSnackBar('Error during scan: $e');
-      return;
-    }
-
-    if (!mounted) return;
-    barCode = scanResult;
-    if(barCode!='-1')
-    {
-      if (await ServiceManager.isInternetAvailable()) {
-        ServiceManager.getItemDetails(
-            barCode: barCode, onSuccess: onSuccess, onError: onError);
-      }
-    }
-  }
-
-  // scanQRCode() async {
-  //   if (await ServiceManager.isInternetAvailable()) {
-  //     barCode = '47001'; //todo: remove
-  //     ServiceManager.getItemDetails(
-  //         barCode: barCode, onSuccess: onSuccess, onError: onError);
+  // Future<void> scanQRCode() async {
+  //   String scanResult = '';
+  //   try {
+  //     scanResult = await FlutterBarcodeScanner.scanBarcode(
+  //       '#ff6666', // Color for the background of the scan page
+  //       'Cancel', // Text for the button that cancels the scan
+  //       true, // Whether to show the flash icon
+  //       ScanMode.QR, // The type of code to scan (QR Code or Barcode)
+  //     );
+  //   } catch (e) {
+  //     print('Error during scan: $e');
+  //     getErrorSnackBar('Error during scan: $e');
+  //     return;
+  //   }
+  //
+  //   if (!mounted) return;
+  //   barCode = scanResult;
+  //   if(barCode!='-1')
+  //   {
+  //     if (await ServiceManager.isInternetAvailable()) {
+  //       ServiceManager.getItemDetails(
+  //           barCode: barCode, onSuccess: onSuccess, onError: onError);
+  //     }
   //   }
   // }
+
+  scanQRCode() async {
+    if (await ServiceManager.isInternetAvailable()) {
+      barCode = '47001';
+      ServiceManager.getItemDetails(
+          barCode: barCode, onSuccess: onSuccess, onError: onError);
+    }
+  }
 
   onSuccess(ItemDetailModel itemDetailModel) {
     print(itemDetailModel.toJson());

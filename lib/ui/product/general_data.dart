@@ -1,4 +1,4 @@
-import 'package:bill/theme/get_text_field.dart';
+import 'package:bill/theme/custom_text_widgets.dart';
 import 'package:bill/ui/product/product_details.dart';
 import 'package:flutter/material.dart';
 
@@ -71,7 +71,6 @@ class _GeneralDataState extends State<GeneralData> {
                 const EdgeInsets.only(left: 8.0, right: 8, bottom: 8, top: 30),
             child: Container(
               decoration: BoxDecoration(
-                  // color: const Color(0XFFC46253),
                   border: Border.all(),
                   borderRadius: BorderRadius.only(
                       topLeft: Radius.circular(16),
@@ -81,159 +80,524 @@ class _GeneralDataState extends State<GeneralData> {
                   const SizedBox(
                     height: 30,
                   ),
-                  getDisabledTextField(
-                      controller: ItemId,
-                      labelText: 'Item Id',
-                      onChanged: (val) {
-                        SalesQuotationUI.itemDetailModel?.bigintItemId = int.tryParse(val)??SalesQuotationUI.itemDetailModel?.bigintItemId;
-                      }),
-                  getDisabledTextField(
-                      controller: BarCode,
-                      labelText: 'BarCode',
-                      onChanged: (val) {
-                        SalesQuotationUI.itemDetailModel?.varBarcode = val;
-                      }),
-                  getDisabledTextField(
-                      controller: ItemNo,
-                      labelText: 'Item No',
-                      onChanged: (val) {
-                        SalesQuotationUI.itemDetailModel?.varItemNo = val;
-                      }),
-                  getDisabledTextField(
-                      controller: ItemDescription,
-                      labelText: 'Item Description',
-                      height: null,
-                      maxLines: 7,
-                      contentPadding:
-                          const EdgeInsets.only(bottom: 2.0, top: 16, left: 12),
-                      onChanged: (val) {
-                        SalesQuotationUI.itemDetailModel?.varItemDescription =
-                            val;
-                      }),
-                  getDisabledTextField(
-                      controller: UomGroupCode,
-                      labelText: 'Uom Group Code',
-                      onChanged: (val) {
-                        SalesQuotationUI.itemDetailModel?.varUomCode = val;
-                      }),
-                  getDisabledTextField(
-                      controller: UomGroupName,
-                      labelText: 'Uom Group Name',
-                      onChanged: (val) {
-                        SalesQuotationUI.itemDetailModel?.varUomGroupName = val;
-                      }),
-                  getDisabledTextField(
-                      controller: UomCode,
-                      labelText: 'Uom Code',
-                      onChanged: (val) {
-                        SalesQuotationUI.itemDetailModel?.varUomCode = val;
-                      }),
-                  getDisabledTextField(
-                      controller: UomName,
-                      labelText: 'Uom Name',
-                      onChanged: (val) {
-                        SalesQuotationUI.itemDetailModel?.varUomName = val;
-                      }),
-                  getDisabledTextField(
-                      controller: ForeignName,
-                      labelText: 'Foreign Name',
-                      onChanged: (val) {
-                        SalesQuotationUI.itemDetailModel?.varForeignName = val;
-                      }),
-                  getDisabledTextField(
-                      controller: ItemCategory,
-                      labelText: 'Item Category',
-                      onChanged: (val) {
-                        SalesQuotationUI.itemDetailModel?.varItemCategory = val;
-                      }),
+                  Container(
+                    decoration: new BoxDecoration(
+                      color: Colors.white,
+                      shape: BoxShape.rectangle,
+                      borderRadius: BorderRadius.circular(16.0),
+                      boxShadow: [
+                        BoxShadow(
+                          color: Colors.black26,
+                          blurRadius: 4.0,
+                          offset: const Offset(2.0, 2.0),
+                        ),
+                      ],
+                    ),
+                    margin:
+                        EdgeInsets.only(left: 15.0, right: 15.0, bottom: 10),
+                    width: MediaQuery.of(context).size.width,
+                    child: Padding(
+                      padding: const EdgeInsets.all(8.0),
+                      child: Column(
 
-                  getDisabledTextField(
-                      controller: BrandName,
-                      labelText: 'Brand Name',
-                      onChanged: (val) {
-                        SalesQuotationUI.itemDetailModel?.varBrandName = val;
-                      }),
-                  getDisabledTextField(
-                      controller: GroupName,
-                      labelText: 'Group Name',
-                      onChanged: (val) {
-                        SalesQuotationUI.itemDetailModel?.varGroupName = val;
-                      }),
-                  getDisabledTextField(
-                      controller: ItemImage,
-                      labelText: 'Item Image',
-                      onChanged: (val) {
-                        SalesQuotationUI.itemDetailModel?.varItemImage = val;
-                      }),
-                  getDisabledTextField(
-                      controller: LastMonthSalesQty,
-                      labelText: 'Last Month Sales Qty',
-                      onChanged: (val) {
-                        SalesQuotationUI.itemDetailModel?.decLastMonthSalesQty =
-                            double.tryParse(val) ??
-                                SalesQuotationUI
-                                    .itemDetailModel?.decLastMonthSalesQty;
-                      }),
-                  getDisabledTextField(
-                      controller: Last90DaysSalesQty,
-                      labelText: 'Last 90 Days Sales Qty',
-                      onChanged: (val) {
-                        SalesQuotationUI
-                                .itemDetailModel?.decLast90DaysSalesQty =
-                            double.tryParse(val) ??
-                                SalesQuotationUI
-                                    .itemDetailModel?.decLast90DaysSalesQty;
-                      }),
-                  getDisabledTextField(
-                      controller: LastSellingPrice,
-                      labelText: 'Last Selling Price',
-                      onChanged: (val) {
-                        SalesQuotationUI.itemDetailModel?.decLastSellingPrice =
-                            double.tryParse(val) ??
-                                SalesQuotationUI
-                                    .itemDetailModel?.decLastSellingPrice;
-                      }),
-                  getDisabledTextField(
-                      controller: OpenOrders,
-                      labelText: 'Open Orders',
-                      onChanged: (val) {
-                        SalesQuotationUI.itemDetailModel?.intOpenOrders =
-                            int.tryParse(val) ??
-                                SalesQuotationUI.itemDetailModel?.intOpenOrders;
-                      }),
-                  getDisabledTextField(
-                      controller: OpenInvoice,
-                      labelText: 'Open Invoice',
-                      onChanged: (val) {
-                        SalesQuotationUI.itemDetailModel?.intOpenInvoice =
-                            int.tryParse(val) ??
-                                SalesQuotationUI
-                                    .itemDetailModel?.intOpenInvoice;
-                      }),
-                  getDisabledTextField(
-                      controller: Ordered,
-                      labelText: 'Ordered',
-                      onChanged: (val) {
-                        SalesQuotationUI.itemDetailModel?.intOrdered =
-                            int.tryParse(val) ??
-                                SalesQuotationUI.itemDetailModel?.intOrdered;
-                      }),
-                  getDisabledTextField(
-                      controller: Committed,
-                      labelText: 'Committed',
-                      onChanged: (val) {
-                        SalesQuotationUI.itemDetailModel?.intCommitted =
-                            int.tryParse(val) ??
-                                SalesQuotationUI.itemDetailModel?.intCommitted;
-                      }),
-                  getDisabledTextField(
-                      controller: ItemCost,
-                      labelText: 'Item Cost',
-                      onChanged: (val) {
-                        SalesQuotationUI.itemDetailModel?.decItemCost =
-                            double.tryParse(val) ??
-                                SalesQuotationUI.itemDetailModel?.decItemCost;
-                      }),
+                        children: [
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.start,
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Expanded(
+                                child: Column(
+                                  children: [
+                                    Padding(
+                                      padding: const EdgeInsets.only(
+                                          left: 8.0, right: 8.0, top: 4.0),
+                                      child: Align(
+                                        alignment: Alignment.topLeft,
+                                        child: FittedBox(
+                                          fit: BoxFit.contain,
+                                          child: Text.rich(
+                                            TextSpan(
+                                              children: [
+                                                getPoppinsTextSpanHeading(
+                                                    text: 'Item ID'),
+                                                getPoppinsTextSpanDetails(
+                                                    text: SalesQuotationUI
+                                                            .itemDetailModel
+                                                            ?.bigintItemId
+                                                            ?.toStringAsFixed(
+                                                                2) ??
+                                                        ''),
+                                              ],
+                                            ),
+                                          ),
+                                        ),
+                                      ),
+                                    ),
+                                    Padding(
+                                      padding: const EdgeInsets.only(
+                                          left: 8.0, right: 8.0, top: 4.0),
+                                      child: Align(
+                                        alignment: Alignment.topLeft,
+                                        child: Text.rich(
+                                          TextSpan(
+                                            children: [
+                                              getPoppinsTextSpanHeading(
+                                                  text: 'Bar Code'),
+                                              getPoppinsTextSpanDetails(
+                                                  text: SalesQuotationUI
+                                                          .itemDetailModel
+                                                          ?.varBarcode ??
+                                                      ''),
+                                            ],
+                                          ),
+                                        ),
+                                      ),
+                                    ),
+                                    Padding(
+                                      padding: const EdgeInsets.only(
+                                          left: 8.0, right: 8.0, top: 4.0),
+                                      child: Align(
+                                        alignment: Alignment.topLeft,
+                                        child: FittedBox(
+                                          fit: BoxFit.contain,
+                                          child: Text.rich(
+                                            TextSpan(
+                                              children: [
+                                                getPoppinsTextSpanHeading(
+                                                    text: 'Item No'),
+                                                getPoppinsTextSpanDetails(
+                                                    text: SalesQuotationUI
+                                                            .itemDetailModel
+                                                            ?.varItemNo ??
+                                                        ''),
+                                              ],
+                                            ),
+                                          ),
+                                        ),
+                                      ),
+                                    ),
+                                    Padding(
+                                      padding: const EdgeInsets.only(
+                                          left: 8.0, right: 8.0, top: 4.0),
+                                      child: Align(
+                                        alignment: Alignment.topLeft,
+                                        child: Text.rich(
+                                          TextSpan(
+                                            children: [
+                                              getPoppinsTextSpanHeading(
+                                                  text: 'Item Description'),
+                                              getPoppinsTextSpanDetails(
+                                                  text: SalesQuotationUI
+                                                          .itemDetailModel
+                                                          ?.varItemDescription ??
+                                                      ''),
+                                            ],
+                                          ),
+                                        ),
+                                      ),
+                                    ),
+                                    Padding(
+                                      padding: const EdgeInsets.only(
+                                          left: 8.0, right: 8.0, top: 4.0),
+                                      child: Align(
+                                        alignment: Alignment.topLeft,
+                                        child: FittedBox(
+                                          fit: BoxFit.contain,
+                                          child: Text.rich(
+                                            TextSpan(
+                                              children: [
+                                                getPoppinsTextSpanHeading(
+                                                    text: 'UOM Group Code'),
+                                                getPoppinsTextSpanDetails(
+                                                    text: SalesQuotationUI
+                                                            .itemDetailModel
+                                                            ?.varUomGroupCode ??
+                                                        ''),
+                                              ],
+                                            ),
+                                          ),
+                                        ),
+                                      ),
+                                    ),
+                                    Padding(
+                                      padding: const EdgeInsets.only(
+                                          left: 8.0, right: 8.0, top: 4.0),
+                                      child: Align(
+                                        alignment: Alignment.topLeft,
+                                        child: Text.rich(
+                                          TextSpan(
+                                            children: [
+                                              getPoppinsTextSpanHeading(
+                                                  text: 'UOM Group Name'),
+                                              getPoppinsTextSpanDetails(
+                                                  text: SalesQuotationUI
+                                                          .itemDetailModel
+                                                          ?.varUomGroupName ??
+                                                      ''),
+                                            ],
+                                          ),
+                                        ),
+                                      ),
+                                    ),
+                                    Padding(
+                                      padding: const EdgeInsets.only(
+                                          left: 8.0, right: 8.0, top: 4.0),
+                                      child: Align(
+                                        alignment: Alignment.topLeft,
+                                        child: FittedBox(
+                                          fit: BoxFit.contain,
+                                          child: Text.rich(
+                                            TextSpan(
+                                              children: [
+                                                getPoppinsTextSpanHeading(
+                                                    text: 'UOM Code'),
+                                                getPoppinsTextSpanDetails(
+                                                    text: SalesQuotationUI
+                                                            .itemDetailModel
+                                                            ?.varUomCode ??
+                                                        ''),
+                                              ],
+                                            ),
+                                          ),
+                                        ),
+                                      ),
+                                    ),
+                                    Padding(
+                                      padding: const EdgeInsets.only(
+                                          left: 8.0, right: 8.0, top: 4.0),
+                                      child: Align(
+                                        alignment: Alignment.topLeft,
+                                        child: Text.rich(
+                                          TextSpan(
+                                            children: [
+                                              getPoppinsTextSpanHeading(
+                                                  text: 'UOM Name'),
+                                              getPoppinsTextSpanDetails(
+                                                  text: SalesQuotationUI
+                                                          .itemDetailModel
+                                                          ?.varUomName ??
+                                                      ''),
+                                            ],
+                                          ),
+                                        ),
+                                      ),
+                                    ),
+                                    Padding(
+                                      padding: const EdgeInsets.only(
+                                          left: 8.0, right: 8.0, top: 4.0),
+                                      child: Align(
+                                        alignment: Alignment.topLeft,
+                                        child: FittedBox(
+                                          fit: BoxFit.contain,
+                                          child: Text.rich(
+                                            TextSpan(
+                                              children: [
+                                                getPoppinsTextSpanHeading(
+                                                    text: 'Foreign Name'),
+                                                getPoppinsTextSpanDetails(
+                                                    text: SalesQuotationUI
+                                                            .itemDetailModel
+                                                            ?.varForeignName ??
+                                                        ''),
+                                              ],
+                                            ),
+                                          ),
+                                        ),
+                                      ),
+                                    ),
+                                    Padding(
+                                      padding: const EdgeInsets.only(
+                                          left: 8.0, right: 8.0, top: 4.0),
+                                      child: Align(
+                                        alignment: Alignment.topLeft,
+                                        child: Text.rich(
+                                          TextSpan(
+                                            children: [
+                                              getPoppinsTextSpanHeading(
+                                                  text: 'Item Category'),
+                                              getPoppinsTextSpanDetails(
+                                                  text: SalesQuotationUI
+                                                          .itemDetailModel
+                                                          ?.varItemCategory ??
+                                                      ''),
+                                            ],
+                                          ),
+                                        ),
+                                      ),
+                                    ),
+                                  ],
+                                ),
+                                flex: 8,
+                              ),
+                              Expanded(
+                                child: Column(
+
+                                  children: [
+                                    Padding(
+                                      padding: const EdgeInsets.only(
+                                          left: 8.0, right: 8.0, top: 4.0),
+                                      child: Align(
+                                        alignment: Alignment.topLeft,
+                                        child: FittedBox(
+                                          fit: BoxFit.contain,
+                                          child: Text.rich(
+                                            TextSpan(
+                                              children: [
+                                                getPoppinsTextSpanHeading(
+                                                    text: 'Brand Name'),
+                                                getPoppinsTextSpanDetails(
+                                                    text: SalesQuotationUI
+                                                            .itemDetailModel
+                                                            ?.varBrandName ??
+                                                        ''),
+                                              ],
+                                            ),
+                                          ),
+                                        ),
+                                      ),
+                                    ),
+                                    Padding(
+                                      padding: const EdgeInsets.only(
+                                          left: 8.0, right: 8.0, top: 4.0),
+                                      child: Align(
+                                        alignment: Alignment.topLeft,
+                                        child: Text.rich(
+                                          TextSpan(
+                                            children: [
+                                              getPoppinsTextSpanHeading(
+                                                  text: 'Group Name'),
+                                              getPoppinsTextSpanDetails(
+                                                  text: SalesQuotationUI
+                                                          .itemDetailModel
+                                                          ?.varGroupName ??
+                                                      ''),
+                                            ],
+                                          ),
+                                        ),
+                                      ),
+                                    ),
+                                    Padding(
+                                      padding: const EdgeInsets.only(
+                                          left: 8.0, right: 8.0, top: 4.0),
+                                      child: Align(
+                                        alignment: Alignment.topLeft,
+                                        child: FittedBox(
+                                          fit: BoxFit.contain,
+                                          child: Text.rich(
+                                            TextSpan(
+                                              children: [
+                                                getPoppinsTextSpanHeading(
+                                                    text: 'Item Image'),
+                                                getPoppinsTextSpanDetails(
+                                                    text: SalesQuotationUI
+                                                            .itemDetailModel
+                                                            ?.varItemImage ??
+                                                        ''),
+                                              ],
+                                            ),
+                                          ),
+                                        ),
+                                      ),
+                                    ),
+                                    Padding(
+                                      padding: const EdgeInsets.only(
+                                          left: 8.0, right: 8.0, top: 4.0),
+                                      child: Align(
+                                        alignment: Alignment.topLeft,
+                                        child: Text.rich(
+                                          TextSpan(
+                                            children: [
+                                              getPoppinsTextSpanHeading(
+                                                  text: 'Last Month Sales Qty'),
+                                              getPoppinsTextSpanDetails(
+                                                  text: SalesQuotationUI
+                                                          .itemDetailModel
+                                                          ?.decLastMonthSalesQty
+                                                          ?.toStringAsFixed(
+                                                              2) ??
+                                                      ''),
+                                            ],
+                                          ),
+                                        ),
+                                      ),
+                                    ),
+                                    Padding(
+                                      padding: const EdgeInsets.only(
+                                          left: 8.0, right: 8.0, top: 4.0),
+                                      child: Align(
+                                        alignment: Alignment.topLeft,
+                                        child: FittedBox(
+                                          fit: BoxFit.contain,
+                                          child: Text.rich(
+                                            TextSpan(
+                                              children: [
+                                                getPoppinsTextSpanHeading(
+                                                    text:
+                                                        'Last 90 Day sSales Qty'),
+                                                getPoppinsTextSpanDetails(
+                                                    text: SalesQuotationUI
+                                                            .itemDetailModel
+                                                            ?.decLast90DaysSalesQty
+                                                            ?.toStringAsFixed(
+                                                                2) ??
+                                                        ''),
+                                              ],
+                                            ),
+                                          ),
+                                        ),
+                                      ),
+                                    ),
+                                    Padding(
+                                      padding: const EdgeInsets.only(
+                                          left: 8.0, right: 8.0, top: 4.0),
+                                      child: Align(
+                                        alignment: Alignment.topLeft,
+                                        child: Text.rich(
+                                          TextSpan(
+                                            children: [
+                                              getPoppinsTextSpanHeading(
+                                                  text: 'Last Selling Price'),
+                                              getPoppinsTextSpanDetails(
+                                                  text: SalesQuotationUI
+                                                          .itemDetailModel
+                                                          ?.decLastSellingPrice
+                                                          ?.toStringAsFixed(
+                                                              2) ??
+                                                      ''),
+                                            ],
+                                          ),
+                                        ),
+                                      ),
+                                    ),
+                                    Padding(
+                                      padding: const EdgeInsets.only(
+                                          left: 8.0, right: 8.0, top: 4.0),
+                                      child: Align(
+                                        alignment: Alignment.topLeft,
+                                        child: FittedBox(
+                                          fit: BoxFit.contain,
+                                          child: Text.rich(
+                                            TextSpan(
+                                              children: [
+                                                getPoppinsTextSpanHeading(
+                                                    text: 'Open Orders'),
+                                                getPoppinsTextSpanDetails(
+                                                    text: SalesQuotationUI
+                                                            .itemDetailModel
+                                                            ?.intOpenOrders
+                                                            ?.toStringAsFixed(
+                                                                2) ??
+                                                        ''),
+                                              ],
+                                            ),
+                                          ),
+                                        ),
+                                      ),
+                                    ),
+                                    Padding(
+                                      padding: const EdgeInsets.only(
+                                          left: 8.0, right: 8.0, top: 4.0),
+                                      child: Align(
+                                        alignment: Alignment.topLeft,
+                                        child: Text.rich(
+                                          TextSpan(
+                                            children: [
+                                              getPoppinsTextSpanHeading(
+                                                  text: 'Open Invoice'),
+                                              getPoppinsTextSpanDetails(
+                                                  text: SalesQuotationUI
+                                                          .itemDetailModel
+                                                          ?.intOpenInvoice
+                                                          ?.toStringAsFixed(
+                                                              2) ??
+                                                      ''),
+                                            ],
+                                          ),
+                                        ),
+                                      ),
+                                    ),
+                                    Padding(
+                                      padding: const EdgeInsets.only(
+                                          left: 8.0, right: 8.0, top: 4.0),
+                                      child: Align(
+                                        alignment: Alignment.topLeft,
+                                        child: FittedBox(
+                                          fit: BoxFit.contain,
+                                          child: Text.rich(
+                                            TextSpan(
+                                              children: [
+                                                getPoppinsTextSpanHeading(
+                                                    text: 'Ordered'),
+                                                getPoppinsTextSpanDetails(
+                                                    text: SalesQuotationUI
+                                                            .itemDetailModel
+                                                            ?.intOrdered
+                                                            ?.toStringAsFixed(
+                                                                2) ??
+                                                        ''),
+                                              ],
+                                            ),
+                                          ),
+                                        ),
+                                      ),
+                                    ),
+                                    Padding(
+                                      padding: const EdgeInsets.only(
+                                          left: 8.0, right: 8.0, top: 4.0),
+                                      child: Align(
+                                        alignment: Alignment.topLeft,
+                                        child: Text.rich(
+                                          TextSpan(
+                                            children: [
+                                              getPoppinsTextSpanHeading(
+                                                  text: 'Committed'),
+                                              getPoppinsTextSpanDetails(
+                                                  text: SalesQuotationUI
+                                                          .itemDetailModel
+                                                          ?.intCommitted
+                                                          ?.toStringAsFixed(
+                                                              2) ??
+                                                      ''),
+                                            ],
+                                          ),
+                                        ),
+                                      ),
+                                    ),
+                                    Padding(
+                                      padding: const EdgeInsets.only(
+                                          left: 8.0, right: 8.0, top: 4.0),
+                                      child: Align(
+                                        alignment: Alignment.topLeft,
+                                        child: Text.rich(
+                                          TextSpan(
+                                            children: [
+                                              getPoppinsTextSpanHeading(
+                                                  text: 'Item Cost'),
+                                              getPoppinsTextSpanDetails(
+                                                  text: SalesQuotationUI
+                                                          .itemDetailModel
+                                                          ?.decItemCost
+                                                          ?.toStringAsFixed(
+                                                              2) ??
+                                                      ''),
+                                            ],
+                                          ),
+                                        ),
+                                      ),
+                                    ),
+                                  ],
+                                ),
+                                flex: 8,
+                              ),
+                            ],
+                          ),
+                        ],
+                      ),
+                    ),
+                  ),
+                  const SizedBox(
+                    height: 20,
+                  ),
                 ],
               ),
             ),
