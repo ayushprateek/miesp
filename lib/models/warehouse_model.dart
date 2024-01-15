@@ -35,9 +35,16 @@ class WarehouseModel {
         ?.setString(keySelectedWarehouse, jsonEncode(warehouseModel.toJson()));
   }
 
-  static WarehouseModel getSelectedWarehouse() {
+  static WarehouseModel? getSelectedWarehouse() {
     String selectedWarehouse =
         LocalStorage.getInstance()?.localStorage?.getString(keySelectedWarehouse) ?? '';
-    return WarehouseModel.fromJson(jsonDecode(selectedWarehouse));
+    if(selectedWarehouse!='')
+    {
+      return WarehouseModel.fromJson(jsonDecode(selectedWarehouse));
+    }
+    else
+    {
+      return null;
+    }
   }
 }

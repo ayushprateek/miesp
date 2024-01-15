@@ -9,7 +9,7 @@ import 'package:bill/ui/components/back_pressed_warning.dart';
 import 'package:bill/ui/components/check_keyboard_visibility.dart';
 import 'package:bill/ui/components/elements_button.dart';
 import 'package:bill/ui/components/elements_snackbar.dart';
-import 'package:bill/ui/select_warehouse.dart';
+import 'package:bill/ui/dashboard.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -28,8 +28,10 @@ class LoginPageState extends State<LoginPage> {
   bool obscurePassword = true;
   bool isLoading = false;
 
-  TextEditingController userEmail = TextEditingController(text: 'rahul@punditz.in');
+  TextEditingController userEmail =
+      TextEditingController(text: 'rahul@punditz.in');
   TextEditingController password = TextEditingController(text: 'punditz@123');
+
   //
   // TextEditingController userEmail = TextEditingController();
   // TextEditingController password = TextEditingController();
@@ -208,9 +210,7 @@ class LoginPageState extends State<LoginPage> {
   void onSuccess(CustomerModel customerModel) {
     getSuccessSnackBar('Login successful');
     CustomerModel.setLoginCustomer(customerModel: customerModel);
-    Get.to(() => SelectWarehouse(
-          isComingFromLogin: true,
-        ));
+    Get.to(() => Dashboard());
   }
 
   void onError() {

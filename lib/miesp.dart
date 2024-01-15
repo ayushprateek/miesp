@@ -64,7 +64,7 @@ class _MIESPState extends State<MIESP> {
           .push(MaterialPageRoute(builder: (context) => const LoginPage()));
     } else {
       Navigator.of(context)
-          .push(MaterialPageRoute(builder: (context) => const Dashboard()));
+          .push(MaterialPageRoute(builder: (context) =>  Dashboard()));
       // CustomerModel customerModel =
       //     CustomerModel.fromJson(jsonDecode(customer));
       // if (customerModel.email.isNotEmpty) {
