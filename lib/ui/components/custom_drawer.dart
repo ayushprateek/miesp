@@ -1,5 +1,6 @@
 import 'dart:io';
 
+import 'package:bill/common/app_assets.dart';
 import 'package:bill/common/keys.dart';
 import 'package:bill/custom_scanner.dart';
 import 'package:bill/local_storage/local_storage.dart';
@@ -36,11 +37,17 @@ class _CustomDrawerState extends State<CustomDrawer> {
                 style: TextStyle(
                     fontWeight: FontWeight.bold, color: Colors.white)),
             currentAccountPicture: ClipRRect(
-                borderRadius: BorderRadius.circular(15.0),
-                // child: Image.asset(logoPath)
-                child: FlutterLogo()),
-            decoration: const BoxDecoration(
+              borderRadius: BorderRadius.circular(100.0),
+              child: Container(
+                // decoration: BoxDecoration(
+                //   border: Border.all(),
+                //     color: Colors.black
+                // ),
+                  child: Image.asset(logoPath)),
+            ),
+            decoration:  BoxDecoration(
               color: appPrimary,
+              // border: Border.all()
             ),
           ),
           // InkWell(

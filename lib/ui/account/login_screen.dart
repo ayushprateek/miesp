@@ -1,5 +1,6 @@
 import 'dart:io';
 
+import 'package:bill/common/app_assets.dart';
 import 'package:bill/common/app_constants.dart';
 import 'package:bill/models/customer_model.dart';
 import 'package:bill/services/service_manager.dart';
@@ -28,13 +29,13 @@ class LoginPageState extends State<LoginPage> {
   bool obscurePassword = true;
   bool isLoading = false;
 
-  // TextEditingController userEmail =
-  //     TextEditingController(text: 'rahul@punditz.in');
-  // TextEditingController password = TextEditingController(text: 'punditz@123');
-  //
+  TextEditingController userEmail =
+      TextEditingController(text: 'rahul@punditz.in');
+  TextEditingController password = TextEditingController(text: 'punditz@123');
 
-  TextEditingController userEmail = TextEditingController();
-  TextEditingController password = TextEditingController();
+  //
+  // TextEditingController userEmail = TextEditingController();
+  // TextEditingController password = TextEditingController();
   //
   _onBackButtonPressed() {
     showBackPressedWarning(
@@ -73,9 +74,13 @@ class LoginPageState extends State<LoginPage> {
                       top: 60,
                     ),
                     child: ClipRRect(
-                      borderRadius: BorderRadius.circular(10.0),
-                      child: SizedBox(
-                          height: 100, width: 100, child: FlutterLogo()),
+                      borderRadius: BorderRadius.circular(100.0),
+                      child: Container(
+                        decoration: BoxDecoration(
+                          border: Border.all(),
+                          color: Colors.black
+                        ),
+                          height: 100, width: 100, child: Image.asset(logoPath)),
                       // child: Container(
                       //   color: appPrimary,
                       //   child: Image.asset(

@@ -1,5 +1,6 @@
 import 'dart:async';
 
+import 'package:bill/common/app_assets.dart';
 import 'package:bill/common/keys.dart';
 import 'package:bill/local_storage/local_storage.dart';
 import 'package:bill/theme/custom_theme.dart';
@@ -49,8 +50,6 @@ class _MIESPState extends State<MIESP> {
     navigate();
   }
 
-
-
   navigate() async {
     String? customer = LocalStorage.getString(key: keyObjUser);
     await Future.delayed(const Duration(seconds: 2));
@@ -64,7 +63,7 @@ class _MIESPState extends State<MIESP> {
           .push(MaterialPageRoute(builder: (context) => const LoginPage()));
     } else {
       Navigator.of(context)
-          .push(MaterialPageRoute(builder: (context) =>  Dashboard()));
+          .push(MaterialPageRoute(builder: (context) => Dashboard()));
       // CustomerModel customerModel =
       //     CustomerModel.fromJson(jsonDecode(customer));
       // if (customerModel.email.isNotEmpty) {
@@ -86,6 +85,16 @@ class _MIESPState extends State<MIESP> {
 
   @override
   Widget build(BuildContext context) {
-    return screenWithoutAppBar(body: const Center(child: FlutterLogo()));
+    return screenWithoutAppBar(
+        body: Center(
+            child: ClipRRect(
+              borderRadius: BorderRadius.circular(100.0),
+              child: Container(
+                    height: Get.width / 3,
+                    width: Get.width / 3,
+                    // decoration: BoxDecoration(border: Border.all(), color: Colors.black),
+                    child: Image.asset(logoPath),
+                  ),
+            )));
   }
 }

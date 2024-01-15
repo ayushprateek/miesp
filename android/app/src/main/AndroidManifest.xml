@@ -15,7 +15,7 @@
     <application
         android:label="MIESP"
         android:usesCleartextTraffic="true"
-        android:icon="@mipmap/ic_launcher"
+        android:icon="@mipmap/launcher_icon"
         tools:targetApi="m">
         <activity
             android:name="com.miesp.miesp.MainActivity"
