@@ -37,7 +37,7 @@ Widget screenWithAppBar(
           ),
           onPressed: () {
             if (onBackPressed != null) {
-              onBackPressed() as Function();
+              onBackPressed();
             } else {
               Navigator.of(context).pop();
             }
