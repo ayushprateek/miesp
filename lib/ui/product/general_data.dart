@@ -113,22 +113,19 @@ class _GeneralDataState extends State<GeneralData> {
                                           left: 8.0, right: 8.0, top: 4.0),
                                       child: Align(
                                         alignment: Alignment.topLeft,
-                                        child: FittedBox(
-                                          fit: BoxFit.contain,
-                                          child: Text.rich(
-                                            TextSpan(
-                                              children: [
-                                                getPoppinsTextSpanHeading(
-                                                    text: 'Item ID'),
-                                                getPoppinsTextSpanDetails(
-                                                    text: SalesQuotationUI
-                                                            .itemDetailModel
-                                                            ?.bigintItemId
-                                                            ?.toStringAsFixed(
-                                                                2) ??
-                                                        ''),
-                                              ],
-                                            ),
+                                        child: Text.rich(
+                                          TextSpan(
+                                            children: [
+                                              getPoppinsTextSpanHeading(
+                                                  text: 'Item ID'),
+                                              getPoppinsTextSpanDetails(
+                                                  text: SalesQuotationUI
+                                                          .itemDetailModel
+                                                          ?.bigintItemId
+                                                          ?.toStringAsFixed(
+                                                              2) ??
+                                                      ''),
+                                            ],
                                           ),
                                         ),
                                       ),
@@ -140,6 +137,7 @@ class _GeneralDataState extends State<GeneralData> {
                                         alignment: Alignment.topLeft,
                                         child: Text.rich(
                                           TextSpan(
+
                                             children: [
                                               getPoppinsTextSpanHeading(
                                                   text: 'Bar Code'),
@@ -158,20 +156,17 @@ class _GeneralDataState extends State<GeneralData> {
                                           left: 8.0, right: 8.0, top: 4.0),
                                       child: Align(
                                         alignment: Alignment.topLeft,
-                                        child: FittedBox(
-                                          fit: BoxFit.contain,
-                                          child: Text.rich(
-                                            TextSpan(
-                                              children: [
-                                                getPoppinsTextSpanHeading(
-                                                    text: 'Item No'),
-                                                getPoppinsTextSpanDetails(
-                                                    text: SalesQuotationUI
-                                                            .itemDetailModel
-                                                            ?.varItemNo ??
-                                                        ''),
-                                              ],
-                                            ),
+                                        child: Text.rich(
+                                          TextSpan(
+                                            children: [
+                                              getPoppinsTextSpanHeading(
+                                                  text: 'Item No'),
+                                              getPoppinsTextSpanDetails(
+                                                  text: SalesQuotationUI
+                                                          .itemDetailModel
+                                                          ?.varItemNo ??
+                                                      ''),
+                                            ],
                                           ),
                                         ),
                                       ),
@@ -201,20 +196,17 @@ class _GeneralDataState extends State<GeneralData> {
                                           left: 8.0, right: 8.0, top: 4.0),
                                       child: Align(
                                         alignment: Alignment.topLeft,
-                                        child: FittedBox(
-                                          fit: BoxFit.contain,
-                                          child: Text.rich(
-                                            TextSpan(
-                                              children: [
-                                                getPoppinsTextSpanHeading(
-                                                    text: 'UOM Group Code'),
-                                                getPoppinsTextSpanDetails(
-                                                    text: SalesQuotationUI
-                                                            .itemDetailModel
-                                                            ?.varUomGroupCode ??
-                                                        ''),
-                                              ],
-                                            ),
+                                        child: Text.rich(
+                                          TextSpan(
+                                            children: [
+                                              getPoppinsTextSpanHeading(
+                                                  text: 'UOM Group Code'),
+                                              getPoppinsTextSpanDetails(
+                                                  text: SalesQuotationUI
+                                                          .itemDetailModel
+                                                          ?.varUomGroupCode ??
+                                                      ''),
+                                            ],
                                           ),
                                         ),
                                       ),
@@ -244,20 +236,17 @@ class _GeneralDataState extends State<GeneralData> {
                                           left: 8.0, right: 8.0, top: 4.0),
                                       child: Align(
                                         alignment: Alignment.topLeft,
-                                        child: FittedBox(
-                                          fit: BoxFit.contain,
-                                          child: Text.rich(
-                                            TextSpan(
-                                              children: [
-                                                getPoppinsTextSpanHeading(
-                                                    text: 'UOM Code'),
-                                                getPoppinsTextSpanDetails(
-                                                    text: SalesQuotationUI
-                                                            .itemDetailModel
-                                                            ?.varUomCode ??
-                                                        ''),
-                                              ],
-                                            ),
+                                        child: Text.rich(
+                                          TextSpan(
+                                            children: [
+                                              getPoppinsTextSpanHeading(
+                                                  text: 'UOM Code'),
+                                              getPoppinsTextSpanDetails(
+                                                  text: SalesQuotationUI
+                                                          .itemDetailModel
+                                                          ?.varUomCode ??
+                                                      ''),
+                                            ],
                                           ),
                                         ),
                                       ),
@@ -287,20 +276,17 @@ class _GeneralDataState extends State<GeneralData> {
                                           left: 8.0, right: 8.0, top: 4.0),
                                       child: Align(
                                         alignment: Alignment.topLeft,
-                                        child: FittedBox(
-                                          fit: BoxFit.contain,
-                                          child: Text.rich(
-                                            TextSpan(
-                                              children: [
-                                                getPoppinsTextSpanHeading(
-                                                    text: 'Foreign Name'),
-                                                getPoppinsTextSpanDetails(
-                                                    text: SalesQuotationUI
-                                                            .itemDetailModel
-                                                            ?.varForeignName ??
-                                                        ''),
-                                              ],
-                                            ),
+                                        child: Text.rich(
+                                          TextSpan(
+                                            children: [
+                                              getPoppinsTextSpanHeading(
+                                                  text: 'Foreign Name'),
+                                              getPoppinsTextSpanDetails(
+                                                  text: SalesQuotationUI
+                                                          .itemDetailModel
+                                                          ?.varForeignName ??
+                                                      ''),
+                                            ],
                                           ),
                                         ),
                                       ),
@@ -325,33 +311,22 @@ class _GeneralDataState extends State<GeneralData> {
                                         ),
                                       ),
                                     ),
-                                  ],
-                                ),
-                                flex: 8,
-                              ),
-                              Expanded(
-                                child: Column(
-
-                                  children: [
                                     Padding(
                                       padding: const EdgeInsets.only(
                                           left: 8.0, right: 8.0, top: 4.0),
                                       child: Align(
                                         alignment: Alignment.topLeft,
-                                        child: FittedBox(
-                                          fit: BoxFit.contain,
-                                          child: Text.rich(
-                                            TextSpan(
-                                              children: [
-                                                getPoppinsTextSpanHeading(
-                                                    text: 'Brand Name'),
-                                                getPoppinsTextSpanDetails(
-                                                    text: SalesQuotationUI
-                                                            .itemDetailModel
-                                                            ?.varBrandName ??
-                                                        ''),
-                                              ],
-                                            ),
+                                        child: Text.rich(
+                                          TextSpan(
+                                            children: [
+                                              getPoppinsTextSpanHeading(
+                                                  text: 'Brand Name'),
+                                              getPoppinsTextSpanDetails(
+                                                  text: SalesQuotationUI
+                                                      .itemDetailModel
+                                                      ?.varBrandName ??
+                                                      ''),
+                                            ],
                                           ),
                                         ),
                                       ),
@@ -368,8 +343,8 @@ class _GeneralDataState extends State<GeneralData> {
                                                   text: 'Group Name'),
                                               getPoppinsTextSpanDetails(
                                                   text: SalesQuotationUI
-                                                          .itemDetailModel
-                                                          ?.varGroupName ??
+                                                      .itemDetailModel
+                                                      ?.varGroupName ??
                                                       ''),
                                             ],
                                           ),
@@ -381,20 +356,17 @@ class _GeneralDataState extends State<GeneralData> {
                                           left: 8.0, right: 8.0, top: 4.0),
                                       child: Align(
                                         alignment: Alignment.topLeft,
-                                        child: FittedBox(
-                                          fit: BoxFit.contain,
-                                          child: Text.rich(
-                                            TextSpan(
-                                              children: [
-                                                getPoppinsTextSpanHeading(
-                                                    text: 'Item Image'),
-                                                getPoppinsTextSpanDetails(
-                                                    text: SalesQuotationUI
-                                                            .itemDetailModel
-                                                            ?.varItemImage ??
-                                                        ''),
-                                              ],
-                                            ),
+                                        child: Text.rich(
+                                          TextSpan(
+                                            children: [
+                                              getPoppinsTextSpanHeading(
+                                                  text: 'Item Image'),
+                                              getPoppinsTextSpanDetails(
+                                                  text: SalesQuotationUI
+                                                      .itemDetailModel
+                                                      ?.varItemImage ??
+                                                      ''),
+                                            ],
                                           ),
                                         ),
                                       ),
@@ -411,10 +383,10 @@ class _GeneralDataState extends State<GeneralData> {
                                                   text: 'Last Month Sales Qty'),
                                               getPoppinsTextSpanDetails(
                                                   text: SalesQuotationUI
-                                                          .itemDetailModel
-                                                          ?.decLastMonthSalesQty
-                                                          ?.toStringAsFixed(
-                                                              2) ??
+                                                      .itemDetailModel
+                                                      ?.decLastMonthSalesQty
+                                                      ?.toStringAsFixed(
+                                                      2) ??
                                                       ''),
                                             ],
                                           ),
@@ -426,23 +398,20 @@ class _GeneralDataState extends State<GeneralData> {
                                           left: 8.0, right: 8.0, top: 4.0),
                                       child: Align(
                                         alignment: Alignment.topLeft,
-                                        child: FittedBox(
-                                          fit: BoxFit.contain,
-                                          child: Text.rich(
-                                            TextSpan(
-                                              children: [
-                                                getPoppinsTextSpanHeading(
-                                                    text:
-                                                        'Last 90 Day sSales Qty'),
-                                                getPoppinsTextSpanDetails(
-                                                    text: SalesQuotationUI
-                                                            .itemDetailModel
-                                                            ?.decLast90DaysSalesQty
-                                                            ?.toStringAsFixed(
-                                                                2) ??
-                                                        ''),
-                                              ],
-                                            ),
+                                        child: Text.rich(
+                                          TextSpan(
+                                            children: [
+                                              getPoppinsTextSpanHeading(
+                                                  text:
+                                                  'Last 90 Day sSales Qty'),
+                                              getPoppinsTextSpanDetails(
+                                                  text: SalesQuotationUI
+                                                      .itemDetailModel
+                                                      ?.decLast90DaysSalesQty
+                                                      ?.toStringAsFixed(
+                                                      2) ??
+                                                      ''),
+                                            ],
                                           ),
                                         ),
                                       ),
@@ -459,10 +428,10 @@ class _GeneralDataState extends State<GeneralData> {
                                                   text: 'Last Selling Price'),
                                               getPoppinsTextSpanDetails(
                                                   text: SalesQuotationUI
-                                                          .itemDetailModel
-                                                          ?.decLastSellingPrice
-                                                          ?.toStringAsFixed(
-                                                              2) ??
+                                                      .itemDetailModel
+                                                      ?.decLastSellingPrice
+                                                      ?.toStringAsFixed(
+                                                      2) ??
                                                       ''),
                                             ],
                                           ),
@@ -474,22 +443,19 @@ class _GeneralDataState extends State<GeneralData> {
                                           left: 8.0, right: 8.0, top: 4.0),
                                       child: Align(
                                         alignment: Alignment.topLeft,
-                                        child: FittedBox(
-                                          fit: BoxFit.contain,
-                                          child: Text.rich(
-                                            TextSpan(
-                                              children: [
-                                                getPoppinsTextSpanHeading(
-                                                    text: 'Open Orders'),
-                                                getPoppinsTextSpanDetails(
-                                                    text: SalesQuotationUI
-                                                            .itemDetailModel
-                                                            ?.intOpenOrders
-                                                            ?.toStringAsFixed(
-                                                                2) ??
-                                                        ''),
-                                              ],
-                                            ),
+                                        child: Text.rich(
+                                          TextSpan(
+                                            children: [
+                                              getPoppinsTextSpanHeading(
+                                                  text: 'Open Orders'),
+                                              getPoppinsTextSpanDetails(
+                                                  text: SalesQuotationUI
+                                                      .itemDetailModel
+                                                      ?.intOpenOrders
+                                                      ?.toStringAsFixed(
+                                                      2) ??
+                                                      ''),
+                                            ],
                                           ),
                                         ),
                                       ),
@@ -506,10 +472,10 @@ class _GeneralDataState extends State<GeneralData> {
                                                   text: 'Open Invoice'),
                                               getPoppinsTextSpanDetails(
                                                   text: SalesQuotationUI
-                                                          .itemDetailModel
-                                                          ?.intOpenInvoice
-                                                          ?.toStringAsFixed(
-                                                              2) ??
+                                                      .itemDetailModel
+                                                      ?.intOpenInvoice
+                                                      ?.toStringAsFixed(
+                                                      2) ??
                                                       ''),
                                             ],
                                           ),
@@ -521,22 +487,19 @@ class _GeneralDataState extends State<GeneralData> {
                                           left: 8.0, right: 8.0, top: 4.0),
                                       child: Align(
                                         alignment: Alignment.topLeft,
-                                        child: FittedBox(
-                                          fit: BoxFit.contain,
-                                          child: Text.rich(
-                                            TextSpan(
-                                              children: [
-                                                getPoppinsTextSpanHeading(
-                                                    text: 'Ordered'),
-                                                getPoppinsTextSpanDetails(
-                                                    text: SalesQuotationUI
-                                                            .itemDetailModel
-                                                            ?.intOrdered
-                                                            ?.toStringAsFixed(
-                                                                2) ??
-                                                        ''),
-                                              ],
-                                            ),
+                                        child: Text.rich(
+                                          TextSpan(
+                                            children: [
+                                              getPoppinsTextSpanHeading(
+                                                  text: 'Ordered'),
+                                              getPoppinsTextSpanDetails(
+                                                  text: SalesQuotationUI
+                                                      .itemDetailModel
+                                                      ?.intOrdered
+                                                      ?.toStringAsFixed(
+                                                      2) ??
+                                                      ''),
+                                            ],
                                           ),
                                         ),
                                       ),
@@ -553,10 +516,10 @@ class _GeneralDataState extends State<GeneralData> {
                                                   text: 'Committed'),
                                               getPoppinsTextSpanDetails(
                                                   text: SalesQuotationUI
-                                                          .itemDetailModel
-                                                          ?.intCommitted
-                                                          ?.toStringAsFixed(
-                                                              2) ??
+                                                      .itemDetailModel
+                                                      ?.intCommitted
+                                                      ?.toStringAsFixed(
+                                                      2) ??
                                                       ''),
                                             ],
                                           ),
@@ -575,10 +538,10 @@ class _GeneralDataState extends State<GeneralData> {
                                                   text: 'Item Cost'),
                                               getPoppinsTextSpanDetails(
                                                   text: SalesQuotationUI
-                                                          .itemDetailModel
-                                                          ?.decItemCost
-                                                          ?.toStringAsFixed(
-                                                              2) ??
+                                                      .itemDetailModel
+                                                      ?.decItemCost
+                                                      ?.toStringAsFixed(
+                                                      2) ??
                                                       ''),
                                             ],
                                           ),
@@ -589,6 +552,7 @@ class _GeneralDataState extends State<GeneralData> {
                                 ),
                                 flex: 8,
                               ),
+
                             ],
                           ),
                         ],

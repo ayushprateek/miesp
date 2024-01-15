@@ -66,21 +66,34 @@ class _SalesQuotationUIState extends State<SalesQuotationUI> {
                               topRight: Radius.circular(10)),
                           color: Colors.white),
                       labelColor: appPrimary,
-                      isScrollable: false,
+                      isScrollable: true,
+                      tabAlignment: TabAlignment.center,
                       unselectedLabelColor: Colors.white,
                       labelStyle:
                           GoogleFonts.poppins(fontWeight: FontWeight.w500),
                       tabs: [
                         Tab(
-                          child: Text("General Data"),
+                          child: Padding(
+                            padding: const EdgeInsets.symmetric(
+                                vertical: 8.0, horizontal: 12),
+                            child: Text("General Data"),
+                          ),
                         ),
                         Tab(
-                            child: Text(
-                          "Price List",
+                            child: Padding(
+                          padding: const EdgeInsets.symmetric(
+                              vertical: 8.0, horizontal: 12),
+                          child: Text(
+                            "Price List",
+                          ),
                         )),
                         Tab(
-                            child: Text(
-                          "Stock",
+                            child: Padding(
+                          padding: const EdgeInsets.symmetric(
+                              vertical: 8.0, horizontal: 12),
+                          child: Text(
+                            "Stock",
+                          ),
                         )),
                       ],
                     ),
