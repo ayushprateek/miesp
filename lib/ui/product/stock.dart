@@ -32,11 +32,11 @@ class _StockState extends State<Stock> {
                       height: 30,
                     ),
                     ListView.builder(
-                      itemCount: SalesQuotationUI.itemDetailModel?.whStockItemMaster?.length??0,
+                      itemCount: ProductDetails.itemDetailModel?.whStockItemMaster?.length??0,
                       shrinkWrap: true,
                       physics: ScrollPhysics(),
                       itemBuilder: (BuildContext context, int index) {
-                        WhStockItemMasterModel stock=SalesQuotationUI.itemDetailModel!.whStockItemMaster![index]!;
+                        WhStockItemMasterModel stock=ProductDetails.itemDetailModel!.whStockItemMaster![index]!;
                         return InkWell(
                           onDoubleTap: () {},
                           child: Container(

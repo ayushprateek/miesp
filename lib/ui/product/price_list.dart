@@ -34,12 +34,12 @@ class _PriceListState extends State<PriceList> {
                     ),
                     ListView.builder(
                       itemCount:
-                          SalesQuotationUI.itemDetailModel?.priceList?.length ??
+                          ProductDetails.itemDetailModel?.priceList?.length ??
                               0,
                       shrinkWrap: true,
                       physics: ScrollPhysics(),
                       itemBuilder: (BuildContext context, int index) {
-                        PriceListModel priceList = SalesQuotationUI
+                        PriceListModel priceList = ProductDetails
                             .itemDetailModel!.priceList![index]!;
                         return InkWell(
                           onDoubleTap: () {},
@@ -64,6 +64,8 @@ class _PriceListState extends State<PriceList> {
                               child: Column(
                                 children: [
                                   Row(
+                                    crossAxisAlignment: CrossAxisAlignment.start,
+                                    mainAxisAlignment: MainAxisAlignment.start,
                                     children: [
                                       Expanded(
                                         child: Column(

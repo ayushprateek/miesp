@@ -1,4 +1,5 @@
 import 'package:bill/theme/custom_colors.dart';
+import 'package:bill/theme/custom_text_widgets.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -26,13 +27,21 @@ Widget loadingButton({
             onPressed: isLoading ? null : onPress as Function(),
             minWidth: Get.width,
             color: backColor,
-            child: Text(
-              btnText ?? '',
-              textAlign: TextAlign.center,
-              style: TextStyle(
+            child: FittedBox(
+              child: getHeadingText(
+                  text: btnText ?? '',
+                  textAlign: TextAlign.center,
                   color: textColor,
-                  fontWeight: FontWeight.bold,
-                  fontSize: fontSize),
+                fontSize: fontSize
+              ),
+              // child: Text(
+              //   btnText ?? '',
+              //   textAlign: TextAlign.center,
+              //   style: TextStyle(
+              //       color: textColor,
+              //       fontWeight: FontWeight.bold,
+              //       fontSize: fontSize),
+              // ),
             ),
           ),
   );

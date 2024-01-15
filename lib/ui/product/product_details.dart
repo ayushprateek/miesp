@@ -8,19 +8,19 @@ import 'package:bill/ui/product/stock.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-class SalesQuotationUI extends StatefulWidget {
+class ProductDetails extends StatefulWidget {
   int index = 0;
   static ItemDetailModel? itemDetailModel;
 
-  SalesQuotationUI({
+  ProductDetails({
     required this.index,
   });
 
   @override
-  _SalesQuotationUIState createState() => _SalesQuotationUIState();
+  _ProductDetailsState createState() => _ProductDetailsState();
 }
 
-class _SalesQuotationUIState extends State<SalesQuotationUI> {
+class _ProductDetailsState extends State<ProductDetails> {
   @override
   void initState() {
     super.initState();

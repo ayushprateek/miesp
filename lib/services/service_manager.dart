@@ -2,6 +2,8 @@ import 'dart:convert';
 
 import 'package:bill/models/customer_model.dart';
 import 'package:bill/models/item_details_model.dart';
+import 'package:bill/models/stock_counting_detail_model.dart';
+import 'package:bill/models/uom_model.dart';
 import 'package:bill/models/warehouse_model.dart';
 import 'package:bill/theme/custom_snack_bar.dart';
 import 'package:bill/ui/components/elements_snackbar.dart';
@@ -76,26 +78,70 @@ class ServiceManager {
     }
   }
 
+  static Future<void> getUOMList({
+    required Function(List<UomModel>) onSuccess,
+    required Function onError,
+  }) async {
+    List<UomModel>? uomList = [];
+    ;
+    var res = await http.get(
+      Uri.parse('${baseURL}Items/GetUOM'),
+      headers: header,
+    );
+    print(res.body);
+    if (res.statusCode == 200) {
+      uomList = uomModelFromJson(res.body);
+      onSuccess(uomList);
+    } else {
+      onError();
+    }
+  }
+
   static Future<void> getItemDetails({
     required String barCode,
     required Function(ItemDetailModel) onSuccess,
     required Function onError,
   }) async {
     ItemDetailModel? warehouseList;
-    CustomerModel customerModel=CustomerModel.getLoginCustomer();
+    CustomerModel customerModel = CustomerModel.getLoginCustomer();
 
     var res = await http.post(
       Uri.parse('${baseURL}Items/GetItemDetail'),
-      body: jsonEncode({
-        "Barcode": barCode,
-        "UserId": customerModel.userId??0
-      }),
+      body:
+          jsonEncode({"Barcode": barCode, "UserId": customerModel.userId ?? 0}),
       headers: header,
     );
     print(res.body);
     if (res.statusCode == 200) {
       warehouseList = itemDetailModelFromJson(res.body);
       onSuccess(warehouseList);
+    } else {
+      onError();
+    }
+  }
+
+  static Future<void> getStockCountingDetail({
+    required String barCode,
+    required Function(StockCountingDetailModel) onSuccess,
+    required Function onError,
+  }) async {
+    StockCountingDetailModel? stockCountingDetail;
+    CustomerModel customerModel = CustomerModel.getLoginCustomer();
+    WarehouseModel? warehouseModel = WarehouseModel.getSelectedWarehouse();
+
+    var res = await http.post(
+      Uri.parse('${baseURL}Items/GetStockCountingDetail'),
+      body: jsonEncode({
+        "Barcode": barCode,
+        "UserId": customerModel.userId ?? 0,
+        "WarehouseCode": warehouseModel?.warehouseCode ?? ''
+      }),
+      headers: header,
+    );
+    print(res.body);
+    if (res.statusCode == 200) {
+      stockCountingDetail = stockCountingDetailModelFromJson(res.body);
+      onSuccess(stockCountingDetail);
     } else {
       onError();
     }

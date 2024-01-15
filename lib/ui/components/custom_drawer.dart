@@ -9,6 +9,7 @@ import 'package:bill/theme/custom_colors.dart';
 import 'package:bill/theme/custom_text_widgets.dart';
 import 'package:bill/ui/account/login_screen.dart';
 import 'package:bill/ui/components/elements_button.dart';
+import 'package:bill/ui/stock_counting/stock_counting.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -73,6 +74,20 @@ class _CustomDrawerState extends State<CustomDrawer> {
             child: ListTile(
               title: getHeadingText(
                 text: 'Scan',
+                color: Colors.white,
+              ),
+              leading: const Icon(Icons.qr_code_scanner, color: Colors.white),
+              trailing:
+                  const Icon(Icons.keyboard_arrow_right, color: Colors.white),
+            ),
+          ),
+          InkWell(
+            onTap: () {
+              Get.to(() => StockCounting());
+            },
+            child: ListTile(
+              title: getHeadingText(
+                text: 'Stock Counting',
                 color: Colors.white,
               ),
               leading: const Icon(Icons.calendar_month, color: Colors.white),

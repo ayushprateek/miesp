@@ -9,52 +9,52 @@ class GeneralData extends StatefulWidget {
 
 class _GeneralDataState extends State<GeneralData> {
   TextEditingController ItemId = TextEditingController(
-      text: SalesQuotationUI.itemDetailModel?.bigintItemId?.toString());
+      text: ProductDetails.itemDetailModel?.bigintItemId?.toString());
   TextEditingController BarCode =
-      TextEditingController(text: SalesQuotationUI.itemDetailModel?.varBarcode);
+      TextEditingController(text: ProductDetails.itemDetailModel?.varBarcode);
   TextEditingController ItemNo =
-      TextEditingController(text: SalesQuotationUI.itemDetailModel?.varItemNo);
+      TextEditingController(text: ProductDetails.itemDetailModel?.varItemNo);
   TextEditingController ItemDescription = TextEditingController(
-      text: SalesQuotationUI.itemDetailModel?.varItemDescription);
+      text: ProductDetails.itemDetailModel?.varItemDescription);
   TextEditingController UomGroupCode = TextEditingController(
-      text: SalesQuotationUI.itemDetailModel?.varUomGroupCode);
+      text: ProductDetails.itemDetailModel?.varUomGroupCode);
   TextEditingController UomGroupName = TextEditingController(
-      text: SalesQuotationUI.itemDetailModel?.varUomGroupName);
+      text: ProductDetails.itemDetailModel?.varUomGroupName);
   TextEditingController UomCode =
-      TextEditingController(text: SalesQuotationUI.itemDetailModel?.varUomCode);
+      TextEditingController(text: ProductDetails.itemDetailModel?.varUomCode);
 
   //------
   TextEditingController UomName =
-      TextEditingController(text: SalesQuotationUI.itemDetailModel?.varUomName);
+      TextEditingController(text: ProductDetails.itemDetailModel?.varUomName);
   TextEditingController ForeignName = TextEditingController(
-      text: SalesQuotationUI.itemDetailModel?.varForeignName);
+      text: ProductDetails.itemDetailModel?.varForeignName);
   TextEditingController ItemCategory = TextEditingController(
-      text: SalesQuotationUI.itemDetailModel?.varItemCategory);
+      text: ProductDetails.itemDetailModel?.varItemCategory);
   TextEditingController BrandName = TextEditingController(
-      text: SalesQuotationUI.itemDetailModel?.varBrandName);
+      text: ProductDetails.itemDetailModel?.varBrandName);
   TextEditingController GroupName = TextEditingController(
-      text: SalesQuotationUI.itemDetailModel?.varGroupName);
+      text: ProductDetails.itemDetailModel?.varGroupName);
   TextEditingController ItemImage = TextEditingController(
-      text: SalesQuotationUI.itemDetailModel?.varItemImage);
+      text: ProductDetails.itemDetailModel?.varItemImage);
   TextEditingController LastMonthSalesQty = TextEditingController(
-      text: SalesQuotationUI.itemDetailModel?.decLastMonthSalesQty
+      text: ProductDetails.itemDetailModel?.decLastMonthSalesQty
           ?.toStringAsFixed(2));
   TextEditingController Last90DaysSalesQty = TextEditingController(
-      text: SalesQuotationUI.itemDetailModel?.decLast90DaysSalesQty
+      text: ProductDetails.itemDetailModel?.decLast90DaysSalesQty
           ?.toStringAsFixed(2));
   TextEditingController LastSellingPrice = TextEditingController(
-      text: SalesQuotationUI.itemDetailModel?.decLastSellingPrice
+      text: ProductDetails.itemDetailModel?.decLastSellingPrice
           ?.toStringAsFixed(2));
   TextEditingController OpenOrders = TextEditingController(
-      text: SalesQuotationUI.itemDetailModel?.intOpenOrders?.toString());
+      text: ProductDetails.itemDetailModel?.intOpenOrders?.toString());
   TextEditingController OpenInvoice = TextEditingController(
-      text: SalesQuotationUI.itemDetailModel?.intOpenInvoice?.toString());
+      text: ProductDetails.itemDetailModel?.intOpenInvoice?.toString());
   TextEditingController Ordered = TextEditingController(
-      text: SalesQuotationUI.itemDetailModel?.intOrdered?.toString());
+      text: ProductDetails.itemDetailModel?.intOrdered?.toString());
   TextEditingController Committed = TextEditingController(
-      text: SalesQuotationUI.itemDetailModel?.intCommitted?.toString());
+      text: ProductDetails.itemDetailModel?.intCommitted?.toString());
   TextEditingController ItemCost = TextEditingController(
-      text: SalesQuotationUI.itemDetailModel?.decItemCost?.toStringAsFixed(2));
+      text: ProductDetails.itemDetailModel?.decItemCost?.toStringAsFixed(2));
 
   @override
   void initState() {
@@ -119,7 +119,7 @@ class _GeneralDataState extends State<GeneralData> {
                                               getPoppinsTextSpanHeading(
                                                   text: 'Item ID'),
                                               getPoppinsTextSpanDetails(
-                                                  text: SalesQuotationUI
+                                                  text: ProductDetails
                                                           .itemDetailModel
                                                           ?.bigintItemId
                                                           ?.toStringAsFixed(
@@ -142,7 +142,7 @@ class _GeneralDataState extends State<GeneralData> {
                                               getPoppinsTextSpanHeading(
                                                   text: 'Bar Code'),
                                               getPoppinsTextSpanDetails(
-                                                  text: SalesQuotationUI
+                                                  text: ProductDetails
                                                           .itemDetailModel
                                                           ?.varBarcode ??
                                                       ''),
@@ -162,7 +162,7 @@ class _GeneralDataState extends State<GeneralData> {
                                               getPoppinsTextSpanHeading(
                                                   text: 'Item No'),
                                               getPoppinsTextSpanDetails(
-                                                  text: SalesQuotationUI
+                                                  text: ProductDetails
                                                           .itemDetailModel
                                                           ?.varItemNo ??
                                                       ''),
@@ -182,7 +182,7 @@ class _GeneralDataState extends State<GeneralData> {
                                               getPoppinsTextSpanHeading(
                                                   text: 'Item Description'),
                                               getPoppinsTextSpanDetails(
-                                                  text: SalesQuotationUI
+                                                  text: ProductDetails
                                                           .itemDetailModel
                                                           ?.varItemDescription ??
                                                       ''),
@@ -202,7 +202,7 @@ class _GeneralDataState extends State<GeneralData> {
                                               getPoppinsTextSpanHeading(
                                                   text: 'UOM Group Code'),
                                               getPoppinsTextSpanDetails(
-                                                  text: SalesQuotationUI
+                                                  text: ProductDetails
                                                           .itemDetailModel
                                                           ?.varUomGroupCode ??
                                                       ''),
@@ -222,7 +222,7 @@ class _GeneralDataState extends State<GeneralData> {
                                               getPoppinsTextSpanHeading(
                                                   text: 'UOM Group Name'),
                                               getPoppinsTextSpanDetails(
-                                                  text: SalesQuotationUI
+                                                  text: ProductDetails
                                                           .itemDetailModel
                                                           ?.varUomGroupName ??
                                                       ''),
@@ -242,7 +242,7 @@ class _GeneralDataState extends State<GeneralData> {
                                               getPoppinsTextSpanHeading(
                                                   text: 'UOM Code'),
                                               getPoppinsTextSpanDetails(
-                                                  text: SalesQuotationUI
+                                                  text: ProductDetails
                                                           .itemDetailModel
                                                           ?.varUomCode ??
                                                       ''),
@@ -262,7 +262,7 @@ class _GeneralDataState extends State<GeneralData> {
                                               getPoppinsTextSpanHeading(
                                                   text: 'UOM Name'),
                                               getPoppinsTextSpanDetails(
-                                                  text: SalesQuotationUI
+                                                  text: ProductDetails
                                                           .itemDetailModel
                                                           ?.varUomName ??
                                                       ''),
@@ -282,7 +282,7 @@ class _GeneralDataState extends State<GeneralData> {
                                               getPoppinsTextSpanHeading(
                                                   text: 'Foreign Name'),
                                               getPoppinsTextSpanDetails(
-                                                  text: SalesQuotationUI
+                                                  text: ProductDetails
                                                           .itemDetailModel
                                                           ?.varForeignName ??
                                                       ''),
@@ -302,7 +302,7 @@ class _GeneralDataState extends State<GeneralData> {
                                               getPoppinsTextSpanHeading(
                                                   text: 'Item Category'),
                                               getPoppinsTextSpanDetails(
-                                                  text: SalesQuotationUI
+                                                  text: ProductDetails
                                                           .itemDetailModel
                                                           ?.varItemCategory ??
                                                       ''),
@@ -322,7 +322,7 @@ class _GeneralDataState extends State<GeneralData> {
                                               getPoppinsTextSpanHeading(
                                                   text: 'Brand Name'),
                                               getPoppinsTextSpanDetails(
-                                                  text: SalesQuotationUI
+                                                  text: ProductDetails
                                                       .itemDetailModel
                                                       ?.varBrandName ??
                                                       ''),
@@ -342,7 +342,7 @@ class _GeneralDataState extends State<GeneralData> {
                                               getPoppinsTextSpanHeading(
                                                   text: 'Group Name'),
                                               getPoppinsTextSpanDetails(
-                                                  text: SalesQuotationUI
+                                                  text: ProductDetails
                                                       .itemDetailModel
                                                       ?.varGroupName ??
                                                       ''),
@@ -362,7 +362,7 @@ class _GeneralDataState extends State<GeneralData> {
                                               getPoppinsTextSpanHeading(
                                                   text: 'Item Image'),
                                               getPoppinsTextSpanDetails(
-                                                  text: SalesQuotationUI
+                                                  text: ProductDetails
                                                       .itemDetailModel
                                                       ?.varItemImage ??
                                                       ''),
@@ -382,7 +382,7 @@ class _GeneralDataState extends State<GeneralData> {
                                               getPoppinsTextSpanHeading(
                                                   text: 'Last Month Sales Qty'),
                                               getPoppinsTextSpanDetails(
-                                                  text: SalesQuotationUI
+                                                  text: ProductDetails
                                                       .itemDetailModel
                                                       ?.decLastMonthSalesQty
                                                       ?.toStringAsFixed(
@@ -405,7 +405,7 @@ class _GeneralDataState extends State<GeneralData> {
                                                   text:
                                                   'Last 90 Day sSales Qty'),
                                               getPoppinsTextSpanDetails(
-                                                  text: SalesQuotationUI
+                                                  text: ProductDetails
                                                       .itemDetailModel
                                                       ?.decLast90DaysSalesQty
                                                       ?.toStringAsFixed(
@@ -427,7 +427,7 @@ class _GeneralDataState extends State<GeneralData> {
                                               getPoppinsTextSpanHeading(
                                                   text: 'Last Selling Price'),
                                               getPoppinsTextSpanDetails(
-                                                  text: SalesQuotationUI
+                                                  text: ProductDetails
                                                       .itemDetailModel
                                                       ?.decLastSellingPrice
                                                       ?.toStringAsFixed(
@@ -449,7 +449,7 @@ class _GeneralDataState extends State<GeneralData> {
                                               getPoppinsTextSpanHeading(
                                                   text: 'Open Orders'),
                                               getPoppinsTextSpanDetails(
-                                                  text: SalesQuotationUI
+                                                  text: ProductDetails
                                                       .itemDetailModel
                                                       ?.intOpenOrders
                                                       ?.toStringAsFixed(
@@ -471,7 +471,7 @@ class _GeneralDataState extends State<GeneralData> {
                                               getPoppinsTextSpanHeading(
                                                   text: 'Open Invoice'),
                                               getPoppinsTextSpanDetails(
-                                                  text: SalesQuotationUI
+                                                  text: ProductDetails
                                                       .itemDetailModel
                                                       ?.intOpenInvoice
                                                       ?.toStringAsFixed(
@@ -493,7 +493,7 @@ class _GeneralDataState extends State<GeneralData> {
                                               getPoppinsTextSpanHeading(
                                                   text: 'Ordered'),
                                               getPoppinsTextSpanDetails(
-                                                  text: SalesQuotationUI
+                                                  text: ProductDetails
                                                       .itemDetailModel
                                                       ?.intOrdered
                                                       ?.toStringAsFixed(
@@ -515,7 +515,7 @@ class _GeneralDataState extends State<GeneralData> {
                                               getPoppinsTextSpanHeading(
                                                   text: 'Committed'),
                                               getPoppinsTextSpanDetails(
-                                                  text: SalesQuotationUI
+                                                  text: ProductDetails
                                                       .itemDetailModel
                                                       ?.intCommitted
                                                       ?.toStringAsFixed(
@@ -537,7 +537,7 @@ class _GeneralDataState extends State<GeneralData> {
                                               getPoppinsTextSpanHeading(
                                                   text: 'Item Cost'),
                                               getPoppinsTextSpanDetails(
-                                                  text: SalesQuotationUI
+                                                  text: ProductDetails
                                                       .itemDetailModel
                                                       ?.decItemCost
                                                       ?.toStringAsFixed(
