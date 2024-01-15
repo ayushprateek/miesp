@@ -58,6 +58,17 @@ class _DashboardState extends State<Dashboard> {
           title: appName,
           key: key,
           drawer: const CustomDrawer(),
+          leading: IconButton(onPressed: (){
+            if (warehouse != null) {
+              Timer(Duration(milliseconds: 100), () {
+                key.currentState?.openDrawer();
+              });
+            }
+            else
+              {
+                getErrorSnackBar('Warehouse not saved!!');
+              }
+          }, icon: Icon(Icons.menu,color: Colors.white,)),
           body: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             crossAxisAlignment: CrossAxisAlignment.center,
@@ -151,11 +162,11 @@ class _DashboardState extends State<Dashboard> {
 
   _onSave() async {
     List l = selectedWarehouse.split('-->');
-    WarehouseModel warehouseModel = WarehouseModel(
+    warehouse = WarehouseModel(
       warehouseCode: l[0],
       warehouseName: l[1],
     );
-    WarehouseModel.setSelectedWarehouse(warehouseModel: warehouseModel);
+    WarehouseModel.setSelectedWarehouse(warehouseModel: warehouse!);
     getSuccessSnackBar('Warehouse saved');
 
     key.currentState?.openDrawer();
