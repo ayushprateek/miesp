@@ -25,7 +25,7 @@ class _ReportState extends State<Report> {
   TextEditingController _startDate = TextEditingController();
   TextEditingController _endDate = TextEditingController();
   List<List<dynamic>> rowsAsListOfValues = [];
-  bool _isLoading=false;
+  bool _isLoading = false;
 
   @override
   Widget build(BuildContext context) {
@@ -40,75 +40,115 @@ class _ReportState extends State<Report> {
               getDisabledTextFieldWithoutLookup(
                   controller: _startDate,
                   labelText: 'Start Date',
-                enableLookup: false,
-                onTap: () async {
-                  DateTime? dateTime =
-                      await getDateAndTimePopup(context: context);
-                  _startDate.text =
-                      getFormattedDateAndTime(dateTime);
-                },
-                onChanged: (String date){
-                  _startDate.text=date;
-                }
-              ),
+                  enableLookup: false,
+                  suffixIcon: IconButton(
+                      onPressed: () {
+                        setState(() {
+                          _startDate.clear();
+                        });
+                      },
+                      icon: Icon(
+                        Icons.close,
+                        color: Colors.red,
+                      )),
+                  onTap: () async {
+                    DateTime? dateTime =
+                        await getDateAndTimePopup(context: context);
+                    if (dateTime != null) {
+                      _startDate.text = getFormattedDateAndTime(dateTime);
+                    }
+                  },
+                  onChanged: (String date) {
+                    _startDate.text = date;
+                  }),
               getDisabledTextFieldWithoutLookup(
                   controller: _endDate,
                   labelText: 'End Date',
-                enableLookup: false,
-                onTap: () async {
-                  DateTime? dateTime =
-                      await getDateAndTimePopup(context: context);
-                  _endDate.text =
-                      getFormattedDateAndTime(dateTime);
-                },
-                onChanged: (String date){
-                  _endDate.text=date;
-                }
-              ),
-
-              if(_isLoading)
+                  enableLookup: false,
+                  suffixIcon: IconButton(
+                      onPressed: () {
+                        setState(() {
+                          _endDate.clear();
+                        });
+                      },
+                      icon: Icon(
+                        Icons.close,
+                        color: Colors.red,
+                      )),
+                  onTap: () async {
+                    DateTime? dateTime =
+                        await getDateAndTimePopup(context: context);
+                    if (dateTime != null) {
+                      _endDate.text = getFormattedDateAndTime(dateTime);
+                    }
+                  },
+                  onChanged: (String date) {
+                    _endDate.text = date;
+                  }),
+              if (_isLoading)
                 CircularProgressIndicator()
-              else
-              SingleChildScrollView(
-                scrollDirection: Axis.horizontal,
-                child: DataTable(
-                  columns: [
-                    for (var header in rowsAsListOfValues[0])
-                      DataColumn(
-                          label: getHeadingText(text: header.toString())),
-                  ],
-                  rows: [
-                    for (var rowData in rowsAsListOfValues.sublist(1))
-                      DataRow(
-                        cells: [
-                          for (var cellData in rowData)
-                            DataCell(
-                                getSubHeadingText(text: cellData.toString())),
-                        ],
-                      ),
-                  ],
+              else if (rowsAsListOfValues.isNotEmpty)
+                SingleChildScrollView(
+                  scrollDirection: Axis.horizontal,
+                  child: DataTable(
+                    columns: [
+                      for (var header in rowsAsListOfValues[0])
+                        DataColumn(
+                            label: getHeadingText(text: header.toString())),
+                    ],
+                    rows: [
+                      for (var rowData in rowsAsListOfValues.sublist(1))
+                        DataRow(
+                          cells: [
+                            for (var cellData in rowData)
+                              DataCell(
+                                  getSubHeadingText(text: cellData.toString())),
+                          ],
+                        ),
+                    ],
+                  ),
                 ),
-              ),
             ],
           ),
         ),
-        bottomNavigationBar: loadingButton(
-            isLoading: false,
-            btnText: 'Download',
-            onPress: () async {
-              openFile();
-            }));
+        bottomNavigationBar: _buttonContainer());
   }
 
-
+  Widget _buttonContainer() {
+    return SizedBox(
+      width: MediaQuery.of(context).size.width,
+      height: MediaQuery.of(context).size.height / 13,
+      child: Padding(
+        padding: const EdgeInsets.all(8.0),
+        child: loadingButton(
+          isLoading: false,
+          btnText: 'View Report',
+          onPress: () {
+            openFile();
+          },
+        ),
+      ),
+    );
+  }
 
   openFile() async {
-    setState(() {
-      _isLoading=true;
-    });
+    if (_startDate.text.isEmpty) {
+      getErrorSnackBar('Start Date can not be empty');
+      return;
+    } else if (_endDate.text.isEmpty) {
+      getErrorSnackBar('End Date can not be empty');
+      return;
+    }
     final url = Uri.parse('${ServiceManager.baseURL}Items/DownloadReport');
-    DateTime startDate=getDateAndTimeFromString(_startDate.text);
-    DateTime endDate=getDateAndTimeFromString(_endDate.text);
+    DateTime startDate = getDateAndTimeFromString(_startDate.text);
+    DateTime endDate = getDateAndTimeFromString(_endDate.text);
+    if (endDate.isBefore(startDate)) {
+      getErrorSnackBar('End Date can not be before start date');
+      return;
+    }
+    setState(() {
+      _isLoading = true;
+    });
     print(startDate.toIso8601String());
     print(endDate.toIso8601String());
 
@@ -137,7 +177,7 @@ class _ReportState extends State<Report> {
       getErrorSnackBar('Failed to download file.${response.body}');
     }
     setState(() {
-      _isLoading=false;
+      _isLoading = false;
     });
   }
 }
