@@ -20,7 +20,5 @@ Future<void> scanQRCode({
 
   if (scanResult != '-1') {
     onSuccess(scanResult);
-  } else {
-    getErrorSnackBar('Error during scan');
   }
 }
