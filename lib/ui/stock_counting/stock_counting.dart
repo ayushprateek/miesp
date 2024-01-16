@@ -235,27 +235,27 @@ class _StockCountingState extends State<StockCounting> {
                                           mainAxisAlignment:
                                               MainAxisAlignment.start,
                                           children: [
-                                            // Padding(
-                                            //   padding: const EdgeInsets.only(
-                                            //       left: 8.0,
-                                            //       right: 8.0,
-                                            //       top: 4.0),
-                                            //   child: Align(
-                                            //     alignment: Alignment.topLeft,
-                                            //     child: Text.rich(
-                                            //       TextSpan(
-                                            //         children: [
-                                            //           getPoppinsTextSpanHeading(
-                                            //               text: 'UOM Code'),
-                                            //           getPoppinsTextSpanDetails(
-                                            //               text: stockCountingDetail
-                                            //                       .varUomCode ??
-                                            //                   ''),
-                                            //         ],
-                                            //       ),
-                                            //     ),
-                                            //   ),
-                                            // ),
+                                            Padding(
+                                              padding: const EdgeInsets.only(
+                                                  left: 8.0,
+                                                  right: 8.0,
+                                                  top: 4.0),
+                                              child: Align(
+                                                alignment: Alignment.topLeft,
+                                                child: Text.rich(
+                                                  TextSpan(
+                                                    children: [
+                                                      getPoppinsTextSpanHeading(
+                                                          text: 'UOM Code'),
+                                                      getPoppinsTextSpanDetails(
+                                                          text: stockCountingDetail
+                                                                  .varUomCode ??
+                                                              ''),
+                                                    ],
+                                                  ),
+                                                ),
+                                              ),
+                                            ),
                                             Container(
                                               height: MediaQuery.of(context)
                                                   .size
@@ -296,7 +296,7 @@ class _StockCountingState extends State<StockCounting> {
                                                         onChanged:
                                                             (String? newValue) {
                                                           stockCountingDetail.varUomName = newValue;
-                                                          // stockCountingDetail.varUomCode = getUOMCode(UOMName: newValue!);
+                                                          stockCountingDetail.varUomCode = getUOMCode(UOMName: newValue!, stockCountingDetailModel: stockCountingDetail);
 
                                                           setState(() {});
                                                         },
@@ -411,17 +411,16 @@ class _StockCountingState extends State<StockCounting> {
 
 
 
-  // String getUOMCode({required String UOMName}) {
-  //todo:
-  //   String code = '';
-  //   for (UomModel uom in uomList) {
-  //     if (uom.varUomName == UOMName) {
-  //       code = uom.varUomCode!;
-  //       break;
-  //     }
-  //   }
-  //   return code;
-  // }
+  String getUOMCode({required String UOMName,required StockCountingDetailModel stockCountingDetailModel}) {
+    String code = '';
+    for (UomModel uom in stockCountingDetailModel.uomList??[]) {
+      if (UOMName == uom.varUomName) {
+        code = uom.varUomCode!;
+        break;
+      }
+    }
+    return code;
+  }
 
 
   getInfo() async {
