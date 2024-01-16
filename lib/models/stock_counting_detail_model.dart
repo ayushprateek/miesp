@@ -24,6 +24,7 @@ class StockCountingDetailModel {
   String? varRackNo;
   String? varItemDescription;
   List<UomModel>? uomList;
+  Set<String> uomNameList = {'---SELECT---'};
   StockCountingDetailModel({
     this.bigintItemId,
     this.varItemNo,

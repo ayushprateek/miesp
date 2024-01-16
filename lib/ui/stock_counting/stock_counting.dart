@@ -28,13 +28,12 @@ class _StockCountingState extends State<StockCounting> {
   final TextEditingController _rackNo = TextEditingController();
   final ScrollController _scrollController = ScrollController();
   List<StockCountingDetailModel> items = [];
-  List<UomModel> uomList = [];
-  Set<String> uomNameList = {'---SELECT---'};
+
 
   @override
   void initState() {
     super.initState();
-    loadUomData();
+    getInfo();
   }
 
   _onBackButtonPressed() {
@@ -296,18 +295,12 @@ class _StockCountingState extends State<StockCounting> {
                                                             '${stockCountingDetail.varUomName}',
                                                         onChanged:
                                                             (String? newValue) {
-                                                          stockCountingDetail
-                                                                  .varUomName =
-                                                              newValue;
-                                                          stockCountingDetail
-                                                                  .varUomCode =
-                                                              getUOMCode(
-                                                                  UOMName:
-                                                                      newValue!);
+                                                          stockCountingDetail.varUomName = newValue;
+                                                          // stockCountingDetail.varUomCode = getUOMCode(UOMName: newValue!);
 
                                                           setState(() {});
                                                         },
-                                                        items: uomNameList.map<
+                                                        items: stockCountingDetail.uomNameList.map<
                                                             DropdownMenuItem<
                                                                 String>>((String
                                                             value) {
@@ -415,36 +408,21 @@ class _StockCountingState extends State<StockCounting> {
     );
   }
 
-  loadUomData() async {
-    if (await ServiceManager.isInternetAvailable()) {
-      ServiceManager.getUOMList(onSuccess: onUomSuccess, onError: onUomError);
-    }
-  }
 
-  onUomSuccess(List<UomModel> uomList) {
-    this.uomList = uomList;
-    for (UomModel uom in uomList) {
-      if (uom.varUomName != null && uom.varUomName != '') {
-        this.uomNameList.add(uom.varUomName!);
-      }
-    }
-    getInfo();
-  }
 
-  String getUOMCode({required String UOMName}) {
-    String code = '';
-    for (UomModel uom in uomList) {
-      if (uom.varUomName == UOMName) {
-        code = uom.varUomCode!;
-        break;
-      }
-    }
-    return code;
-  }
 
-  onUomError() {
-    getInfo();
-  }
+  // String getUOMCode({required String UOMName}) {
+  //todo:
+  //   String code = '';
+  //   for (UomModel uom in uomList) {
+  //     if (uom.varUomName == UOMName) {
+  //       code = uom.varUomCode!;
+  //       break;
+  //     }
+  //   }
+  //   return code;
+  // }
+
 
   getInfo() async {
     _deviceNumber.text = (await getDeviceId()) ?? '';
@@ -459,6 +437,12 @@ class _StockCountingState extends State<StockCounting> {
         countingDetailModel.varUomName == '' ||
         countingDetailModel.varUomName == 'null') {
       countingDetailModel.varUomName = '---SELECT---';
+    }
+
+    for (UomModel uom in  countingDetailModel.uomList??[]) {
+      if (uom.varUomName != null && uom.varUomName != '') {
+        countingDetailModel.uomNameList.add(uom.varUomName!);
+      }
     }
     setState(() {
       items.add(countingDetailModel);
