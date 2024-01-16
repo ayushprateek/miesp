@@ -83,7 +83,6 @@ class ServiceManager {
     required Function onError,
   }) async {
     List<UomModel>? uomList = [];
-    ;
     var res = await http.get(
       Uri.parse('${baseURL}Items/GetUOM'),
       headers: header,
@@ -122,11 +121,15 @@ class ServiceManager {
   }) async {
     ItemDetailModel? warehouseList;
     CustomerModel customerModel = CustomerModel.getLoginCustomer();
+    WarehouseModel? warehouseModel = WarehouseModel.getSelectedWarehouse();
 
     var res = await http.post(
       Uri.parse('${baseURL}Items/GetItemDetail'),
-      body:
-          jsonEncode({"Barcode": barCode, "UserId": customerModel.userId ?? 0}),
+      body: jsonEncode({
+        "Barcode": barCode,
+        "UserId": customerModel.userId ?? 0,
+        "WarehouseCode": warehouseModel?.warehouseCode ?? ''
+      }),
       headers: header,
     );
     print(res.body);

@@ -3,6 +3,7 @@ import 'package:miesp/services/service_manager.dart';
 import 'package:miesp/theme/custom_text_widgets.dart';
 import 'package:miesp/theme/elements_screen.dart';
 import 'package:miesp/ui/components/elements_button.dart';
+import 'package:miesp/ui/components/elements_snackbar.dart';
 import 'package:miesp/ui/components/scan.dart';
 import 'package:miesp/ui/dashboard.dart';
 import 'package:miesp/ui/product/product_details.dart';
@@ -60,7 +61,9 @@ class _CustomScannerState extends State<CustomScanner> {
     Get.to(() => ProductDetails(index: 0));
   }
 
-  onError() {}
+  onError() {
+    getErrorSnackBar('Invalid item');
+  }
 
   @override
   Widget build(BuildContext context) {

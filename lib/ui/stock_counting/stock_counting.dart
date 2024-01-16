@@ -458,7 +458,9 @@ class _StockCountingState extends State<StockCounting> {
     });
   }
 
-  onError() {}
+  onError() {
+    getErrorSnackBar('Item does not exists');
+  }
 
   bool isFormValidated() {
     bool isSuccess = true;
