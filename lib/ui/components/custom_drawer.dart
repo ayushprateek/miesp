@@ -105,7 +105,7 @@ class _CustomDrawerState extends State<CustomDrawer> {
                 text: 'Report',
                 color: Colors.white,
               ),
-              leading: const Icon(Icons.calendar_month, color: Colors.white),
+              leading: const Icon(Icons.edit_document, color: Colors.white),
               trailing:
                   const Icon(Icons.keyboard_arrow_right, color: Colors.white),
             ),
