@@ -1,3 +1,5 @@
+import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:miesp/common/app_functions.dart';
 import 'package:miesp/models/customer_model.dart';
 import 'package:miesp/models/stock_count_request_model.dart';
@@ -13,8 +15,6 @@ import 'package:miesp/ui/components/elements_snackbar.dart';
 import 'package:miesp/ui/components/scan.dart';
 import 'package:miesp/ui/components/space_dividers.dart';
 import 'package:miesp/ui/dashboard.dart';
-import 'package:flutter/material.dart';
-import 'package:get/get.dart';
 
 class StockCounting extends StatefulWidget {
   const StockCounting({super.key});
@@ -29,7 +29,7 @@ class _StockCountingState extends State<StockCounting> {
   final ScrollController _scrollController = ScrollController();
   List<StockCountingDetailModel> items = [];
   List<UomModel> uomList = [];
-  Set<String> uomNameList = {};
+  Set<String> uomNameList = {'---SELECT---'};
 
   @override
   void initState() {
@@ -39,9 +39,9 @@ class _StockCountingState extends State<StockCounting> {
 
   _onBackButtonPressed() {
     if (_rackNo.text.isNotEmpty || items.isNotEmpty) {
-      showBackPressedWarning(onBackPressed: null,
-        text: 'Your data is not saved. Are you sure you want to go back?'
-      );
+      showBackPressedWarning(
+          onBackPressed: null,
+          text: 'Your data is not saved. Are you sure you want to go back?');
     } else {
       Get.offAll(() => Dashboard());
     }
@@ -123,6 +123,7 @@ class _StockCountingState extends State<StockCounting> {
                       ListView.separated(
                         itemCount: items.length,
                         shrinkWrap: true,
+                        reverse: true,
                         controller: _scrollController,
                         physics: ScrollPhysics(),
                         itemBuilder: (BuildContext context, int index) {
@@ -407,7 +408,7 @@ class _StockCountingState extends State<StockCounting> {
         ),
         floatingActionButton: FloatingActionButton(
           onPressed: _save,
-          child: getHeadingText(text: 'Save', color: Colors.white),
+          child: FittedBox(child: getHeadingText(text: 'Submit', color: Colors.white,fontSize: 10)),
         ),
       ),
     );
@@ -453,6 +454,11 @@ class _StockCountingState extends State<StockCounting> {
     print(countingDetailModel.toJson());
     countingDetailModel.quantity.text =
         countingDetailModel.decQuantity?.toStringAsFixed(2) ?? '';
+    if (countingDetailModel.varUomName == null ||
+        countingDetailModel.varUomName == '' ||
+        countingDetailModel.varUomName == 'null') {
+      countingDetailModel.varUomName = '---SELECT---';
+    }
     setState(() {
       items.add(countingDetailModel);
     });
@@ -479,7 +485,12 @@ class _StockCountingState extends State<StockCounting> {
 
       if ((qty ?? 0.0) == 0.0) {
         getErrorSnackBar(
-            "${stockCountingDetailModel.varItemNo}'s quantity required");
+            "${stockCountingDetailModel.varItemDescription}'s quantity required");
+        isSuccess = false;
+      }
+      if (stockCountingDetailModel.varUomName == '---SELECT---') {
+        getErrorSnackBar(
+            "Please select UOM in ${stockCountingDetailModel.varItemDescription}");
         isSuccess = false;
       }
     }

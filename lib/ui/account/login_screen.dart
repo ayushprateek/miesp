@@ -37,7 +37,7 @@ class LoginPageState extends State<LoginPage> {
 
   TextEditingController userEmail = TextEditingController();
   TextEditingController password = TextEditingController();
-  //
+
   _onBackButtonPressed() {
     showBackPressedWarning(
         onBackPressed: () {
