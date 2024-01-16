@@ -226,27 +226,7 @@ class _StockCountingState extends State<StockCounting> {
                                                 ),
                                               ),
                                             ),
-                                            Container(
-                                              height: MediaQuery.of(context)
-                                                      .size
-                                                      .height /
-                                                  22,
-                                              margin: const EdgeInsets.only(
-                                                  top: 10, right: 10),
-                                              child: getTextFieldWithoutLookup(
-                                                controller: stockCountingDetail
-                                                    .quantity,
-                                                labelText: 'Quantity',
-                                                keyboardType:
-                                                    getDecimalKeyboardType(),
-                                                inputFormatters: [
-                                                  getDecimalRegEx()
-                                                ],
-                                                style: new TextStyle(
-                                                  fontFamily: "Poppins",
-                                                ),
-                                              ),
-                                            ),
+
                                           ],
                                         ),
                                         flex: 8,
@@ -256,30 +236,51 @@ class _StockCountingState extends State<StockCounting> {
                                           mainAxisAlignment:
                                               MainAxisAlignment.start,
                                           children: [
-                                            Padding(
-                                              padding: const EdgeInsets.only(
-                                                  left: 8.0,
-                                                  right: 8.0,
-                                                  top: 4.0),
-                                              child: Align(
-                                                alignment: Alignment.topLeft,
-                                                child: Text.rich(
-                                                  TextSpan(
-                                                    children: [
-                                                      getPoppinsTextSpanHeading(
-                                                          text: 'UOM Code'),
-                                                      getPoppinsTextSpanDetails(
-                                                          text: stockCountingDetail
-                                                                  .varUomCode ??
-                                                              ''),
-                                                    ],
-                                                  ),
+                                            // Padding(
+                                            //   padding: const EdgeInsets.only(
+                                            //       left: 8.0,
+                                            //       right: 8.0,
+                                            //       top: 4.0),
+                                            //   child: Align(
+                                            //     alignment: Alignment.topLeft,
+                                            //     child: Text.rich(
+                                            //       TextSpan(
+                                            //         children: [
+                                            //           getPoppinsTextSpanHeading(
+                                            //               text: 'UOM Code'),
+                                            //           getPoppinsTextSpanDetails(
+                                            //               text: stockCountingDetail
+                                            //                       .varUomCode ??
+                                            //                   ''),
+                                            //         ],
+                                            //       ),
+                                            //     ),
+                                            //   ),
+                                            // ),
+                                            Container(
+                                              height: MediaQuery.of(context)
+                                                  .size
+                                                  .height /
+                                                  22,
+                                              margin: const EdgeInsets.only(
+                                                  top: 10, right: 10),
+                                              child: getTextFieldWithoutLookup(
+                                                controller: stockCountingDetail
+                                                    .quantity,
+                                                labelText: 'Quantity',
+                                                keyboardType:
+                                                getDecimalKeyboardType(),
+                                                inputFormatters: [
+                                                  getDecimalRegEx()
+                                                ],
+                                                style: new TextStyle(
+                                                  fontFamily: "Poppins",
                                                 ),
                                               ),
                                             ),
                                             Padding(
                                               padding: const EdgeInsets.only(
-                                                  top: 8.0, left: 8, right: 20),
+                                                   left: 8, right: 20),
                                               child: FittedBox(
                                                 child: Row(
                                                   children: [
@@ -331,7 +332,7 @@ class _StockCountingState extends State<StockCounting> {
                                                 // color: Colors.red,
                                                 width: Get.width / 4,
                                                 margin: const EdgeInsets.only(
-                                                    top: 10,
+
                                                     right: 10,
                                                     left: 8),
                                                 alignment:

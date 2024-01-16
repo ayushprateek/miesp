@@ -9,6 +9,7 @@ import 'package:miesp/theme/custom_colors.dart';
 import 'package:miesp/theme/custom_text_widgets.dart';
 import 'package:miesp/ui/account/login_screen.dart';
 import 'package:miesp/ui/components/elements_button.dart';
+import 'package:miesp/ui/report/report.dart';
 import 'package:miesp/ui/stock_counting/stock_counting.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -88,6 +89,20 @@ class _CustomDrawerState extends State<CustomDrawer> {
             child: ListTile(
               title: getHeadingText(
                 text: 'Stock Counting',
+                color: Colors.white,
+              ),
+              leading: const Icon(Icons.calendar_month, color: Colors.white),
+              trailing:
+                  const Icon(Icons.keyboard_arrow_right, color: Colors.white),
+            ),
+          ),
+          InkWell(
+            onTap: () {
+              Get.to(() => Report());
+            },
+            child: ListTile(
+              title: getHeadingText(
+                text: 'Report',
                 color: Colors.white,
               ),
               leading: const Icon(Icons.calendar_month, color: Colors.white),

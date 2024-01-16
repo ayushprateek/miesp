@@ -50,3 +50,10 @@ String getStringFromTime(DateTime? time) {
   print(formattedTime);
   return formattedTime;
 }
+DateTime getDateAndTimeFromString(String? now) {
+  if (now == null || now == '') {
+    return DateTime.parse("1900-01-01");
+  }
+  DateTime tempDate = DateFormat('$dateFormat HH:mm a').parse(now);
+  return tempDate;
+}

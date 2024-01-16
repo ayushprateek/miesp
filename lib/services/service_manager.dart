@@ -134,6 +134,11 @@ class ServiceManager {
     );
     print(res.body);
     if (res.statusCode == 200) {
+      if(res.body=='null')
+      {
+        onError();
+        return;
+      }
       warehouseList = itemDetailModelFromJson(res.body);
       onSuccess(warehouseList);
     } else {
@@ -161,6 +166,11 @@ class ServiceManager {
     );
     print(res.body);
     if (res.statusCode == 200) {
+      if(res.body=='null')
+        {
+          onError();
+          return;
+        }
       stockCountingDetail = stockCountingDetailModelFromJson(res.body);
       onSuccess(stockCountingDetail);
     } else {

@@ -231,7 +231,6 @@ Widget getTextFieldWithoutLookup(
 
 Widget getDateTextField(
     {required TextEditingController controller,
-      required TextEditingController localCurrController,
       String? labelText,
       String suffixText = "",
       Widget? suffixIcon,
@@ -336,27 +335,6 @@ Widget getDateTextField(
             ),
           ),
 
-          enableLookup
-              ? iconButton == null
-              ? IconButton(
-            icon: Icon(
-              Icons.search,
-              color: iconColor??appPrimary,
-            ),
-            onPressed: onLookupPressed != null
-                ? onLookupPressed as Function()
-                : null,
-          )
-              : iconButton
-              : iconButton == null
-              ? IconButton(
-            icon: Icon(
-              Icons.search,
-              color: iconColor??Colors.white,
-            ),
-            onPressed: null,
-          )
-              : iconButton
         ],
       ),
     ),

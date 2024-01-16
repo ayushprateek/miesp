@@ -62,7 +62,7 @@ class _CustomScannerState extends State<CustomScanner> {
   }
 
   onError() {
-    getErrorSnackBar('Invalid item');
+    getErrorSnackBar('Item does not exist');
   }
 
   @override
