@@ -1,6 +1,7 @@
 import 'dart:convert';
 
 import 'package:flutter/cupertino.dart';
+import 'package:miesp/models/uom_model.dart';
 
 StockCountingDetailModel stockCountingDetailModelFromJson(String str) =>
     StockCountingDetailModel.fromJson(json.decode(str));
@@ -22,7 +23,7 @@ class StockCountingDetailModel {
   DateTime? dtModifiedOn;
   String? varRackNo;
   String? varItemDescription;
-
+  List<UomModel>? uomList;
   StockCountingDetailModel({
     this.bigintItemId,
     this.varItemNo,
@@ -36,6 +37,7 @@ class StockCountingDetailModel {
     this.dtModifiedOn,
     this.varRackNo,
     this.varItemDescription,
+    this.uomList,
   });
 
   factory StockCountingDetailModel.fromJson(Map<String, dynamic> json){
@@ -53,7 +55,16 @@ class StockCountingDetailModel {
       dtModifiedOn: DateTime.tryParse(json["dtModifiedOn"].toString()),
       varRackNo: json["varRackNo"],
       varItemDescription: json["varItemDescription"],
+      uomList:
+      json["uomList"] is List ? getUomList(json["uomList"]) : null,
     );
+  }
+  static List<UomModel> getUomList(List dynamicUomList) {
+    List<UomModel> uomList = [];
+    for (var price in dynamicUomList) {
+      uomList.add(UomModel.fromJson(price));
+    }
+    return uomList;
   }
 
   Map<String, dynamic> toJson() => {
