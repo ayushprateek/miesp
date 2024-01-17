@@ -1,5 +1,8 @@
 import 'dart:io';
 
+import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:miesp/common/app_assets.dart';
 import 'package:miesp/common/keys.dart';
 import 'package:miesp/custom_scanner.dart';
@@ -9,11 +12,8 @@ import 'package:miesp/theme/custom_colors.dart';
 import 'package:miesp/theme/custom_text_widgets.dart';
 import 'package:miesp/ui/account/login_screen.dart';
 import 'package:miesp/ui/components/elements_button.dart';
-import 'package:miesp/ui/report/report.dart';
 import 'package:miesp/ui/stock_counting/stock_counting.dart';
-import 'package:flutter/cupertino.dart';
-import 'package:flutter/material.dart';
-import 'package:get/get.dart';
+import 'package:miesp/ui/report/download_report.dart';
 
 class CustomDrawer extends StatefulWidget {
   const CustomDrawer({super.key});
@@ -41,13 +41,13 @@ class _CustomDrawerState extends State<CustomDrawer> {
             currentAccountPicture: ClipRRect(
               borderRadius: BorderRadius.circular(100.0),
               child: Container(
-                // decoration: BoxDecoration(
-                //   border: Border.all(),
-                //     color: Colors.black
-                // ),
+                  // decoration: BoxDecoration(
+                  //   border: Border.all(),
+                  //     color: Colors.black
+                  // ),
                   child: Image.asset(logoPath)),
             ),
-            decoration:  BoxDecoration(
+            decoration: BoxDecoration(
               color: appPrimary,
               // border: Border.all()
             ),
@@ -98,7 +98,7 @@ class _CustomDrawerState extends State<CustomDrawer> {
           ),
           InkWell(
             onTap: () {
-              Get.to(() => Report());
+              Get.to(() => ReportPage());
             },
             child: ListTile(
               title: getHeadingText(

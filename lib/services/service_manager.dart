@@ -1,4 +1,5 @@
 import 'dart:convert';
+import 'dart:io';
 
 import 'package:connectivity_plus/connectivity_plus.dart';
 import 'package:http/http.dart' as http;
@@ -9,6 +10,7 @@ import 'package:miesp/models/stock_counting_detail_model.dart';
 import 'package:miesp/models/uom_model.dart';
 import 'package:miesp/models/warehouse_model.dart';
 import 'package:miesp/ui/components/elements_snackbar.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 // import 'package:mailer/mailer.dart';
 // import 'package:mailer/smtp_server.dart';
@@ -30,15 +32,30 @@ class ServiceManager {
     return true;
   }
 
-  // static launchInBrowser(Uri? uri) async {
-  //   try {
-  //     if (await canLaunchUrl(uri ?? Uri.parse(''))) {
-  //       await launchUrl(uri ?? Uri.parse(''));
-  //     } else {}
-  //   } catch (e) {
-  //     CustomSnackBar.errorSnackBar(e.toString());
-  //   }
-  // }
+  static launchInBrowser(Uri? uri) async {
+    try {
+      if (await canLaunchUrl(uri ?? Uri.parse(''))) {
+        await launchUrl(uri ?? Uri.parse(''));
+      } else {
+
+      }
+    } catch (e) {
+
+    }
+  }
+  static launchCSV() async {
+    try {
+      File file=File('/storage/emulated/0/Download/report.csv');
+      print(await file.exists());
+      if (await canLaunchUrl(Uri.parse('/storage/emulated/0/Download/report.csv'))) {
+        await launchUrl(Uri.parse('/storage/emulated/0/Download/report.csv'));
+      } else {
+        print('Cant launch');
+      }
+    } catch (e) {
+      print(e.toString());
+    }
+  }
 
   static Future<void> login({
     required String UserEmail,

@@ -3,6 +3,7 @@ import 'package:get/get.dart';
 import 'package:miesp/local_storage/local_storage.dart';
 import 'package:miesp/miesp.dart';
 import 'package:miesp/theme/custom_theme.dart';
+import 'package:tbib_downloader/tbib_downloader.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -19,5 +20,6 @@ Future<void> main() async {
 }
 
 Future<void> init() async {
+  await TBIBDownloader().init();
   await LocalStorage.getInstance()?.initLocalStorage();
 }
