@@ -494,6 +494,7 @@ class _StockCountingState extends State<StockCounting> {
           varDeviceNo: _deviceNumber.text,
           varItemNo: stockCountingDetailModel.varItemNo,
           varRackNo: _rackNo.text,
+          varBarcode: stockCountingDetailModel.varBarcode,
           varUomCode: stockCountingDetailModel.varUomCode,
           varWarehouseCode: stockCountingDetailModel.varWarehouseCode,
         ));
