@@ -30,13 +30,13 @@ class LoginPageState extends State<LoginPage> {
   bool obscurePassword = true;
   bool isLoading = false;
 
-  // TextEditingController userEmail =
-  //     TextEditingController(text: 'rahul@punditz.in');
-  // TextEditingController password = TextEditingController(text: 'punditz@123');
-  //
+  TextEditingController userEmail =
+      TextEditingController(text: 'rahul@punditz.in');
+  TextEditingController password = TextEditingController(text: 'punditz@123');
 
-  TextEditingController userEmail = TextEditingController();
-  TextEditingController password = TextEditingController();
+  //
+  // TextEditingController userEmail = TextEditingController();
+  // TextEditingController password = TextEditingController();
 
   _onBackButtonPressed() {
     showBackPressedWarning(
@@ -216,18 +216,29 @@ class LoginPageState extends State<LoginPage> {
     );
   }
 
-  void onSuccess(CustomerModel customerModel) {
+   onSuccess(CustomerModel customerModel) async{
+    setState(() {
+      isLoading=true;
+    });
     getSuccessSnackBar('Login successful');
+    await Future.delayed(const Duration(milliseconds: 500),(){});
     CustomerModel.setLoginCustomer(customerModel: customerModel);
+
     Get.to(() => Dashboard());
   }
 
   void onError() {
+    setState(() {
+      isLoading=true;
+    });
     getErrorSnackBar('Invalid credentials');
   }
 
   _onLogin() async {
     if (await ServiceManager.isInternetAvailable()) {
+      setState(() {
+        isLoading=true;
+      });
       ServiceManager.login(
           UserEmail: userEmail.text,
           Password: password.text,

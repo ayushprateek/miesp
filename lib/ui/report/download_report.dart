@@ -1,4 +1,3 @@
-import 'dart:developer';
 import 'dart:io';
 
 import 'package:awesome_notifications/awesome_notifications.dart';
@@ -41,8 +40,6 @@ class MyNotificationService {
     if (receivedAction.buttonKeyPressed == 'tbib_downloader_open_file') {
       var res = await TBIBDownloaderOpenFile()
           .openFile(path: receivedAction.payload!['path']!);
-
-      log(res.message);
     } else if (receivedAction.buttonKeyPressed ==
         'tbib_downloader_delete_file') {
       await TBIBDownloaderOpenFile()
@@ -89,7 +86,7 @@ class _ReportPageState extends State<ReportPage> {
   @override
   Widget build(BuildContext context) {
     return screenWithAppBar(
-     title: 'Download Report',
+      title: 'Download Report',
       body: Column(
         children: [
           const SizedBox(
@@ -101,9 +98,11 @@ class _ReportPageState extends State<ReportPage> {
               value: progress,
             ),
           ),
-          getDateTextField(controller: _startDate, labelText: 'Start Date',
-            onChanged: (String pickedDate){
-              _startDate.text=pickedDate;
+          getDateTextField(
+            controller: _startDate,
+            labelText: 'Start Date',
+            onChanged: (String pickedDate) {
+              _startDate.text = pickedDate;
             },
             suffixIcon: IconButton(
                 onPressed: () {
@@ -116,9 +115,11 @@ class _ReportPageState extends State<ReportPage> {
                   color: Colors.red,
                 )),
           ),
-          getDateTextField(controller: _endDate, labelText: 'End Date',
-            onChanged: (String pickedDate){
-              _endDate.text=pickedDate;
+          getDateTextField(
+            controller: _endDate,
+            labelText: 'End Date',
+            onChanged: (String pickedDate) {
+              _endDate.text = pickedDate;
             },
             suffixIcon: IconButton(
                 onPressed: () {
@@ -129,12 +130,14 @@ class _ReportPageState extends State<ReportPage> {
                 icon: Icon(
                   Icons.close,
                   color: Colors.red,
-                )),),
+                )),
+          ),
         ],
       ),
       bottomNavigationBar: _buttonContainer(),
     );
   }
+
   Widget _buttonContainer() {
     return SizedBox(
       width: MediaQuery.of(context).size.width,
@@ -153,8 +156,8 @@ class _ReportPageState extends State<ReportPage> {
       ),
     );
   }
-  download()async{
 
+  download() async {
     if (_startDate.text.isEmpty) {
       getErrorSnackBar('Start Date can not be empty');
       return;
@@ -451,8 +454,7 @@ class _ReportPageState extends State<ReportPage> {
     //-------------------------
     var path = await TBIBDownloader().downloadFile(
       context: context,
-      url:
-      '${ServiceManager.baseURL}Items/DownloadReport',
+      url: '${ServiceManager.baseURL}Items/DownloadReport',
       receiveBytesAsMB: true,
       fileName: 'report.csv',
       // directoryName: 'data',
@@ -463,23 +465,20 @@ class _ReportPageState extends State<ReportPage> {
         setState(() {
           progress = (receivedBytes! / totalBytes!);
         });
-      }, startDate: startDate,
+      },
+      startDate: startDate,
       endDate: endDate,
       // saveFileInDataApp: true,
       // directoryName: 'test',
       // onReceiveProgress: ({int? count, int? total}) => debugPrint(
       //     'count: $count, total: $total, progress: ${count! / total!}'),
     );
-    if(await File('/storage/emulated/0/Download/report.csv').exists())
-      {
-        getSuccessSnackBar('Report Downloaded Successfully');
-      }
-    else
-      {
-        getErrorSnackBar('Failed to Downloaded Report');
-      }
+    if (await File('/storage/emulated/0/Download/report.csv').exists()) {
+      getSuccessSnackBar('Report Downloaded Successfully');
+    } else {
+      getErrorSnackBar('Failed to Downloaded Report');
+    }
   }
-
 
   @override
   void initState() {

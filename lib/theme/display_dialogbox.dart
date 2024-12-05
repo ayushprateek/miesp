@@ -9,10 +9,10 @@ import 'package:flutter/material.dart';
 
 void showDialogOkay(BuildContext context, bool isSuccess,
     {String? title,
-    String? message,
-    List<String>? messages,
-    Function? onDismiss,
-    Function? onOkayPress}) {
+      String? message,
+      List<String>? messages,
+      Function? onDismiss,
+      Function? onOkayPress}) {
   if (Platform.isIOS) {
     showDialog(
         context: context,
@@ -56,15 +56,15 @@ void showDialogOkay(BuildContext context, bool isSuccess,
 
 void showDialogConfirmationCustomButton(
     {BuildContext? context,
-    bool? isSuccess = true,
-    String? title,
-    String? positiveButtonText,
-    String negativeButtonText = "",
-    bool isShowNegative = true,
-    String? message,
-    List<String>? messages,
-    Function? onDismiss,
-    Function? onOkayPress}) {
+      bool? isSuccess = true,
+      String? title,
+      String? positiveButtonText,
+      String negativeButtonText = "",
+      bool isShowNegative = true,
+      String? message,
+      List<String>? messages,
+      Function? onDismiss,
+      Function? onOkayPress}) {
   List<Widget> titleRowWidgets = [
     if (title != "") _dialogTitle(context!, title, isSuccess!)
   ];
@@ -80,7 +80,7 @@ void showDialogConfirmationCustomButton(
             if (isShowNegative) ...[
               const SizedBox(width: 15),
               _dialogButtonNegative(context, negativeButtonText,
-                  () => Navigator.of(context).pop(false)),
+                      () => Navigator.of(context).pop(false)),
             ]
           ],
         )),
@@ -133,10 +133,10 @@ void showDialogConfirmationCustomButton(
 
 Text _dialogTitle(BuildContext context, String? title, bool isSuccess) {
   TextStyle? titleTextStyle = isSuccess
-      ? AppTheme.textTheme.headline6
-          ?.merge(TextStyle(color: Theme.of(context).colorScheme.secondary))
-      : AppTheme.textTheme.headline6
-          ?.merge(TextStyle(color: Theme.of(context).errorColor));
+      ? AppTheme.textTheme.headlineSmall
+      ?.merge(TextStyle(color: Theme.of(context).colorScheme.secondary))
+      : AppTheme.textTheme.headlineSmall
+      ?.merge(TextStyle(color: Colors.red));
   if (title != null) {
     return Text("  " + title, style: titleTextStyle);
   } else {
