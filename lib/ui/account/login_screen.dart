@@ -218,7 +218,7 @@ class LoginPageState extends State<LoginPage> {
 
    onSuccess(CustomerModel customerModel) async{
     setState(() {
-      isLoading=true;
+      isLoading=false;
     });
     getSuccessSnackBar('Login successful');
     await Future.delayed(const Duration(milliseconds: 500),(){});
@@ -229,7 +229,7 @@ class LoginPageState extends State<LoginPage> {
 
   void onError() {
     setState(() {
-      isLoading=true;
+      isLoading=false;
     });
     getErrorSnackBar('Invalid credentials');
   }

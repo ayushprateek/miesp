@@ -6,6 +6,7 @@ import 'package:miesp/models/stock_count_request_model.dart';
 import 'package:miesp/models/stock_counting_detail_model.dart';
 import 'package:miesp/models/uom_model.dart';
 import 'package:miesp/services/service_manager.dart';
+import 'package:miesp/theme/custom_snack_bar.dart';
 import 'package:miesp/theme/custom_text_widgets.dart';
 import 'package:miesp/theme/elements_screen.dart';
 import 'package:miesp/theme/get_text_field.dart';
@@ -26,9 +27,11 @@ class StockCounting extends StatefulWidget {
 class _StockCountingState extends State<StockCounting> {
   final TextEditingController _deviceNumber = TextEditingController();
   final TextEditingController _rackNo = TextEditingController();
+  final TextEditingController _code = TextEditingController();
   final ScrollController _scrollController = ScrollController();
   List<StockCountingDetailModel> items = [];
-
+  String selectedOption = 'Scan';
+  Set<String> optionList = {'Scan', 'Manual'};
 
   @override
   void initState() {
@@ -81,6 +84,9 @@ class _StockCountingState extends State<StockCounting> {
                           labelText: 'Device Number'),
                       getTextField(
                           controller: _rackNo, labelText: 'Rack Number'),
+                      if (selectedOption == 'Manual')
+                        getTextField(controller: _code, labelText: 'Item Code'),
+                      _dropdownButton(),
                       Align(
                         alignment: Alignment.centerRight,
                         child: Padding(
@@ -90,28 +96,33 @@ class _StockCountingState extends State<StockCounting> {
                             height: Get.height / 18,
                             child: loadingButton(
                                 isLoading: false,
-                                btnText: '+ Add Item(Scan)',
+                                btnText: '+ Add Item',
                                 fontSize: 16,
                                 elevation: 4,
                                 onPress: () async {
-                                  // if (await ServiceManager
-                                  //     .isInternetAvailable()) {
-                                  //   String barCode = '4301';
-                                  //   ServiceManager.getStockCountingDetail(
-                                  //       barCode: barCode,
-                                  //       onSuccess: onSuccess,
-                                  //       onError: onError);
-                                  // }
-                                  scanQRCode(onSuccess: (String barCode) async {
-                                    if (!mounted) return;
-                                    if (await ServiceManager
-                                        .isInternetAvailable()) {
+                                  if (selectedOption == 'Scan') {
+                                    scanQRCode(
+                                        onSuccess: (String barCode) async {
+                                          if (!mounted) return;
+                                          if (await ServiceManager
+                                              .isInternetAvailable()) {
+                                            ServiceManager.getStockCountingDetail(
+                                                barCode: barCode,
+                                                onSuccess: onSuccess,
+                                                onError: onError);
+                                          }
+                                        });
+                                  } else {
+                                    if (_code.text.isEmpty) {
+                                      CustomSnackBar.errorSnackBar(
+                                          'Please enter item code');
+                                    } else {
                                       ServiceManager.getStockCountingDetail(
-                                          barCode: barCode,
+                                          barCode: _code.text,
                                           onSuccess: onSuccess,
                                           onError: onError);
                                     }
-                                  });
+                                  }
                                 }),
                           ),
                         ),
@@ -127,7 +138,7 @@ class _StockCountingState extends State<StockCounting> {
                         physics: ScrollPhysics(),
                         itemBuilder: (BuildContext context, int index) {
                           StockCountingDetailModel stockCountingDetail =
-                              items[index];
+                          items[index];
                           return Container(
                             decoration: new BoxDecoration(
                               color: Colors.white,
@@ -150,7 +161,7 @@ class _StockCountingState extends State<StockCounting> {
                                 children: [
                                   Row(
                                     crossAxisAlignment:
-                                        CrossAxisAlignment.start,
+                                    CrossAxisAlignment.start,
                                     mainAxisAlignment: MainAxisAlignment.start,
                                     children: [
                                       Expanded(
@@ -172,7 +183,7 @@ class _StockCountingState extends State<StockCounting> {
                                                             text: 'Item Code'),
                                                         getPoppinsTextSpanDetails(
                                                             text: stockCountingDetail
-                                                                    .varItemNo ??
+                                                                .varItemNo ??
                                                                 ''),
                                                       ],
                                                     ),
@@ -192,10 +203,10 @@ class _StockCountingState extends State<StockCounting> {
                                                     children: [
                                                       getPoppinsTextSpanHeading(
                                                           text:
-                                                              'Item Description'),
+                                                          'Item Description'),
                                                       getPoppinsTextSpanDetails(
                                                           text: stockCountingDetail
-                                                                  .varItemDescription ??
+                                                              .varItemDescription ??
                                                               ''),
                                                     ],
                                                   ),
@@ -216,16 +227,15 @@ class _StockCountingState extends State<StockCounting> {
                                                           text: 'In Stock'),
                                                       getPoppinsTextSpanDetails(
                                                           text: stockCountingDetail
-                                                                  .decInStock
-                                                                  ?.toStringAsFixed(
-                                                                      2) ??
+                                                              .decInStock
+                                                              ?.toStringAsFixed(
+                                                              2) ??
                                                               ''),
                                                     ],
                                                   ),
                                                 ),
                                               ),
                                             ),
-
                                           ],
                                         ),
                                         flex: 8,
@@ -233,7 +243,7 @@ class _StockCountingState extends State<StockCounting> {
                                       Expanded(
                                         child: Column(
                                           mainAxisAlignment:
-                                              MainAxisAlignment.start,
+                                          MainAxisAlignment.start,
                                           children: [
                                             // Padding(
                                             //   padding: const EdgeInsets.only(
@@ -279,7 +289,7 @@ class _StockCountingState extends State<StockCounting> {
                                             ),
                                             Padding(
                                               padding: const EdgeInsets.only(
-                                                   left: 8, right: 20),
+                                                  left: 8, right: 20),
                                               child: FittedBox(
                                                 child: Row(
                                                   children: [
@@ -287,23 +297,33 @@ class _StockCountingState extends State<StockCounting> {
                                                         text: 'UOM: '),
                                                     Padding(
                                                       padding:
-                                                          const EdgeInsets.only(
-                                                              left: 8.0),
+                                                      const EdgeInsets.only(
+                                                          left: 8.0),
                                                       child: DropdownButton<
                                                           String>(
                                                         value:
-                                                            '${stockCountingDetail.varUomName}',
+                                                        '${stockCountingDetail.varUomName}',
                                                         onChanged:
                                                             (String? newValue) {
-                                                          stockCountingDetail.varUomName = newValue;
-                                                          stockCountingDetail.varUomCode = getUOMCode(UOMName: newValue!, stockCountingDetailModel: stockCountingDetail);
+                                                          stockCountingDetail
+                                                              .varUomName =
+                                                              newValue;
+                                                          stockCountingDetail
+                                                              .varUomCode =
+                                                              getUOMCode(
+                                                                  UOMName:
+                                                                  newValue!,
+                                                                  stockCountingDetailModel:
+                                                                  stockCountingDetail);
 
                                                           setState(() {});
                                                         },
-                                                        items: stockCountingDetail.uomNameList.map<
+                                                        items: stockCountingDetail
+                                                            .uomNameList
+                                                            .map<
                                                             DropdownMenuItem<
                                                                 String>>((String
-                                                            value) {
+                                                        value) {
                                                           return DropdownMenuItem<
                                                               String>(
                                                             value: value,
@@ -325,11 +345,9 @@ class _StockCountingState extends State<StockCounting> {
                                                 // color: Colors.red,
                                                 width: Get.width / 4,
                                                 margin: const EdgeInsets.only(
-
-                                                    right: 10,
-                                                    left: 8),
+                                                    right: 10, left: 8),
                                                 alignment:
-                                                    Alignment.centerRight,
+                                                Alignment.centerRight,
                                                 child: InkWell(
                                                   onTap: () {
                                                     showBackPressedWarning(
@@ -339,12 +357,12 @@ class _StockCountingState extends State<StockCounting> {
                                                         Get.back();
                                                       },
                                                       text:
-                                                          'Are you sure yoju want to delete ${stockCountingDetail.varItemNo}?',
+                                                      'Are you sure you want to delete ${stockCountingDetail.varItemNo}?',
                                                     );
                                                   },
                                                   child: Row(
                                                     mainAxisAlignment:
-                                                        MainAxisAlignment.end,
+                                                    MainAxisAlignment.end,
                                                     children: [
                                                       Icon(
                                                         Icons.delete_forever,
@@ -402,18 +420,49 @@ class _StockCountingState extends State<StockCounting> {
         ),
         floatingActionButton: FloatingActionButton(
           onPressed: _save,
-          child: FittedBox(child: getHeadingText(text: 'Submit', color: Colors.white,fontSize: 10)),
+          child: FittedBox(
+              child: getHeadingText(
+                  text: 'Submit', color: Colors.white, fontSize: 10)),
         ),
       ),
     );
   }
 
+  Widget _dropdownButton() {
+    return Padding(
+      padding: const EdgeInsets.only(top: 8.0, left: 15, right: 20),
+      child: Row(
+        children: [
+          Expanded(child: getHeadingText(text: 'Select option')),
+          Expanded(
+            child: SizedBox(
+              width: Get.width / 1.2,
+              child: DropdownButton<String>(
+                value: selectedOption,
+                onChanged: (String? newValue) {
+                  setState(() {
+                    selectedOption = newValue!;
+                  });
+                },
+                items: optionList.map<DropdownMenuItem<String>>((String value) {
+                  return DropdownMenuItem<String>(
+                    value: value,
+                    child: FittedBox(child: Text(value)),
+                  );
+                }).toList(),
+              ),
+            ),
+          ),
+        ],
+      ),
+    );
+  }
 
-
-
-  String getUOMCode({required String UOMName,required StockCountingDetailModel stockCountingDetailModel}) {
+  String getUOMCode(
+      {required String UOMName,
+        required StockCountingDetailModel stockCountingDetailModel}) {
     String code = '';
-    for (UomModel uom in stockCountingDetailModel.uomList??[]) {
+    for (UomModel uom in stockCountingDetailModel.uomList ?? []) {
       if (UOMName == uom.varUomName) {
         code = uom.varUomCode!;
         break;
@@ -422,7 +471,6 @@ class _StockCountingState extends State<StockCounting> {
     return code;
   }
 
-
   getInfo() async {
     _deviceNumber.text = (await getDeviceId()) ?? '';
     setState(() {});
@@ -430,6 +478,8 @@ class _StockCountingState extends State<StockCounting> {
 
   onSuccess(StockCountingDetailModel countingDetailModel) {
     print(countingDetailModel.toJson());
+    _code.clear();
+    _rackNo.clear();
     countingDetailModel.quantity.text =
         countingDetailModel.decQuantity?.toStringAsFixed(2) ?? '';
     if (countingDetailModel.varUomName == null ||
@@ -438,7 +488,7 @@ class _StockCountingState extends State<StockCounting> {
       countingDetailModel.varUomName = '---SELECT---';
     }
 
-    for (UomModel uom in  countingDetailModel.uomList??[]) {
+    for (UomModel uom in countingDetailModel.uomList ?? []) {
       if (uom.varUomName != null && uom.varUomName != '') {
         countingDetailModel.uomNameList.add(uom.varUomName!);
       }
@@ -490,6 +540,7 @@ class _StockCountingState extends State<StockCounting> {
         requestList.add(StockCountRequestModel(
           bigintUserId: customerModel.userId,
           decInStock: stockCountingDetailModel.decInStock,
+          varItemDescription: stockCountingDetailModel.varItemDescription,
           decQuantity: qty ?? stockCountingDetailModel.decQuantity,
           varDeviceNo: _deviceNumber.text,
           varItemNo: stockCountingDetailModel.varItemNo,
